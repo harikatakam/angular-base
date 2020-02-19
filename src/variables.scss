@@ -1,0 +1,87 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0px !important;
+}
+
+.bgcolor {
+  // box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.07);
+  background-color: #172b4d;
+}
+
+mat-sidenav-container {
+  background-color: #172b4d;
+}
+
+mat-sidenav-container,
+mat-sidenav-content,
+mat-sidenav {
+  height: 100% !important;
+}
+
+mat-sidenav {
+  width: 250px !important;
+}
+
+// mat-toolbar {
+//   min-height: 50px !important;
+//   max-height: 50px !important;
+// }
+
+mat-sidenav {
+  width: 200px;
+  background-color: #172b4d;
+}
+
+.flex1 {
+  flex: 1 !important;
+}
+.flex03 {
+  flex: 0.3 !important;
+}
+
+.row-style {
+  display: flex;
+  flex-direction: row;
+}
+.content-center {
+  display: grid;
+  justify-content: center;
+}
+
+.white-color {
+  color: white;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row .height {
+  height: 35px !important;
+}
+
+.height:hover {
+  color: #00c7e6 !important;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.padding-top{
+  padding-top: 10px !important;
+}
+
+
+// ToDOs
+// 1. create navigation component and move all nav related code from app component to new one
+// 2. Create all variables in variables scss file use them all the places where colors are being used
+// 3. Cleanup variables css file move the global styles to styles.scss file
+// 4. padding for "sales App" header and toggle icon
+// 5. Logo place holder to new app-header component
+// 6. Verical center align for header items
+// 7. Popover for user profile Icon and add user minimal details
+// 8. Add routes , create dashboard route and component .. make this default route
+// 9. create Data Service (Http client wrapper) create a property to show spinner, it should be bheaviral subject
+// 10. Create HTTP interseptor to add token to all ouot going requests if token not avaiable/ expired it should redirect to login route
+// 11. Add gloabal exception handler
+// 12. Create "CoreModule" and move all generic purpose things to this, HTTp interceptor, golbal exception handler....
+// 13.
