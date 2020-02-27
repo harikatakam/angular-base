@@ -1,9 +1,28 @@
-<mat-sidenav-container class="sidenav-container">
+<app-header (toggleMenu)="sidenav.open()"></app-header>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [opened]="(isHandset$ | async) === false" class="bgcolor" [mode]="(isHandset$ | async) ? 'over' : 'side'">
+    <app-side-menu-bar></app-side-menu-bar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 93vh;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+
+
+
+
+<!-- <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <div class="content-center">
-      <!-- <img style="height: 40px;padding: 5px;" src="http://www.salespointonline.com/frontend/images/ac-white.png"
-        alt="SalesPoint"> -->
+
 
     </div>
     <mat-nav-list *ngFor="let link of MenuLinks;let i=index">
@@ -45,9 +64,8 @@
         </div>
       </mat-toolbar-row>
     </mat-toolbar>
-    <!-- Add Content Here -->
-  </mat-sidenav-content>
-</mat-sidenav-container>
+   </mat-sidenav-content>
+</mat-sidenav-container> -->
 
 
 

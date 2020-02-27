@@ -27,8 +27,14 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { HomeComponent } from './home/home.component';
+import { SideMenuBarComponent } from './side-menu-bar/side-menu-bar.component';
+import { HeaderComponent } from './header/header.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserCreationComponent } from './user-creation/user-creation.component';
+import { MdePopoverModule } from '@material-extended/mde';
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, SideMenuBarComponent, HeaderComponent, DashboardComponent, UserCreationComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -36,13 +42,16 @@ import { HomeComponent } from './home/home.component';
     RouterModule,
     // FormsModule,
     // ReactiveFormsModule,
+    MdePopoverModule,
     AppRoutingModule,
     MatSidenavModule,
     MatToolbarModule,
     LayoutModule,
     MatButtonModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
     // MatSidenavContent,
     // MatSidenav
   ],
