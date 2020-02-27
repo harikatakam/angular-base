@@ -1,47 +1,50 @@
-// tslint:disable-next-line: quotemark
-import { BrowserModule } from "@angular/platform-browser";
-// tslint:disable-next-line: quotemark
-import { NgModule } from "@angular/core";
-// tslint:disable-next-line: quotemark
-import { AppRoutingModule } from "./app-routing.module";
-// tslint:disable-next-line: quotemark
-import { AppComponent } from "./app.component";
-// tslint:disable-next-line: quotemark
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import {
   MatSidenavModule,
   MatSidenavContent,
   MatSidenav
-  // tslint:disable-next-line: quotemark
-} from "@angular/material/sidenav";
-// tslint:disable-next-line: quotemark
-import { CommonModule } from "@angular/common";
-// tslint:disable-next-line: quotemark
-import { RouterModule } from "@angular/router";
-// tslint:disable-next-line: quotemark
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+} from '@angular/material/sidenav';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// tslint:disable-next-line: quotemark
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { LayoutModule } from "@angular/cdk/layout";
-import { MatButtonModule } from "@angular/material/button";
-import { MatIconModule } from "@angular/material/icon";
-import { MatListModule } from "@angular/material/list";
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './home/home.component';
+<<<<<<< .mine
+import { AppRootComponent } from './component/app-root/app-root.component';
+import { LoginComponent } from './component/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; 
+
+
+=======
 import { SideMenuBarComponent } from './side-menu-bar/side-menu-bar.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserCreationComponent } from './user-creation/user-creation.component';
 import { MdePopoverModule } from '@material-extended/mde';
 import { MatCardModule } from '@angular/material/card';
+>>>>>>> .theirs
 @NgModule({
+<<<<<<< .mine
+  declarations: [AppComponent, HomeComponent, AppRootComponent, LoginComponent],
+=======
   declarations: [AppComponent, HomeComponent, SideMenuBarComponent, HeaderComponent, DashboardComponent, UserCreationComponent],
+>>>>>>> .theirs
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     CommonModule,
     RouterModule,
-    // FormsModule,
-    // ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MdePopoverModule,
     AppRoutingModule,
     MatSidenavModule,
@@ -49,9 +52,15 @@ import { MatCardModule } from '@angular/material/card';
     LayoutModule,
     MatButtonModule,
     MatIconModule,
+<<<<<<< .mine
+    MatListModule,
+    HttpClientModule
+
+=======
     MatListModule,
     MatCardModule,
     MatButtonModule,
+>>>>>>> .theirs
     // MatSidenavContent,
     // MatSidenav
   ],
@@ -59,4 +68,4 @@ import { MatCardModule } from '@angular/material/card';
   exports: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
