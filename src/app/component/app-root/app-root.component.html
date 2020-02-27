@@ -4,7 +4,9 @@
       <div class="content-center">
         <!-- <img style="height: 40px;padding: 5px;" src="http://www.salespointonline.com/frontend/images/ac-white.png"
           alt="SalesPoint"> -->
-  
+
+          test
+
       </div>
       <mat-nav-list *ngFor="let link of MenuLinks;let i=index">
         <mat-toolbar-row *ngIf="link.SubMenu == null" class="cursor height">
@@ -12,7 +14,7 @@
           <a *ngIf="link.SubMenu == null" mat-list-item href="/link.PageUrl"><span
               class="white-color">{{link.title}}</span></a>
         </mat-toolbar-row>
-  
+
         <mat-toolbar-row *ngIf="link.SubMenu != null " class="cursor height" (click)="OpenPanel(i)">
           <mat-icon class="white-color">{{link.Icon}}</mat-icon>
           <a mat-list-item><span class="white-color">{{link.title}}</span></a>
@@ -26,13 +28,13 @@
             </a>
           </mat-nav-list>
         </div>
-  
+
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
       <mat-toolbar color="primary">
         <mat-toolbar-row class="padding-top">
-  
+
           <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
             *ngIf="isHandset$ | async">
             <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
@@ -46,18 +48,19 @@
         </mat-toolbar-row>
       </mat-toolbar>
       <!-- Add Content Here -->
+      <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
-  
-  
-  
+
+
+
   <!--  <mat-sidenav-container>
       <mat-sidenav mode="side" #sidenav opened position="start">
         left panel
       </mat-sidenav>
       <mat-sidenav-content>
-  
-  
+
+
         <app-header (toggleMenu)="sidenav.toggle()"></app-header>
         <div class="main-content">
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
@@ -70,4 +73,3 @@
         <router-outlet></router-outlet>
       </mat-sidenav-content>
     </mat-sidenav-container> -->
-  
