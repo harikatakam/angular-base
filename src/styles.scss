@@ -1,1 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/cdk/overlay-prebuilt.css';
+@import './variables.scss';
+
+body {
+  margin: 0px !important;
+}
+
+.bgcolor {
+  // box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.07);
+  background-color: $background-color;
+}
+
+
+mat-sidenav-container,
+mat-sidenav-content,
+mat-sidenav {
+  height: 100% !important;
+}
+
+mat-sidenav {
+  width: 250px !important;
+}
+
+mat-toolbar {
+  min-height: 50px !important;
+  max-height: 50px !important;
+}
+
+.flex1 {
+  flex: 1 !important;
+}
+
+.flex01 {
+  flex: 0.1 !important;
+}
+
+.flex03 {
+  flex: 0.3 !important;
+}
+
+.row-style {
+  display: flex;
+  flex-direction: row;
+}
+.content-center {
+  display: grid;
+  justify-content: center;
+}
+
+.white-color {
+  color: white;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+
+
+
+.padding-top{
+  padding-top: 10px !important;
+}
+

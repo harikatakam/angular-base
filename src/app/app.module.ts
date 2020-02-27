@@ -17,12 +17,27 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './home/home.component';
+<<<<<<< .mine
 import { AppRootComponent } from './component/app-root/app-root.component';
 import { LoginComponent } from './component/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; 
+
+
+=======
+import { SideMenuBarComponent } from './side-menu-bar/side-menu-bar.component';
+import { HeaderComponent } from './header/header.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserCreationComponent } from './user-creation/user-creation.component';
+import { MdePopoverModule } from '@material-extended/mde';
+import { MatCardModule } from '@angular/material/card';
+>>>>>>> .theirs
 @NgModule({
+<<<<<<< .mine
   declarations: [AppComponent, HomeComponent, AppRootComponent, LoginComponent],
+=======
+  declarations: [AppComponent, HomeComponent, SideMenuBarComponent, HeaderComponent, DashboardComponent, UserCreationComponent],
+>>>>>>> .theirs
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -30,14 +45,22 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    MdePopoverModule,
     AppRoutingModule,
     MatSidenavModule,
     MatToolbarModule,
     LayoutModule,
     MatButtonModule,
     MatIconModule,
+<<<<<<< .mine
     MatListModule,
     HttpClientModule
+
+=======
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
+>>>>>>> .theirs
     // MatSidenavContent,
     // MatSidenav
   ],
