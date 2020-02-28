@@ -2,6 +2,7 @@
 
 @import '~@angular/cdk/overlay-prebuilt.css';
 @import './variables.scss';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 body {
   margin: 0px !important;
@@ -40,13 +41,24 @@ mat-toolbar {
   flex: 0.3 !important;
 }
 
-.row-style {
+.flexrow {
   display: flex;
   flex-direction: row;
 }
-.content-center {
+
+.flexcolumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.justify-content-center {
   display: grid;
   justify-content: center;
+}
+
+.justify-content-end {
+  display: grid;
+  justify-content: end;
 }
 
 .white-color {
@@ -58,5 +70,43 @@ mat-toolbar {
 }
 .padding-top{
   padding-top: 10px !important;
+}
+
+@media only screen and (min-width: 0px) {
+  .grid-style{
+    display: grid;
+    grid-template-columns: 0% 100% 0%;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .grid-style{
+    display: grid;
+    grid-template-columns: 0% 100% 0%;
+  }
+}
+
+//64em is also 1028px (if basefont is 16px)
+@media only screen and (min-width: 768px) {
+  .grid-style{
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+  }
+}
+
+//35em is also 560px (if basefont is 16px)
+@media only screen and (min-width: 992px) {
+  .grid-style{
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+  }
+}
+
+//64em is also 1028px (if basefont is 16px)
+@media only screen and (min-width: 1200px) {
+  .grid-style{
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+  }
 }
 

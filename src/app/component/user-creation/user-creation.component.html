@@ -1,4 +1,4 @@
-<p>user-creation works!</p>
+<!-- <p>user-creation works!</p> -->
 
 <!-- USer create
 
@@ -20,3 +20,53 @@ Payout split ratio -- dummy tab for now
 Documents upload
   Adhar
   Pan-->
+<div class="grid-style">
+  <div></div>
+  <div>
+    <mat-card>
+      <form [formGroup]="UserForm" class="form">
+        <div class="flexcolumn">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="Name">
+            <mat-error
+              *ngIf="(!UserForm.controls['Name'].valid && !UserForm.controls['Name'].touched ) || IsFormSubmitted">
+              Please enter Name
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>User Name</mat-label>
+            <input matInput formControlName="UserName">
+            <mat-error
+              *ngIf="(!UserForm.controls['UserName'].valid && !UserForm.controls['UserName'].touched ) || IsFormSubmitted">
+              Please enter User Name
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="Email">
+            <mat-error
+              *ngIf="(!UserForm.controls['Email'].valid && !UserForm.controls['Email'].touched ) || IsFormSubmitted">
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Phone No</mat-label>
+            <input matInput formControlName="PhoneNo">
+            <mat-error
+              *ngIf="(!UserForm.controls['PhoneNo'].valid && !UserForm.controls['PhoneNo'].touched ) || IsFormSubmitted">
+              Please enter a valid Phone Number
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card>
+    <div class="justify-content-end">
+      <button mat-stroked-button (click)="SaveUser()">Create User</button>
+    </div>
+  </div>
+  <div></div>
+</div>

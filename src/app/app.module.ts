@@ -27,9 +27,15 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { UserCreationComponent } from './component/user-creation/user-creation.component';
 import { MdePopoverModule } from '@material-extended/mde';
 import { MatCardModule } from '@angular/material/card';
+import {MatStepperModule} from '@angular/material/stepper';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { UserDetailsComponent } from './user-details/user-details.component';
+
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AppRootComponent, LoginComponent,SideMenuBarComponent,
-    HeaderComponent, DashboardComponent, UserCreationComponent],
+  declarations: [AppComponent, HomeComponent, AppRootComponent, LoginComponent, SideMenuBarComponent,
+    HeaderComponent, DashboardComponent, UserCreationComponent, UserDetailsComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -42,16 +48,25 @@ import { MatCardModule } from '@angular/material/card';
     MatSidenavModule,
     MatToolbarModule,
     LayoutModule,
+    MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
     MatListModule,
     HttpClientModule,
     MatCardModule,
     MatButtonModule,
+    MatStepperModule,
+    MatInputModule,
+    MatRadioModule,
     // MatSidenavContent,
     // MatSidenav
   ],
-  providers: [],
+  providers: [
+    // {
+    //   provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+    //   useValue: { appearance: 'fill' }
+    // }
+  ],
   exports: [],
   bootstrap: [AppComponent]
 })
