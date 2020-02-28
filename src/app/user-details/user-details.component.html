@@ -1,10 +1,10 @@
 <mat-horizontal-stepper labelPosition="bottom" #stepper class="p-2">
   <mat-step>
-    <ng-template matStepLabel>Personal details</ng-template>
+    <ng-template matStepLabel><span class="stepperHeading">Personal details</span></ng-template>
     <app-user-creation></app-user-creation>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Bank account details</ng-template>
+    <ng-template matStepLabel><span class="stepperHeading">Bank account details</span></ng-template>
     <div class="grid-style">
       <div></div>
       <div>
@@ -47,7 +47,7 @@
     </div>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Payout split ratio</ng-template>
+    <ng-template matStepLabel><span class="stepperHeading">Payout split ratio</span></ng-template>
     <p>Payout split ratio.</p>
     <!-- <div>
       <button mat-button matStepperPrevious>Back</button>
@@ -56,7 +56,7 @@
   </mat-step>
 
   <mat-step>
-    <ng-template matStepLabel>Documents Upload</ng-template>
+    <ng-template matStepLabel><span class="stepperHeading">Documents Upload</span></ng-template>
 
     <div class="grid-style">
       <div></div>
