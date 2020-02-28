@@ -67,9 +67,6 @@ export class SideMenuBarComponent implements OnInit {
   NavigateToPage(PageURL: any) {
     // console.log(PageURL);
     this.router.navigateByUrl(PageURL);
-    if (Breakpoints.Handset || Breakpoints.TabletPortrait) {
-      this.IsSplitPane = !this.IsSplitPane;
-      this.closeSplitPane.emit(true);
-    }
+    this.closeSplitPane.emit(true);
   }
 }
