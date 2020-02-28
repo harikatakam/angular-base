@@ -32,7 +32,7 @@ import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/mat
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { UserDetailsComponent } from './user-details/user-details.component';
-
+import { AgGridModule } from 'ag-grid-angular';
 @NgModule({
   declarations: [AppComponent, HomeComponent, AppRootComponent, LoginComponent, SideMenuBarComponent,
     HeaderComponent, DashboardComponent, UserCreationComponent, UserDetailsComponent],
@@ -58,6 +58,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     MatStepperModule,
     MatInputModule,
     MatRadioModule,
+    AgGridModule.withComponents([])
     // MatSidenavContent,
     // MatSidenav
   ],

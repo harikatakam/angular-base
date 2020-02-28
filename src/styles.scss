@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~@angular/cdk/overlay-prebuilt.css';
-@import './variables.scss';
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "~@angular/cdk/overlay-prebuilt.css";
+@import "./variables.scss";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
 
 body {
   margin: 0px !important;
@@ -71,28 +73,35 @@ mat-toolbar {
 .cursor {
   cursor: pointer;
 }
-.padding-top{
+.padding-top {
   padding-top: 10px !important;
 }
 
-.mat-stroked-button {
-  background : $background-color;
+.app-button {
+  background: $background-color;
   color: white;
+  padding: 0.5rem;
+  border-radius: .2rem;;
+  &:hover {
+    // opacity: 0.8;
+    // font-weight: bold;
+    color: rgb(179, 179, 81);
+  }
 }
 
-.margin-top5{
+.margin-top5 {
   margin-top: 5px !important;
 }
 
 @media only screen and (min-width: 0px) {
-  .grid-style{
+  .grid-style {
     display: grid;
     grid-template-columns: 0% 100% 0%;
   }
 }
 
 @media only screen and (min-width: 576px) {
-  .grid-style{
+  .grid-style {
     display: grid;
     grid-template-columns: 0% 100% 0%;
   }
@@ -100,7 +109,7 @@ mat-toolbar {
 
 //64em is also 1028px (if basefont is 16px)
 @media only screen and (min-width: 768px) {
-  .grid-style{
+  .grid-style {
     display: grid;
     grid-template-columns: 10% 80% 10%;
   }
@@ -108,7 +117,7 @@ mat-toolbar {
 
 //35em is also 560px (if basefont is 16px)
 @media only screen and (min-width: 992px) {
-  .grid-style{
+  .grid-style {
     display: grid;
     grid-template-columns: 25% 50% 25%;
   }
@@ -116,9 +125,8 @@ mat-toolbar {
 
 //64em is also 1028px (if basefont is 16px)
 @media only screen and (min-width: 1200px) {
-  .grid-style{
+  .grid-style {
     display: grid;
     grid-template-columns: 25% 50% 25%;
   }
 }
-
