@@ -1,8 +1,8 @@
 <app-header (toggleMenu)="sidenav.open()"></app-header>
-
 <mat-sidenav-container>
-  <mat-sidenav #sidenav [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [opened]="(isHandset$ | async) === false" class="bgcolor" [mode]="(isHandset$ | async) ? 'over' : 'side'">
-    <app-side-menu-bar></app-side-menu-bar>
+  <mat-sidenav #sidenav [attr.role]="isHandset ? 'dialog' : 'navigation'"
+    [opened]="!isHandset" class="bgcolor" [mode]="isHandset ? 'over' : 'side'">
+    <app-side-menu-bar (closeSplitPane)="CloseSplitPane($event)"></app-side-menu-bar>
   </mat-sidenav>
   <mat-sidenav-content>
     <div style="height: 93vh;">
@@ -10,81 +10,3 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-
-
-
-
-
-
-
-<!-- <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <div class="content-center">
-
-
-    </div>
-    <mat-nav-list *ngFor="let link of MenuLinks;let i=index">
-      <mat-toolbar-row *ngIf="link.SubMenu == null" class="cursor height">
-        <mat-icon class="white-color">{{link.Icon}}</mat-icon>
-        <a *ngIf="link.SubMenu == null" mat-list-item href="/link.PageUrl"><span
-            class="white-color">{{link.title}}</span></a>
-      </mat-toolbar-row>
-
-      <mat-toolbar-row *ngIf="link.SubMenu != null " class="cursor height" (click)="OpenPanel(i)">
-        <mat-icon class="white-color">{{link.Icon}}</mat-icon>
-        <a mat-list-item><span class="white-color">{{link.title}}</span></a>
-        <mat-icon class="white-color" *ngIf="!OpenSubMenu[i]">keyboard_arrow_down</mat-icon>
-        <mat-icon class="white-color" *ngIf="OpenSubMenu[i]">keyboard_arrow_up</mat-icon>
-      </mat-toolbar-row>
-      <div *ngIf="OpenSubMenu[i]">
-        <mat-nav-list style="padding-top: 0px !important;" *ngFor="let sub of link.SubMenu;let i=index">
-          <a mat-list-item href="/link.PageUrl" class="white-color">
-            <span class="white-color" style="padding-left: 25px;">{{sub.title}}</span>
-          </a>
-        </mat-nav-list>
-      </div>
-
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <mat-toolbar-row class="padding-top">
-
-        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-          *ngIf="isHandset$ | async">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-        <div class="flex1">
-          <span class="white-color">Sales App</span>
-        </div>
-        <div>
-          <mat-icon style="color: white;">account_circle</mat-icon>
-        </div>
-      </mat-toolbar-row>
-    </mat-toolbar>
-   </mat-sidenav-content>
-</mat-sidenav-container> -->
-
-
-
-<!--  <mat-sidenav-container>
-    <mat-sidenav mode="side" #sidenav opened position="start">
-      left panel
-    </mat-sidenav>
-    <mat-sidenav-content>
-
-
-      <app-header (toggleMenu)="sidenav.toggle()"></app-header>
-      <div class="main-content">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-          industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-          electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-          Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-          PageMaker including versions of Lorem Ipsum.</p>
-      </div>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container> -->

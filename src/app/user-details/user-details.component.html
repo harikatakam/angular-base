@@ -1,4 +1,4 @@
-<mat-horizontal-stepper #stepper>
+<mat-horizontal-stepper labelPosition="bottom" #stepper class="p-2">
   <mat-step>
     <ng-template matStepLabel>Personal details</ng-template>
     <app-user-creation></app-user-creation>
@@ -41,9 +41,7 @@
             </div>
           </form>
         </mat-card>
-        <div class="justify-content-end">
-          <button mat-stroked-button (click)="SaveBankInfo()">Create User</button>
-        </div>
+
       </div>
       <div></div>
     </div>
@@ -51,10 +49,10 @@
   <mat-step>
     <ng-template matStepLabel>Payout split ratio</ng-template>
     <p>Payout split ratio.</p>
-    <div>
+    <!-- <div>
       <button mat-button matStepperPrevious>Back</button>
-      <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
-    </div>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div> -->
   </mat-step>
 
   <mat-step>
@@ -144,11 +142,15 @@
             </div>
           </form>
         </mat-card>
-        <div class="justify-content-end">
+        <!-- <div class="justify-content-end">
           <button mat-stroked-button (click)="SaveDocs()">Save Documents</button>
-        </div>
+        </div> -->
       </div>
       <div></div>
     </div>
   </mat-step>
 </mat-horizontal-stepper>
+
+<div class="justify-content-end pr-2">
+  <button mat-stroked-button (click)="SaveBankInfo()">Save</button>
+</div>

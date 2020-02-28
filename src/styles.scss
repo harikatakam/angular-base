@@ -72,6 +72,15 @@ mat-toolbar {
   padding-top: 10px !important;
 }
 
+.mat-stroked-button {
+  background : $background-color;
+  color: white;
+}
+
+.margin-top5{
+  margin-top: 5px !important;
+}
+
 @media only screen and (min-width: 0px) {
   .grid-style{
     display: grid;

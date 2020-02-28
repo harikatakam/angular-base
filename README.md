@@ -40,4 +40,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 // 10. Create HTTP interseptor to add token to all ouot going requests if token not avaiable/ expired it should redirect to login route
 // 11. Add gloabal exception handler
 // 12. Create "CoreModule" and move all generic purpose things to this, HTTp interceptor, golbal exception handler, broadcasting service,....
-// 13.
+// 13. when side nav in hidden mode , after clicking navigation item it should close
+// Page heading for both creation and profile gae
+// Profile rooute click on user profile icon on top right and remove it from left nav
+// Paddings :: page title and bottom buttons
+// Button color and it should be on component remove buttons from each step
+// from validations after only submit

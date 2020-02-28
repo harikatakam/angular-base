@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MatSidenav } from '@angular/material/sidenav';
 @Component({
   selector: 'app-app-root',
   templateUrl: './app-root.component.html',
@@ -9,46 +10,25 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class AppRootComponent {
   title = 'InsApp';
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
-
-  MenuLinks: any = [];
+  @ViewChild('sidenav') sideNav : MatSidenav;
+  isHandset = false;
+  isHandset$;
 
   OpenSubMenu: boolean[] = [];
 
+  IsSplitPane = false;
+
   constructor(private breakpointObserver: BreakpointObserver) {
-    this.PrepareMenuLinks();
+    this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    ).subscribe(val => this.isHandset = val);
+
   }
 
-  PrepareMenuLinks() {
-    this.MenuLinks = [
-      {
-        Icon: 'home',
-        title: 'HomePage',
-        PageUrl: 'Home',
-        SubMenu: [
-          {
-            title: 'Grids',
-            PageUrl: 'Grid',
-          },
-          {
-            title: 'Charts',
-            PageUrl: 'Chart',
-          },
-        ]
-      },
-      {
-        Icon: 'donut_small',
-        title: 'TestPage',
-        PageUrl: 'Test',
-      }
-    ];
-  }
+  CloseSplitPane(IsOpen: any) {
 
-  OpenPanel(index: number) {
-    this.OpenSubMenu[index] = !this.OpenSubMenu[index];
+    this.isHandset && this.sideNav.close();
   }
 }
