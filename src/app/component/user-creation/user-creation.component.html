@@ -23,7 +23,8 @@ Documents upload
 <div class="grid-style">
   <div></div>
   <div>
-    <mat-card>
+    <span class = 'page-header'> Create New User </span>
+    <mat-card >
       <form [formGroup]="UserForm" class="form">
         <div class="flexcolumn">
           <mat-form-field>
@@ -78,7 +79,7 @@ Documents upload
       </form>
     </mat-card>
     <div class="justify-content-end">
-      <button app-button class="margin-top5" (click)="SaveUser()">Create User</button>
+      <button class="app-button margin-top5" (click)="SaveUser()">Create User</button>
     </div>
   </div>
   <div></div>

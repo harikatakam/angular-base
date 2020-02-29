@@ -1,156 +1,161 @@
-<mat-horizontal-stepper labelPosition="bottom" #stepper class="p-2">
-  <mat-step>
-    <ng-template matStepLabel><span class="stepperHeading">Personal details</span></ng-template>
-    <app-user-creation></app-user-creation>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel><span class="stepperHeading">Bank account details</span></ng-template>
-    <div class="grid-style">
-      <div></div>
-      <div>
-        <mat-card>
-          <form [formGroup]="BankForm" class="form">
-            <div class="flexcolumn">
-              <mat-form-field>
-                <mat-label>Account Number</mat-label>
-                <input matInput formControlName="AcNo">
-                <mat-error
-                  *ngIf="(!BankForm.controls['AcNo'].valid && !BankForm.controls['AcNo'].touched ) || IsFormSubmitted">
-                  Please enter Account Number
-                </mat-error>
-              </mat-form-field>
+<div class="p-2">
+  <span class = 'page-title'> User Profile </span>
 
-              <mat-form-field>
-                <mat-label>Name (as per Bank details)</mat-label>
-                <input matInput formControlName="Name">
-                <mat-error
-                  *ngIf="(!BankForm.controls['Name'].valid && !BankForm.controls['Name'].touched ) || IsFormSubmitted">
-                  Please enter Name
-                </mat-error>
-              </mat-form-field>
-
-              <mat-form-field>
-                <mat-label>IFSC Code</mat-label>
-                <input matInput formControlName="IFSC">
-                <mat-error
-                  *ngIf="(!BankForm.controls['IFSC'].valid && !BankForm.controls['IFSC'].touched ) || IsFormSubmitted">
-                  Please enter a valid IFSC Code
-                </mat-error>
-              </mat-form-field>
-
-            </div>
-          </form>
-        </mat-card>
-
-      </div>
-      <div></div>
-    </div>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel><span class="stepperHeading">Payout split ratio</span></ng-template>
-    <p>Payout split ratio.</p>
-    <!-- <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div> -->
-  </mat-step>
-
-  <mat-step>
-    <ng-template matStepLabel><span class="stepperHeading">Documents Upload</span></ng-template>
-
-    <div class="grid-style">
-      <div></div>
-      <div>
-        <mat-card>
-          <form [formGroup]="DocumentForm" class="form">
-            <div class="flexcolumn">
-
-              <mat-radio-group aria-label="Select an option" formControlName="DocumentType">
-                <mat-radio-button value="Pan">Pan card</mat-radio-button>
-                <mat-radio-button value="Aadhar">Aadhar</mat-radio-button>
-              </mat-radio-group>
-
-
-              <div class="flexcolumn" *ngIf="DocumentForm.controls['DocumentType'].value == 'Pan'">
+  <mat-horizontal-stepper labelPosition="bottom" #stepper class="p-2">
+    <mat-step>
+      <ng-template matStepLabel><span class="stepperHeading">Personal details</span></ng-template>
+      <app-user-creation></app-user-creation>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel><span class="stepperHeading">Bank account details</span></ng-template>
+      <div class="grid-style">
+        <div></div>
+        <div>
+          <mat-card>
+            <form [formGroup]="BankForm" class="form">
+              <div class="flexcolumn">
                 <mat-form-field>
-                  <mat-label>PAN Number</mat-label>
-                  <input matInput formControlName="PanNo">
+                  <mat-label>Account Number</mat-label>
+                  <input matInput formControlName="AcNo">
                   <mat-error
-                    *ngIf="(!DocumentForm.controls['PanNo'].valid && !DocumentForm.controls['PanNo'].touched ) || IsFormSubmitted">
-                    Please enter PAN Number
+                    *ngIf="(!BankForm.controls['AcNo'].valid && !BankForm.controls['AcNo'].touched ) || IsFormSubmitted">
+                    Please enter Account Number
                   </mat-error>
                 </mat-form-field>
 
                 <mat-form-field>
-                  <mat-label>Name (as on PAN Card)</mat-label>
-                  <input matInput formControlName="PanNo">
+                  <mat-label>Name (as per Bank details)</mat-label>
+                  <input matInput formControlName="Name">
                   <mat-error
-                    *ngIf="(!DocumentForm.controls['PanNo'].valid && !DocumentForm.controls['PanNo'].touched ) || IsFormSubmitted">
+                    *ngIf="(!BankForm.controls['Name'].valid && !BankForm.controls['Name'].touched ) || IsFormSubmitted">
                     Please enter Name
                   </mat-error>
                 </mat-form-field>
 
-              </div>
-
-              <div class="flexcolumn" *ngIf="DocumentForm.controls['DocumentType'].value == 'Aadhar'">
                 <mat-form-field>
-                  <mat-label>Aadhar Number</mat-label>
-                  <input matInput formControlName="AadharNo">
+                  <mat-label>IFSC Code</mat-label>
+                  <input matInput formControlName="IFSC">
                   <mat-error
-                    *ngIf="(!DocumentForm.controls['AadharNo'].valid && !DocumentForm.controls['AadharNo'].touched ) || IsFormSubmitted">
-                    Please enter Aadhar Number
+                    *ngIf="(!BankForm.controls['IFSC'].valid && !BankForm.controls['IFSC'].touched ) || IsFormSubmitted">
+                    Please enter a valid IFSC Code
+                  </mat-error>
+                </mat-form-field>
+
+              </div>
+            </form>
+          </mat-card>
+
+        </div>
+        <div></div>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel><span class="stepperHeading">Payout split ratio</span></ng-template>
+      <p>Payout split ratio.</p>
+      <!-- <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div> -->
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel><span class="stepperHeading">Documents Upload</span></ng-template>
+
+      <div class="grid-style">
+        <div></div>
+        <div>
+          <mat-card>
+            <form [formGroup]="DocumentForm" class="form">
+              <div class="flexcolumn">
+
+                <mat-radio-group aria-label="Select an option" formControlName="DocumentType">
+                  <mat-radio-button value="Pan">Pan card</mat-radio-button>
+                  <mat-radio-button value="Aadhar">Aadhar</mat-radio-button>
+                </mat-radio-group>
+
+
+                <div class="flexcolumn" *ngIf="DocumentForm.controls['DocumentType'].value == 'Pan'">
+                  <mat-form-field>
+                    <mat-label>PAN Number</mat-label>
+                    <input matInput formControlName="PanNo">
+                    <mat-error
+                      *ngIf="(!DocumentForm.controls['PanNo'].valid && !DocumentForm.controls['PanNo'].touched ) || IsFormSubmitted">
+                      Please enter PAN Number
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <mat-label>Name (as on PAN Card)</mat-label>
+                    <input matInput formControlName="PanNo">
+                    <mat-error
+                      *ngIf="(!DocumentForm.controls['PanNo'].valid && !DocumentForm.controls['PanNo'].touched ) || IsFormSubmitted">
+                      Please enter Name
+                    </mat-error>
+                  </mat-form-field>
+
+                </div>
+
+                <div class="flexcolumn" *ngIf="DocumentForm.controls['DocumentType'].value == 'Aadhar'">
+                  <mat-form-field>
+                    <mat-label>Aadhar Number</mat-label>
+                    <input matInput formControlName="AadharNo">
+                    <mat-error
+                      *ngIf="(!DocumentForm.controls['AadharNo'].valid && !DocumentForm.controls['AadharNo'].touched ) || IsFormSubmitted">
+                      Please enter Aadhar Number
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <mat-label>Name (as on Aadhar Card)</mat-label>
+                    <input matInput formControlName="AadharName">
+                    <mat-error
+                      *ngIf="(!DocumentForm.controls['AadharName'].valid && !DocumentForm.controls['AadharName'].touched ) || IsFormSubmitted">
+                      Please enter Name
+                    </mat-error>
+                  </mat-form-field>
+
+                </div>
+                <!-- <mat-form-field>
+                  <mat-label>Account Number</mat-label>
+                  <input matInput formControlName="DocumentType">
+                  <mat-error
+                    *ngIf="(!DocumentForm.controls['AcNo'].valid && !DocumentForm.controls['AcNo'].touched ) || IsFormSubmitted">
+                    Please enter Account Number
                   </mat-error>
                 </mat-form-field>
 
                 <mat-form-field>
-                  <mat-label>Name (as on Aadhar Card)</mat-label>
-                  <input matInput formControlName="AadharName">
+                  <mat-label>Name (as per Bank details)</mat-label>
+                  <input matInput formControlName="Name">
                   <mat-error
-                    *ngIf="(!DocumentForm.controls['AadharName'].valid && !DocumentForm.controls['AadharName'].touched ) || IsFormSubmitted">
+                    *ngIf="(!BankForm.controls['Name'].valid && !BankForm.controls['Name'].touched ) || IsFormSubmitted">
                     Please enter Name
                   </mat-error>
                 </mat-form-field>
 
+                <mat-form-field>
+                  <mat-label>IFSC Code</mat-label>
+                  <input matInput formControlName="IFSC">
+                  <mat-error
+                    *ngIf="(!BankForm.controls['IFSC'].valid && !BankForm.controls['IFSC'].touched ) || IsFormSubmitted">
+                    Please enter a valid IFSC Code
+                  </mat-error>
+                </mat-form-field> -->
+
               </div>
-              <!-- <mat-form-field>
-                <mat-label>Account Number</mat-label>
-                <input matInput formControlName="DocumentType">
-                <mat-error
-                  *ngIf="(!DocumentForm.controls['AcNo'].valid && !DocumentForm.controls['AcNo'].touched ) || IsFormSubmitted">
-                  Please enter Account Number
-                </mat-error>
-              </mat-form-field>
-
-              <mat-form-field>
-                <mat-label>Name (as per Bank details)</mat-label>
-                <input matInput formControlName="Name">
-                <mat-error
-                  *ngIf="(!BankForm.controls['Name'].valid && !BankForm.controls['Name'].touched ) || IsFormSubmitted">
-                  Please enter Name
-                </mat-error>
-              </mat-form-field>
-
-              <mat-form-field>
-                <mat-label>IFSC Code</mat-label>
-                <input matInput formControlName="IFSC">
-                <mat-error
-                  *ngIf="(!BankForm.controls['IFSC'].valid && !BankForm.controls['IFSC'].touched ) || IsFormSubmitted">
-                  Please enter a valid IFSC Code
-                </mat-error>
-              </mat-form-field> -->
-
-            </div>
-          </form>
-        </mat-card>
-        <!-- <div class="justify-content-end">
-          <button app-button (click)="SaveDocs()">Save Documents</button>
-        </div> -->
+            </form>
+          </mat-card>
+          <!-- <div class="justify-content-end">
+            <button app-button (click)="SaveDocs()">Save Documents</button>
+          </div> -->
+        </div>
+        <div></div>
       </div>
-      <div></div>
-    </div>
-  </mat-step>
-</mat-horizontal-stepper>
+    </mat-step>
+  </mat-horizontal-stepper>
 
-<div class="justify-content-end pr-2">
-  <button app-button (click)="SaveBankInfo()">Save</button>
+  <div class="justify-content-end pr-2">
+    <button class = 'app-button' (click)="SaveBankInfo()">Save</button>
+  </div>
+
 </div>

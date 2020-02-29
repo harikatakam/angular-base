@@ -18,10 +18,12 @@
       </button>
 
       <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
-        <mat-card style="max-width: 300px;background-color: #80808014;">
+        <mat-card style="max-width: 300px;background-color: white;">
           <mat-card-content>
-            User Details
-            <button class="app-button" (click) = 'logout()'>Logout</button>
+            <div class="d-flex flex-column">
+              <span>User Details</span>
+              <button class="btn btn-link" (click) = 'logout()'>Logout</button>
+            </div>
           </mat-card-content>
         </mat-card>
       </mde-popover>
