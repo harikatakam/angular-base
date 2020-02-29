@@ -1,24 +1,74 @@
 <div class="p-2">
-  <span class = 'page-title'> User Profile </span>
+  <span class='page-title'> User Profile </span>
 
   <mat-horizontal-stepper labelPosition="bottom" #stepper class="p-2">
-    <mat-step>
-      <ng-template matStepLabel><span class="stepperHeading">Personal details</span></ng-template>
-      <app-user-creation></app-user-creation>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel><span class="stepperHeading">Bank account details</span></ng-template>
-      <div class="grid-style">
-        <div></div>
-        <div>
-          <mat-card>
-            <form [formGroup]="BankForm" class="form">
+    <form [formGroup]="UserForm" class="form">
+      <mat-step>
+        <ng-template matStepLabel><span class="stepperHeading">Personal details</span></ng-template>
+        <div class="flexcolumn">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+            <!-- <mat-error
+              *ngIf="!UserForm.controls['name'].valid && (!UserForm.controls['name'].dirty  || IsFormSubmitted)">
+              Please enter Name
+            </mat-error> -->
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <mat-label>User Name</mat-label>
+            <input matInput formControlName="userName">
+            <!-- <mat-error
+              *ngIf="!UserForm.controls['UserName'].valid && (!UserForm.controls['UserName'].dirty  || IsFormSubmitted)">
+              Please enter User Name
+            </mat-error> -->
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="mailId">
+            <!-- <mat-error
+              *ngIf="!UserForm.controls['Email'].valid && (!UserForm.controls['Email'].dirty  || IsFormSubmitted)">
+              Please enter a valid email address
+            </mat-error> -->
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Phone No</mat-label>
+            <input matInput formControlName="mobile">
+            <!-- <mat-error
+              *ngIf="!UserForm.controls['PhoneNo'].valid && (!UserForm.controls['PhoneNo'].dirty  || IsFormSubmitted)">
+              Please enter a valid Phone Number
+            </mat-error> -->
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Role</mat-label>
+            <!-- <select matNativeControl formControlName="roles" name="Role">
+              <option value="" selected></option>
+              <option *ngFor="let role of roles" [value]="role.id">
+                {{role.roleName}}
+              </option>
+            </select> -->
+            <mat-select formControlName="roles">
+              <mat-option *ngFor="let role of roles" [value]="role.id">{{ role.roleName }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel><span class="stepperHeading">Bank account details</span></ng-template>
+        <div class="grid-style">
+          <div></div>
+          <div>
+            <mat-card>
               <div class="flexcolumn">
                 <mat-form-field>
                   <mat-label>Account Number</mat-label>
                   <input matInput formControlName="AcNo">
                   <mat-error
-                    *ngIf="(!BankForm.controls['AcNo'].valid && !BankForm.controls['AcNo'].touched ) || IsFormSubmitted">
+                    *ngIf="(!UserForm.controls['AcNo'].valid && !UserForm.controls['AcNo'].touched ) || IsFormSubmitted">
                     Please enter Account Number
                   </mat-error>
                 </mat-form-field>
@@ -27,7 +77,7 @@
                   <mat-label>Name (as per Bank details)</mat-label>
                   <input matInput formControlName="Name">
                   <mat-error
-                    *ngIf="(!BankForm.controls['Name'].valid && !BankForm.controls['Name'].touched ) || IsFormSubmitted">
+                    *ngIf="(!UserForm.controls['Name'].valid && !UserForm.controls['Name'].touched ) || IsFormSubmitted">
                     Please enter Name
                   </mat-error>
                 </mat-form-field>
@@ -36,50 +86,46 @@
                   <mat-label>IFSC Code</mat-label>
                   <input matInput formControlName="IFSC">
                   <mat-error
-                    *ngIf="(!BankForm.controls['IFSC'].valid && !BankForm.controls['IFSC'].touched ) || IsFormSubmitted">
+                    *ngIf="(!UserForm.controls['IFSC'].valid && !UserForm.controls['IFSC'].touched ) || IsFormSubmitted">
                     Please enter a valid IFSC Code
                   </mat-error>
                 </mat-form-field>
 
               </div>
-            </form>
-          </mat-card>
+            </mat-card>
 
+          </div>
+          <div></div>
         </div>
-        <div></div>
-      </div>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel><span class="stepperHeading">Payout split ratio</span></ng-template>
-      <p>Payout split ratio.</p>
-      <!-- <div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel><span class="stepperHeading">Payout split ratio</span></ng-template>
+        <p>Payout split ratio.</p>
+        <!-- <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
       </div> -->
-    </mat-step>
+      </mat-step>
 
-    <mat-step>
-      <ng-template matStepLabel><span class="stepperHeading">Documents Upload</span></ng-template>
-
-      <div class="grid-style">
-        <div></div>
-        <div>
-          <mat-card>
-            <form [formGroup]="DocumentForm" class="form">
+      <mat-step>
+        <ng-template matStepLabel><span class="stepperHeading">Documents Upload</span></ng-template>
+        <div class="grid-style">
+          <div></div>
+          <div>
+            <mat-card>
               <div class="flexcolumn">
-
                 <mat-radio-group aria-label="Select an option" formControlName="DocumentType">
                   <mat-radio-button value="Pan">Pan card</mat-radio-button>
                   <mat-radio-button value="Aadhar">Aadhar</mat-radio-button>
                 </mat-radio-group>
 
 
-                <div class="flexcolumn" *ngIf="DocumentForm.controls['DocumentType'].value == 'Pan'">
+                <div class="flexcolumn" *ngIf="UserForm.controls['DocumentType'].value == 'Pan'">
                   <mat-form-field>
                     <mat-label>PAN Number</mat-label>
                     <input matInput formControlName="PanNo">
                     <mat-error
-                      *ngIf="(!DocumentForm.controls['PanNo'].valid && !DocumentForm.controls['PanNo'].touched ) || IsFormSubmitted">
+                      *ngIf="(!UserForm.controls['PanNo'].valid && !UserForm.controls['PanNo'].touched ) || IsFormSubmitted">
                       Please enter PAN Number
                     </mat-error>
                   </mat-form-field>
@@ -88,19 +134,19 @@
                     <mat-label>Name (as on PAN Card)</mat-label>
                     <input matInput formControlName="PanNo">
                     <mat-error
-                      *ngIf="(!DocumentForm.controls['PanNo'].valid && !DocumentForm.controls['PanNo'].touched ) || IsFormSubmitted">
+                      *ngIf="(!UserForm.controls['PanNo'].valid && !UserForm.controls['PanNo'].touched ) || IsFormSubmitted">
                       Please enter Name
                     </mat-error>
                   </mat-form-field>
 
                 </div>
 
-                <div class="flexcolumn" *ngIf="DocumentForm.controls['DocumentType'].value == 'Aadhar'">
+                <div class="flexcolumn" *ngIf="UserForm.controls['DocumentType'].value == 'Aadhar'">
                   <mat-form-field>
                     <mat-label>Aadhar Number</mat-label>
                     <input matInput formControlName="AadharNo">
                     <mat-error
-                      *ngIf="(!DocumentForm.controls['AadharNo'].valid && !DocumentForm.controls['AadharNo'].touched ) || IsFormSubmitted">
+                      *ngIf="(!UserForm.controls['AadharNo'].valid && !UserForm.controls['AadharNo'].touched ) || IsFormSubmitted">
                       Please enter Aadhar Number
                     </mat-error>
                   </mat-form-field>
@@ -109,7 +155,7 @@
                     <mat-label>Name (as on Aadhar Card)</mat-label>
                     <input matInput formControlName="AadharName">
                     <mat-error
-                      *ngIf="(!DocumentForm.controls['AadharName'].valid && !DocumentForm.controls['AadharName'].touched ) || IsFormSubmitted">
+                      *ngIf="(!UserForm.controls['AadharName'].valid && !UserForm.controls['AadharName'].touched ) || IsFormSubmitted">
                       Please enter Name
                     </mat-error>
                   </mat-form-field>
@@ -119,7 +165,7 @@
                   <mat-label>Account Number</mat-label>
                   <input matInput formControlName="DocumentType">
                   <mat-error
-                    *ngIf="(!DocumentForm.controls['AcNo'].valid && !DocumentForm.controls['AcNo'].touched ) || IsFormSubmitted">
+                    *ngIf="(!UserForm.controls['AcNo'].valid && !UserForm.controls['AcNo'].touched ) || IsFormSubmitted">
                     Please enter Account Number
                   </mat-error>
                 </mat-form-field>
@@ -128,7 +174,7 @@
                   <mat-label>Name (as per Bank details)</mat-label>
                   <input matInput formControlName="Name">
                   <mat-error
-                    *ngIf="(!BankForm.controls['Name'].valid && !BankForm.controls['Name'].touched ) || IsFormSubmitted">
+                    *ngIf="(!UserForm.controls['Name'].valid && !UserForm.controls['Name'].touched ) || IsFormSubmitted">
                     Please enter Name
                   </mat-error>
                 </mat-form-field>
@@ -137,25 +183,26 @@
                   <mat-label>IFSC Code</mat-label>
                   <input matInput formControlName="IFSC">
                   <mat-error
-                    *ngIf="(!BankForm.controls['IFSC'].valid && !BankForm.controls['IFSC'].touched ) || IsFormSubmitted">
+                    *ngIf="(!UserForm.controls['IFSC'].valid && !UserForm.controls['IFSC'].touched ) || IsFormSubmitted">
                     Please enter a valid IFSC Code
                   </mat-error>
                 </mat-form-field> -->
 
               </div>
-            </form>
-          </mat-card>
-          <!-- <div class="justify-content-end">
+
+            </mat-card>
+            <!-- <div class="justify-content-end">
             <button app-button (click)="SaveDocs()">Save Documents</button>
           </div> -->
+          </div>
+          <div></div>
         </div>
-        <div></div>
-      </div>
-    </mat-step>
+      </mat-step>
+    </form>
   </mat-horizontal-stepper>
 
   <div class="justify-content-end pr-2">
-    <button class = 'app-button' (click)="SaveBankInfo()">Save</button>
+    <button class='app-button' (click)="save()">Save</button>
   </div>
 
 </div>

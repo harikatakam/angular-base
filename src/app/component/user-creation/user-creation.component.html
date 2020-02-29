@@ -23,17 +23,13 @@ Documents upload
 <div class="grid-style">
   <div></div>
   <div>
-    <span class = 'page-title'> Create New User </span>
-    <mat-card >
-      <form [formGroup]="UserForm" class="form">
+    <span class='page-title'> Create New User </span>
+    <mat-card>
+      <form [formGroup]="UserForm" class="form" novalidate>
         <div class="flexcolumn">
           <mat-form-field>
             <mat-label>Name</mat-label>
             <input matInput formControlName="name">
-            <!-- <mat-error
-              *ngIf="!UserForm.controls['Name'].valid && (!UserForm.controls['Name'].dirty  || IsFormSubmitted)">
-              Please enter Name
-            </mat-error> -->
           </mat-form-field>
 
           <mat-form-field>

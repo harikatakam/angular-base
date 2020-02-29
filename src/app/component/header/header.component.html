@@ -3,9 +3,8 @@
     <div clas="flex01" style="flex: 0.2;" *ngIf="isHandset$ | async" (click)="ToggleSideMenu()">
       <mat-icon class="white-color">menu</mat-icon>
     </div>
-    <div clas="flex1"  style="flex: 1;">
-      <img style="height: 40px;" src="http://www.salespointonline.com/frontend/images/ac-white.png"
-        alt="SalesPoint">
+    <div clas="flex1 white-color"  style="flex: 1;color: white; font-weight: bold;">
+        VCIPL
     </div>
     <div class="flex1">
       <span class="white-color">Sales App</span>
@@ -21,7 +20,7 @@
         <mat-card style="max-width: 300px;background-color: white;">
           <mat-card-content>
             <div class="d-flex flex-column">
-              <span>User Details</span>
+              <button class="btn btn-link" (click) = 'goToMyProfile()'>My Profile</button>
               <button class="btn btn-link" (click) = 'logout()'>Logout</button>
             </div>
           </mat-card-content>

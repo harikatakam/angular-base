@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { UserService } from "../Services/user.service";
 
 @Component({
   selector: "app-user-details",
@@ -7,29 +8,37 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
   styleUrls: ["./user-details.component.scss"]
 })
 export class UserDetailsComponent implements OnInit {
-  BankForm: FormGroup;
-
-  DocumentForm: FormGroup;
+  UserForm: FormGroup;
 
   IsFormSubmitted = false;
+  roles: any = [];
 
-  constructor(public fb: FormBuilder) {
+  constructor(public fb: FormBuilder, private userService: UserService) {
     this.CreateBankForm();
-    this.CreateDocumentForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService
+      .getUserRoles()
+      .subscribe(
+        (roles: any) =>
+          (this.roles = roles.filter(
+            r => r.id > this.userService.loggedInUser.roles.$values[0]
+          ))
+      );
+  }
 
   CreateBankForm() {
-    this.BankForm = this.fb.group({
+    this.UserForm = this.fb.group({
+      name: ["", Validators.required],
+      userName: ["", Validators.required],
+      mailId: ["", Validators.email],
+      mobile: ["", Validators.required],
+      roles: [""],
+      CreatedBy: [""],
       AcNo: ["", Validators.required],
       Name: [""],
-      IFSC: ["", Validators.required]
-    });
-  }
-
-  CreateDocumentForm() {
-    this.DocumentForm = this.fb.group({
+      IFSC: ["", Validators.required],
       DocumentType: ["", Validators.required],
       PanNo: ["", Validators.required],
       PanName: [""],
@@ -38,11 +47,11 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
-  SaveBankInfo() {
-    console.log(this.BankForm.value);
-  }
-
-  SaveDocs() {
-    console.log(this.DocumentForm.value);
+  save() {
+    if (this.UserForm.valid) {
+    } else {
+      this.IsFormSubmitted = true;
+    }
+    console.log(this.UserForm.value);
   }
 }
