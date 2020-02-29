@@ -10,7 +10,7 @@ export class DashboardComponent implements OnInit {
   columnDefs = [
     { headerName: "User Name", field: "userName" },
     { headerName: "Email", field: "mailId" },
-    { headerName: "Phone No", field: "mobile"}
+    { headerName: "Phone No", field: "mobile"},
     { headerName: "Role", field: "role"}
   ];
 
