@@ -14,7 +14,7 @@ export class UserDetailsComponent implements OnInit {
   roles: any = [];
 
   constructor(public fb: FormBuilder, private userService: UserService) {
-    this.CreateBankForm();
+    this.CreateBankForm(userService.loggedInUser);
   }
 
   ngOnInit(): void {
@@ -28,21 +28,24 @@ export class UserDetailsComponent implements OnInit {
       );
   }
 
-  CreateBankForm() {
+  CreateBankForm(LoginData: any) {
+    if (LoginData === null) {
+      LoginData = {};
+    }
     this.UserForm = this.fb.group({
-      name: ["", Validators.required],
-      userName: ["", Validators.required],
-      mailId: ["", Validators.email],
-      mobile: ["", Validators.required],
-      roles: [""],
-      CreatedBy: [""],
-      AcNo: ["", Validators.required],
+      name: [LoginData.name],
+      userName: [LoginData.UserName],
+      mailId: [LoginData.MailId],
+      mobile: [LoginData.Mobile],
+      roles: [LoginData.roles.$values[0]],
+      CreatedBy: [LoginData.CreatedBy],
+      AcNo: [""],
       Name: [""],
-      IFSC: ["", Validators.required],
-      DocumentType: ["", Validators.required],
-      PanNo: ["", Validators.required],
+      IFSC: [""],
+      DocumentType: [""],
+      PanNo: [""],
       PanName: [""],
-      AadharNo: ["", Validators.required],
+      AadharNo: [""],
       AadharName: [""]
     });
   }

@@ -26,8 +26,13 @@ export class UserService {
 
   storeUserTokenandDetails(userdetails) {
     localStorage.setItem("UserToken", userdetails.token);
-    const token = jwt_decode(userdetails.token);
-    this.loggedInUser = JSON.parse(token.user);
+    this.setLoggedinUser(userdetails.token);
+
+  }
+
+  setLoggedinUser(token) {
+    const tokenDecoded = jwt_decode(token);
+    this.loggedInUser = JSON.parse(tokenDecoded.user);
   }
 
   getAllUsersCreatedByLoggedInUser() {

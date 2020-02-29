@@ -5,56 +5,64 @@
     <form [formGroup]="UserForm" class="form">
       <mat-step>
         <ng-template matStepLabel><span class="stepperHeading">Personal details</span></ng-template>
-        <div class="flexcolumn">
-          <mat-form-field>
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name">
-            <!-- <mat-error
+        <div class="grid-style">
+          <div></div>
+          <div>
+            <mat-card>
+              <div class="flexcolumn">
+                <mat-form-field>
+                  <mat-label>Name</mat-label>
+                  <input matInput formControlName="name">
+                  <!-- <mat-error
               *ngIf="!UserForm.controls['name'].valid && (!UserForm.controls['name'].dirty  || IsFormSubmitted)">
               Please enter Name
             </mat-error> -->
-          </mat-form-field>
+                </mat-form-field>
 
 
-          <mat-form-field>
-            <mat-label>User Name</mat-label>
-            <input matInput formControlName="userName">
-            <!-- <mat-error
+                <mat-form-field>
+                  <mat-label>User Name</mat-label>
+                  <input matInput formControlName="userName">
+                  <!-- <mat-error
               *ngIf="!UserForm.controls['UserName'].valid && (!UserForm.controls['UserName'].dirty  || IsFormSubmitted)">
               Please enter User Name
             </mat-error> -->
-          </mat-form-field>
+                </mat-form-field>
 
-          <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="mailId">
-            <!-- <mat-error
+                <mat-form-field>
+                  <mat-label>Email</mat-label>
+                  <input matInput formControlName="mailId">
+                  <!-- <mat-error
               *ngIf="!UserForm.controls['Email'].valid && (!UserForm.controls['Email'].dirty  || IsFormSubmitted)">
               Please enter a valid email address
             </mat-error> -->
-          </mat-form-field>
+                </mat-form-field>
 
-          <mat-form-field>
-            <mat-label>Phone No</mat-label>
-            <input matInput formControlName="mobile">
-            <!-- <mat-error
+                <mat-form-field>
+                  <mat-label>Phone No</mat-label>
+                  <input matInput formControlName="mobile">
+                  <!-- <mat-error
               *ngIf="!UserForm.controls['PhoneNo'].valid && (!UserForm.controls['PhoneNo'].dirty  || IsFormSubmitted)">
               Please enter a valid Phone Number
             </mat-error> -->
-          </mat-form-field>
+                </mat-form-field>
 
-          <mat-form-field>
-            <mat-label>Role</mat-label>
-            <!-- <select matNativeControl formControlName="roles" name="Role">
+                <mat-form-field>
+                  <mat-label>Role</mat-label>
+                  <!-- <select matNativeControl formControlName="roles" name="Role">
               <option value="" selected></option>
               <option *ngFor="let role of roles" [value]="role.id">
                 {{role.roleName}}
               </option>
             </select> -->
-            <mat-select formControlName="roles">
-              <mat-option *ngFor="let role of roles" [value]="role.id">{{ role.roleName }}</mat-option>
-            </mat-select>
-          </mat-form-field>
+                  <mat-select formControlName="roles">
+                    <mat-option *ngFor="let role of roles" [value]="role.id">{{ role.roleName }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </mat-card>
+          </div>
+          <div></div>
         </div>
       </mat-step>
       <mat-step>
