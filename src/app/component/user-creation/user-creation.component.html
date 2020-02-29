@@ -61,6 +61,19 @@ Documents upload
               Please enter a valid Phone Number
             </mat-error> -->
           </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Role</mat-label>
+            <!-- <select matNativeControl formControlName="roles" name="Role">
+              <option value="" selected></option>
+              <option *ngFor="let role of roles" [value]="role.id">
+                {{role.roleName}}
+              </option>
+            </select> -->
+            <mat-select formControlName="roles">
+              <mat-option *ngFor="let role of roles" [value]="role.id">{{ role.roleName }}</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </form>
     </mat-card>

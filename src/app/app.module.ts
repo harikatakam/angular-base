@@ -27,6 +27,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { UserCreationComponent } from './component/user-creation/user-creation.component';
 import { MdePopoverModule } from '@material-extended/mde';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -59,6 +60,7 @@ import { TokenInjectorInterceptor } from './Services/token-injector.interceptor'
     MatStepperModule,
     MatInputModule,
     MatRadioModule,
+    MatSelectModule,
     AgGridModule.withComponents([])
     // MatSidenavContent,
     // MatSidenav

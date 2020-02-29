@@ -29,4 +29,8 @@ export class UserService {
   getAllUsersCreatedByLoggedInUser() {
     return this.httpServie.get("/api/User/GetAllUsersCreatedBy?userID= 1");
   }
+
+  getUserRoles() {
+    return this.httpServie.get("/api/User/GetRoles");
+  }
 }

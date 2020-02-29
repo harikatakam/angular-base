@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
     { headerName: "User Name", field: "userName" },
     { headerName: "Email", field: "mailId" },
     { headerName: "Phone No", field: "mobile"}
+    { headerName: "Role", field: "role"}
   ];
 
   rowData;

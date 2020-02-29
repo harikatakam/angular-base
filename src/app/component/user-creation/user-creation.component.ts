@@ -10,12 +10,15 @@ import { UserService } from 'src/app/Services/user.service';
 export class UserCreationComponent implements OnInit {
   UserForm: FormGroup;
   IsFormSubmitted = false;
+  roles;
 
   constructor(public fb: FormBuilder, private userService: UserService) {
     this.CreateUserGroup();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.getUserRoles().subscribe((roles: any) => this.roles = roles.filter(r => r.id > 1));
+  }
 
   CreateUserGroup() {
     this.UserForm = this.fb.group({
@@ -26,7 +29,7 @@ export class UserCreationComponent implements OnInit {
       roles: [""],
       CreatedBy: [""],
     });
-    this.UserForm.get('roles').setValue([1,2]);
+    // this.UserForm.get('roles').setValue([1,2]);
     this.UserForm.get('CreatedBy').setValue(1);
 
   }
@@ -43,6 +46,7 @@ export class UserCreationComponent implements OnInit {
   }
 
   CreateUser(CreateUserGroup: any) {
+    this.UserForm.get('roles').setValue([this.UserForm.value.roles]);
     this.userService.createUser(this.UserForm.value).subscribe();
   }
 }
