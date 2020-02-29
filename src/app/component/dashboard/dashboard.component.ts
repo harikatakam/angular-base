@@ -8,22 +8,18 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class DashboardComponent implements OnInit {
   columnDefs = [
-    { headerName: "Name", field: "Name", width: 500 },
-    { headerName: "Email", field: "Email", width: 500  },
-    { headerName: "Phone No", field: "PhoneNo", width: 500  }
+    { headerName: "User Name", field: "userName" },
+    { headerName: "Email", field: "mailId" },
+    { headerName: "Phone No", field: "mobile"}
   ];
 
-  rowData = [
-    { Name: "Anusha", Email: "anusha@gmail.com", PhoneNo: 9876543213 },
-    { Name: "Shreya", Email: "Shreya@gmail.com", PhoneNo: 9643765335 },
-    { Name: "Aishwarya", Email: "aishu@gmail.com", PhoneNo: 3242434333 }
-  ];
+  rowData;
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.getAllUsersCreatedByLoggedInUser().subscribe(users => {
-      debugger;
+      this.rowData = users;
     })
   }
 }
