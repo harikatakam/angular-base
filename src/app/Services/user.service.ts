@@ -1,9 +1,11 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "src/environments/environment";
+import * as jwt_decode from "jwt-decode";
 
 @Injectable({ providedIn: "root" })
 export class UserService {
+  loggedInUser;
   constructor(private httpServie: HttpClient) {}
 
   createUser(user) {
@@ -24,10 +26,12 @@ export class UserService {
 
   storeUserTokenandDetails(userdetails) {
     localStorage.setItem("UserToken", userdetails.token);
+    const token = jwt_decode(userdetails.token);
+    this.loggedInUser = JSON.parse(token.user);
   }
 
   getAllUsersCreatedByLoggedInUser() {
-    return this.httpServie.get("/api/User/GetAllUsersCreatedBy?userID= 1");
+    return this.httpServie.get("/api/User/GetAllUsersCreatedBy?userID=" +  this.loggedInUser.Id);
   }
 
   getUserRoles() {

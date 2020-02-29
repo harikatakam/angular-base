@@ -17,7 +17,8 @@ export class UserCreationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getUserRoles().subscribe((roles: any) => this.roles = roles.filter(r => r.id > 1));
+    this.userService.getUserRoles().subscribe((roles: any) => this.roles = roles.filter(
+      r => r.id > this.userService.loggedInUser.roles.$values[0]));
   }
 
   CreateUserGroup() {
@@ -30,7 +31,7 @@ export class UserCreationComponent implements OnInit {
       CreatedBy: [""],
     });
     // this.UserForm.get('roles').setValue([1,2]);
-    this.UserForm.get('CreatedBy').setValue(1);
+    this.UserForm.get("CreatedBy").setValue(this.userService.loggedInUser.Id);
 
   }
 
