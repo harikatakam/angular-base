@@ -20,7 +20,7 @@ import { HomeComponent } from './component/home/home.component';
 import { AppRootComponent } from './component/app-root/app-root.component';
 import { LoginComponent } from './component/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SideMenuBarComponent } from './component/side-menu-bar/side-menu-bar.component';
 import { HeaderComponent } from './component/header/header.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
@@ -33,6 +33,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { TokenInjectorInterceptor } from './Services/token-injector.interceptor';
 @NgModule({
   declarations: [AppComponent, HomeComponent, AppRootComponent, LoginComponent, SideMenuBarComponent,
     HeaderComponent, DashboardComponent, UserCreationComponent, UserDetailsComponent],
@@ -63,6 +64,11 @@ import { AgGridModule } from 'ag-grid-angular';
     // MatSidenav
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInjectorInterceptor,
+      multi: true
+    },
     // {
     //   provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
     //   useValue: { appearance: 'fill' }
