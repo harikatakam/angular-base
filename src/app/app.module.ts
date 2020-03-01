@@ -54,4 +54,4 @@ import { ChangePasswordComponent } from "./component/change-password/change-pass
   exports: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

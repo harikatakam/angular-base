@@ -3,29 +3,32 @@
     <div clas="flex01" style="flex: 0.2;" *ngIf="isHandset$ | async" (click)="ToggleSideMenu()">
       <mat-icon class="white-color">menu</mat-icon>
     </div>
-    <div clas="flex1 white-color"  style="flex: 1;color: white; font-weight: bold;">
-        VCIPL
+    <div clas="flex1 white-color" style="flex: 1;color: white; font-weight: bold;">
+      VCIPL
     </div>
     <div class="flex1">
       <span class="white-color">Sales App</span>
     </div>
     <div>
 
-      <button mat-button [mdePopoverTriggerFor]="appPopover" mdePopoverTriggerOn="click"
-        #popoverTrigger="mdePopoverTrigger">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
         <mat-icon class="white-color">account_circle</mat-icon>
       </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>account_circle</mat-icon>
+          <span (click)='goToMyProfile()'>My Profile</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>voicemail</mat-icon>
+          <span (click)='logout()'>Check voice mail</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span (click)='logout()'>Logout</span>
+        </button>
+      </mat-menu>
 
-      <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
-        <mat-card style="max-width: 300px;background-color: white;">
-          <mat-card-content>
-            <div class="d-flex flex-column">
-              <button class="btn btn-link" (click) = 'goToMyProfile()'>My Profile</button>
-              <button class="btn btn-link" (click) = 'logout()'>Logout</button>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </mde-popover>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

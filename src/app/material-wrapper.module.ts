@@ -1,8 +1,6 @@
 import { NgModule } from "@angular/core";
 import {
   MatSidenavModule,
-  MatSidenavContent,
-  MatSidenav
 } from "@angular/material/sidenav";
 
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -18,7 +16,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-
+import { MatMenuModule } from "@angular/material/menu";
 @NgModule({
   imports: [
     MdePopoverModule,
@@ -34,7 +32,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatMenuModule
   ],
   exports: [
     MdePopoverModule,
@@ -50,7 +49,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatMenuModule
   ]
 })
 export class MatWrapperModule {}
