@@ -63,10 +63,9 @@ export class LoginComponent implements OnInit {
           console.log(this.userService.loggedInUser);
           if (this.userService.loggedInUser.IsPasswordChangeRequired) {
             this.router.navigateByUrl("changePassword");
+          } else {
+            this.router.navigateByUrl(this.returnUrl);
           }
-          //  else {
-          //   this.router.navigateByUrl(this.returnUrl);
-          // }
         },
         error => {
           this.error = error.error.message;
