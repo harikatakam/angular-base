@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { environment } from "src/environments/environment";
 import * as jwt_decode from "jwt-decode";
 
 @Injectable({ providedIn: "root" })
@@ -12,6 +11,10 @@ export class UserService {
     return this.httpServie.post("/api/User/CreateUser", user);
   }
 
+  updateUSer(user) {
+    return this.httpServie.post("/api/User/UpdateUser", user);
+  }
+
   login(userName, password) {
     return this.httpServie.post("/api/User/Login", {
       userName,
@@ -20,14 +23,12 @@ export class UserService {
   }
 
   logout() {
-    // remove user from local storage to log user out
     localStorage.removeItem("UserToken");
-}
+  }
 
   storeUserTokenandDetails(userdetails) {
     localStorage.setItem("UserToken", userdetails.token);
     this.setLoggedinUser(userdetails.token);
-
   }
 
   setLoggedinUser(token) {
@@ -36,7 +37,9 @@ export class UserService {
   }
 
   getAllUsersCreatedByLoggedInUser() {
-    return this.httpServie.get("/api/User/GetAllUsersCreatedBy?userID=" +  this.loggedInUser.Id);
+    return this.httpServie.get(
+      "/api/User/GetAllUsersCreatedBy?userID=" + this.loggedInUser.Id
+    );
   }
 
   getUserRoles() {

@@ -42,11 +42,8 @@ export class UserDetailsComponent implements OnInit {
       AcNo: [""],
       Name: [""],
       IFSC: [""],
-      DocumentType: [""],
-      PanNo: [""],
-      PanName: [""],
-      AadharNo: [""],
-      AadharName: [""]
+      aadhar: [""],
+      Pan: [""]
     });
   }
 
@@ -56,5 +53,15 @@ export class UserDetailsComponent implements OnInit {
       this.IsFormSubmitted = true;
     }
     console.log(this.UserForm.value);
+  }
+
+  UploadFile(event) {
+    console.log(event);
+    const file = (event.target as HTMLInputElement).files[0];
+    console.log(event);
+    // this.form.patchValue({
+    //   avatar: file
+    // });
+    // this.form.get("avatar").updateValueAndValidity();
   }
 }

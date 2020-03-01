@@ -121,87 +121,19 @@
           <div></div>
           <div>
             <mat-card>
-              <div class="flexcolumn">
-                <mat-radio-group aria-label="Select an option" formControlName="DocumentType">
-                  <mat-radio-button value="Pan">Pan card</mat-radio-button>
-                  <mat-radio-button value="Aadhar">Aadhar</mat-radio-button>
-                </mat-radio-group>
 
 
-                <div class="flexcolumn" *ngIf="UserForm.controls['DocumentType'].value == 'Pan'">
-                  <mat-form-field>
-                    <mat-label>PAN Number</mat-label>
-                    <input matInput formControlName="PanNo">
-                    <mat-error
-                      *ngIf="(!UserForm.controls['PanNo'].valid && !UserForm.controls['PanNo'].touched ) || IsFormSubmitted">
-                      Please enter PAN Number
-                    </mat-error>
-                  </mat-form-field>
-
-                  <mat-form-field>
-                    <mat-label>Name (as on PAN Card)</mat-label>
-                    <input matInput formControlName="PanNo">
-                    <mat-error
-                      *ngIf="(!UserForm.controls['PanNo'].valid && !UserForm.controls['PanNo'].touched ) || IsFormSubmitted">
-                      Please enter Name
-                    </mat-error>
-                  </mat-form-field>
-
-                </div>
-
-                <div class="flexcolumn" *ngIf="UserForm.controls['DocumentType'].value == 'Aadhar'">
-                  <mat-form-field>
-                    <mat-label>Aadhar Number</mat-label>
-                    <input matInput formControlName="AadharNo">
-                    <mat-error
-                      *ngIf="(!UserForm.controls['AadharNo'].valid && !UserForm.controls['AadharNo'].touched ) || IsFormSubmitted">
-                      Please enter Aadhar Number
-                    </mat-error>
-                  </mat-form-field>
-
-                  <mat-form-field>
-                    <mat-label>Name (as on Aadhar Card)</mat-label>
-                    <input matInput formControlName="AadharName">
-                    <mat-error
-                      *ngIf="(!UserForm.controls['AadharName'].valid && !UserForm.controls['AadharName'].touched ) || IsFormSubmitted">
-                      Please enter Name
-                    </mat-error>
-                  </mat-form-field>
-
-                </div>
-                <!-- <mat-form-field>
-                  <mat-label>Account Number</mat-label>
-                  <input matInput formControlName="DocumentType">
-                  <mat-error
-                    *ngIf="(!UserForm.controls['AcNo'].valid && !UserForm.controls['AcNo'].touched ) || IsFormSubmitted">
-                    Please enter Account Number
-                  </mat-error>
-                </mat-form-field>
-
-                <mat-form-field>
-                  <mat-label>Name (as per Bank details)</mat-label>
-                  <input matInput formControlName="Name">
-                  <mat-error
-                    *ngIf="(!UserForm.controls['Name'].valid && !UserForm.controls['Name'].touched ) || IsFormSubmitted">
-                    Please enter Name
-                  </mat-error>
-                </mat-form-field>
-
-                <mat-form-field>
-                  <mat-label>IFSC Code</mat-label>
-                  <input matInput formControlName="IFSC">
-                  <mat-error
-                    *ngIf="(!UserForm.controls['IFSC'].valid && !UserForm.controls['IFSC'].touched ) || IsFormSubmitted">
-                    Please enter a valid IFSC Code
-                  </mat-error>
-                </mat-form-field> -->
-
+              <div class="flexrow">
+                <mat-label>Aadhar: &nbsp;</mat-label>
+                <input type="file" (change)="UploadFile($event)">
               </div>
 
+              <div class="flexrow">
+                <mat-label>Pan: &nbsp;</mat-label>
+                <input type="file" (change)="UploadFile($event)">
+              </div>
             </mat-card>
-            <!-- <div class="justify-content-end">
-            <button app-button (click)="SaveDocs()">Save Documents</button>
-          </div> -->
+
           </div>
           <div></div>
         </div>
