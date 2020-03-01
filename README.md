@@ -47,7 +47,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 // from validations after only submit
 
 1. User creation:: after save show MatSnackBarConfig bar vertical top horizantal center and clear all fields --done
-2. User creation:: when save check username and email already exists :: show red lable below the text box
+2. User creation:: when save check username and email already exists :: show red lable below the text box (not done bcoz of mat va;idator issue )
 3. Document :: Update styles --done
 4. Login, if IsPasswordChangeRequired: true, redirect to changepassword route :: save here will call ChangePassword {
    oldPassword,
