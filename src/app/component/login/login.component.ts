@@ -55,11 +55,18 @@ export class LoginComponent implements OnInit {
     this.userService
       .login(this.loginForm.value.username, this.loginForm.value.password)
       .subscribe(
-        userDetails => {
+        (userDetails: any) => {
           this.error = null;
           this.loading = false;
-          this.router.navigateByUrl(this.returnUrl);
+
           this.userService.storeUserTokenandDetails(userDetails);
+          console.log(this.userService.loggedInUser);
+          if (this.userService.loggedInUser.IsPasswordChangeRequired) {
+            this.router.navigateByUrl("changePassword");
+          }
+          //  else {
+          //   this.router.navigateByUrl(this.returnUrl);
+          // }
         },
         error => {
           this.error = error.error.message;

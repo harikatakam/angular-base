@@ -14,15 +14,12 @@ import { MdePopoverModule } from "@material-extended/mde";
 import { MatCardModule } from "@angular/material/card";
 import { MatSelectModule } from "@angular/material/select";
 import { MatStepperModule } from "@angular/material/stepper";
-import {
-  MatFormFieldModule,
-  MAT_FORM_FIELD_DEFAULT_OPTIONS
-} from "@angular/material/form-field";
+import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatRadioModule } from "@angular/material/radio";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
-
   imports: [
     MdePopoverModule,
     MatSidenavModule,
@@ -37,6 +34,7 @@ import { MatRadioModule } from "@angular/material/radio";
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
+    MatSnackBarModule
   ],
   exports: [
     MdePopoverModule,
@@ -52,6 +50,7 @@ import { MatRadioModule } from "@angular/material/radio";
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
+    MatSnackBarModule
   ]
 })
 export class MatWrapperModule {}

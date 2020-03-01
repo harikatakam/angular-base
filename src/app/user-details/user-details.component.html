@@ -56,6 +56,7 @@
               </option>
             </select> -->
                   <mat-select formControlName="roles">
+                    {{roles.id}}
                     <mat-option *ngFor="let role of roles" [value]="role.id">{{ role.roleName }}</mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -123,14 +124,14 @@
             <mat-card>
 
 
-              <div class="flexrow">
-                <mat-label>Aadhar: &nbsp;</mat-label>
-                <input type="file" (change)="UploadFile($event)">
+              <div class="flexrow padding10">
+                <mat-label class="label-style">Aadhar : &nbsp;</mat-label>
+                <input class="flex07" type="file" (change)="UploadFile($event)">
               </div>
 
-              <div class="flexrow">
-                <mat-label>Pan: &nbsp;</mat-label>
-                <input type="file" (change)="UploadFile($event)">
+              <div class="flexrow padding10">
+                <mat-label class="label-style">Pan : &nbsp;</mat-label>
+                <input class="flex07" type="file" (change)="UploadFile($event)">
               </div>
             </mat-card>
 

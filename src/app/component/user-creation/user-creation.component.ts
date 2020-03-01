@@ -9,6 +9,8 @@ import {
 } from "@angular/forms";
 import { UserService } from "src/app/Services/user.service";
 import { ErrorStateMatcher } from "@angular/material/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { AlertService } from "src/app/Services/alert.service";
 
 // export class MyErrorStateMatcher implements ErrorStateMatcher {
 //   isErrorState(
@@ -37,9 +39,14 @@ export class UserCreationComponent implements OnInit {
   UserForm: FormGroup;
   IsFormSubmitted = false;
   roles: any = [];
+  Users: any = [];
   // matcher = new MyErrorStateMatcher();
 
-  constructor(public fb: FormBuilder, private userService: UserService) {
+  constructor(
+    public fb: FormBuilder,
+    private userService: UserService,
+    private alert: AlertService
+  ) {
     this.CreateUserGroup();
   }
 
@@ -77,6 +84,9 @@ export class UserCreationComponent implements OnInit {
 
   CreateUser() {
     this.UserForm.get("roles").setValue([this.UserForm.value.roles]);
-    this.userService.createUser(this.UserForm.value).subscribe();
+    this.userService.createUser(this.UserForm.value).subscribe((val: any) => {
+      this.alert.SuccesMessageAlert("User Created Succesfully", "Close");
+      this.UserForm.reset();
+    });
   }
 }

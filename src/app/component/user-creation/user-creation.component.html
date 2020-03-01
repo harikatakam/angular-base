@@ -35,10 +35,9 @@ Documents upload
           <mat-form-field>
             <mat-label>User Name</mat-label>
             <input matInput formControlName="userName">
-            <!-- <mat-error
-              *ngIf="!UserForm.controls['UserName'].valid && (!UserForm.controls['UserName'].dirty  || IsFormSubmitted)">
+            <mat-error *ngIf=" (UserForm.get('userName').errors  && UserForm.get('userName').errors.ConfirmPassword )">
               Please enter User Name
-            </mat-error> -->
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field>

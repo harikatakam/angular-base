@@ -1,13 +1,12 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
-import { MatWrapperModule } from "./material-wrapper.module"
+import { MatWrapperModule } from "./material-wrapper.module";
 import { AppComponent } from "./app.component";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-import { HomeComponent } from "./component/home/home.component";
 import { AppRootComponent } from "./component/app-root/app-root.component";
 import { LoginComponent } from "./component/login/login.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -19,11 +18,12 @@ import { UserCreationComponent } from "./component/user-creation/user-creation.c
 import { UserDetailsComponent } from "./user-details/user-details.component";
 import { AgGridModule } from "ag-grid-angular";
 import { TokenInjectorInterceptor } from "./Services/token-injector.interceptor";
+import { ChangePasswordComponent } from "./component/change-password/change-password.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    ChangePasswordComponent,
     AppRootComponent,
     LoginComponent,
     SideMenuBarComponent,
@@ -42,7 +42,7 @@ import { TokenInjectorInterceptor } from "./Services/token-injector.interceptor"
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    AgGridModule.withComponents([]),
+    AgGridModule.withComponents([])
   ],
   providers: [
     {

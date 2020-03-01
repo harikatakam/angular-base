@@ -50,10 +50,6 @@ export class SideMenuBarComponent implements OnInit {
           {
             title: "New User",
             PageUrl: "User"
-          },
-          {
-            title: "User Details",
-            PageUrl: "UserDetails"
           }
         ]
       }

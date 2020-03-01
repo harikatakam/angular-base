@@ -45,4 +45,8 @@ export class UserService {
   getUserRoles() {
     return this.httpServie.get("/api/User/GetRoles");
   }
+
+  changePassword(UserData: any) {
+    return this.httpServie.post("/api/User/ChangePassword", UserData);
+  }
 }

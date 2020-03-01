@@ -6,19 +6,21 @@ import { DashboardComponent } from "./component/dashboard/dashboard.component";
 import { UserCreationComponent } from "./component/user-creation/user-creation.component";
 import { AuthGuard } from "./Services/auth.guard";
 import { UserDetailsComponent } from "./user-details/user-details.component";
+import { ChangePasswordComponent } from "./component/change-password/change-password.component";
 
 const routes: Routes = [
   {
     path: "",
     component: AppRootComponent,
-      canActivate : [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       { path: "Dashboard", component: DashboardComponent },
       { path: "User", component: UserCreationComponent },
       { path: "UserDetails", component: UserDetailsComponent }
     ]
   }, // , canActivate: [AuthGuard]
-  { path: "login", component: LoginComponent }
+  { path: "login", component: LoginComponent },
+  { path: "changePassword", component: ChangePasswordComponent }
   // { path: 'Dashboard', component: DashboardComponent },
   // { path: 'User', component: UserCreationComponent },
   // { path: 'UserDetails', component: UserDetailsComponent },
