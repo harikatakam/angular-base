@@ -1,11 +1,11 @@
-<div class="p-2">
+<div class="page-content">
   <span class='page-title'> User Profile </span>
 
   <mat-horizontal-stepper labelPosition="bottom" #stepper class="p-2" >
     <form [formGroup]="UserForm" class="form">
       <mat-step [completed]="false">
         <ng-template matStepLabel><span class="stepperHeading">Personal details</span></ng-template>
-        <div class="grid-style">
+        <div class="page-content">
           <div></div>
           <div>
             <mat-card>
@@ -68,7 +68,7 @@
       </mat-step>
       <mat-step [completed]="false">
         <ng-template matStepLabel><span class="stepperHeading">Bank account details</span></ng-template>
-        <div class="grid-style">
+        <div class="page-content">
           <div></div>
           <div>
             <mat-card>
@@ -118,7 +118,7 @@
 
       <mat-step [completed]="false">
         <ng-template matStepLabel><span class="stepperHeading">Documents Upload</span></ng-template>
-        <div class="grid-style">
+        <div class="page-content">
           <div></div>
           <div>
             <mat-card>

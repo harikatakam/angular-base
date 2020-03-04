@@ -1,82 +1,37 @@
-<!-- <p>user-creation works!</p> -->
+<div class="page-content">
+  <div class="mt-2 mb-2"><span class='page-title'> Create New User </span></div>
 
-<!-- USer create
-
-EMail, mobile, name, userNAme -->
-
-
-<!-- USer profile -->
-<!-- Steps in Tabs
-Personal details
-  Name
-  Username
-  Email
-  Phone
-Bank account details
-  Account number
-  name as per back details
-  IFSE code
-Payout split ratio -- dummy tab for now
-Documents upload
-  Adhar
-  Pan-->
-<div class="grid-style">
-  <div></div>
-  <div>
-    <div class="mt-2 mb-2"><span class='page-title'> Create New User </span></div>
-    <mat-card>
-      <form [formGroup]="UserForm" class="form" novalidate>
-        <div class="flexcolumn">
-          <mat-form-field>
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name">
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>User Name</mat-label>
-            <input matInput formControlName="userName">
-            <mat-error *ngIf=" (UserForm.get('userName').errors  && UserForm.get('userName').errors.ConfirmPassword )">
-              Please enter User Name
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="mailId">
-            <!-- <mat-error
-              *ngIf="!UserForm.controls['Email'].valid && (!UserForm.controls['Email'].dirty  || IsFormSubmitted)">
-              Please enter a valid email address
-            </mat-error> -->
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Phone No</mat-label>
-            <input matInput formControlName="mobile">
-            <!-- <mat-error
-              *ngIf="!UserForm.controls['PhoneNo'].valid && (!UserForm.controls['PhoneNo'].dirty  || IsFormSubmitted)">
-              Please enter a valid Phone Number
-            </mat-error> -->
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Role</mat-label>
-            <!-- <select matNativeControl formControlName="roles" name="Role">
-              <option value="" selected></option>
-              <option *ngFor="let role of roles" [value]="role.id">
-                {{role.roleName}}
-              </option>
-            </select> -->
-            <mat-select formControlName="roles">
-              <mat-option *ngFor="let role of roles" [value]="role.id">{{ role.roleName }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </form>
-    </mat-card>
-    <br />
-    <div class="justify-content-end">
-      <button class="app-button margin-top5" (click)="SaveUser()">Create User</button>
+  <form [formGroup]="UserForm" class="form" novalidate>
+    <div class="myform-field">
+      <label for="name">Name</label>
+      <input type="text" formControlName="name" placeholder="Enter Name" class="form-control" id="name">
     </div>
+
+    <div class="myform-field">
+      <label for="userName">User Name</label>
+      <input type="text" formControlName="userName" placeholder="Enter User Name" class="form-control" id="userName">
+    </div>
+
+    <div class="myform-field">
+      <label for="mailId">Email</label>
+      <input id="mailId" formControlName="mailId" type="email" placeholder="Enter Email" class="form-control">
+    </div>
+    <div class="myform-field">
+      <label for="mobile">Phone No</label>
+      <input id="mobile" formControlName="mobile" type="email" placeholder="Enter Phone Number" class="form-control">
+    </div>
+
+    <div class="myform-field">
+      <label for="roles">Role</label>
+      <select formControlName="roles" placeholder="-- Select --" id="roles" class="form-control">
+        <option *ngFor="let role of roles" [value]="role.id">{{ role.roleName }}</option>
+      </select>
+    </div>
+
+      </form>
+
+  <br />
+  <div>
+    <button class="app-button margin-top5" (click)="SaveUser()">Create User</button>
   </div>
-  <div></div>
 </div>

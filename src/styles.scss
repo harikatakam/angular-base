@@ -103,51 +103,30 @@ mat-toolbar {
 .page-title {
   color: $background-color;
   margin-top: 1rem;
-  margin-bottom: 1rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
+
+
+.page-title::after {
+  content: "";
+  display: block;
+  margin-bottom: 20px;
+  height: 3px;
+  background: #ffab00;
+  max-width: 100px;
+  margin-top: 4px!important;
+ }
 
 .margin-top5 {
   margin-top: 5px !important;
 }
 
-@media only screen and (min-width: 0px) {
-  .grid-style {
-    display: grid;
-    grid-template-columns: 0% 100% 0%;
-  }
-}
-
-@media only screen and (min-width: 576px) {
-  .grid-style {
-    display: grid;
-    grid-template-columns: 1% 98% 1%;
-  }
-}
-
-//64em is also 1028px (if basefont is 16px)
-@media only screen and (min-width: 768px) {
-  .grid-style {
-    display: grid;
-    grid-template-columns: 10% 80% 10%;
-  }
-}
-
-//35em is also 560px (if basefont is 16px)
-@media only screen and (min-width: 992px) {
-  .grid-style {
-    display: grid;
-    grid-template-columns: 25% 50% 25%;
-  }
-}
-
-//64em is also 1028px (if basefont is 16px)
-@media only screen and (min-width: 1200px) {
-  .grid-style {
-    display: grid;
-    grid-template-columns: 25% 50% 25%;
-  }
+.page-content {
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  background: #fff;
 }
 
 
@@ -160,4 +139,5 @@ mat-toolbar {
   font-weight: bold;
   border-radius: 8px 8px 0px 0px;
   font-size: 1.5rem;
+
 }
