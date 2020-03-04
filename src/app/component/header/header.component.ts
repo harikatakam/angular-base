@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     public router: Router,
     private breakpointObserver: BreakpointObserver,
-    private userService: UserService
+    public userService: UserService
   ) {}
 
   ngOnInit() {}
