@@ -16,11 +16,12 @@ const routes: Routes = [
     children: [
       { path: "Dashboard", component: DashboardComponent },
       { path: "User", component: UserCreationComponent },
-      { path: "UserDetails", component: UserDetailsComponent }
+      { path: "UserDetails", component: UserDetailsComponent },
+      { path: "changePassword", component: ChangePasswordComponent }
     ]
   }, // , canActivate: [AuthGuard]
   { path: "login", component: LoginComponent },
-  { path: "changePassword", component: ChangePasswordComponent }
+
   // { path: 'Dashboard', component: DashboardComponent },
   // { path: 'User', component: UserCreationComponent },
   // { path: 'UserDetails', component: UserDetailsComponent },
