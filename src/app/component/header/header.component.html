@@ -1,31 +1,35 @@
 <mat-toolbar class="bgcolor">
-  <mat-toolbar-row>
-    <div clas="flex01" style="flex: 0.2;" *ngIf="isHandset$ | async" (click)="ToggleSideMenu()">
+    <div style="width: 95%; display: flex; justify-content: space-between;padding: .5rem; align-items: center; position: fixed!important;
+    left: 0;">
+    <div *ngIf="isHandset$ | async" (click)="ToggleSideMenu()">
       <mat-icon class="white-color">menu</mat-icon>
     </div>
-    <div clas="flex1 white-color" style="flex: 1;color: white; font-weight: bold;">
+    <div clas="white-color" style="color: white; font-weight: bold;">
       VCIPL
     </div>
-    <div class="flex1">
+    <div *ngIf="!(isHandset$ | async)">
       <span class="white-color">Sales App</span>
     </div>
     <div>
-
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon class="white-color">account_circle</mat-icon>
-        <span style="color: white; font-weight: bold;padding-left: ;"> {{ userService?.loggedInUser?.UserName }} </span>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <mat-icon>account_circle</mat-icon>
-          <span (click)='goToMyProfile()'>My Profile</span>
+      <div class="flexrow">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon class="white-color" [matMenuTriggerFor]="menu">account_circle</mat-icon>
+          <span style="color: white; font-weight: bold;"> {{ userService?.loggedInUser?.UserName }}
+          </span>
         </button>
-        <button mat-menu-item>
+      </div>
+      <mat-menu #menu="matMenu">
+        <button (click)='goToMyProfile()' mat-menu-item>
+          <mat-icon>account_circle</mat-icon>
+          <span >My Profile</span>
+        </button>
+        <button (click)='logout()' mat-menu-item>
           <mat-icon>notifications_off</mat-icon>
-          <span  (click)='logout()'>Logout</span>
+          <span >Logout</span>
         </button>
       </mat-menu>
 
     </div>
-  </mat-toolbar-row>
+
+  </div>
 </mat-toolbar>

@@ -2,3 +2,7 @@
     line-height: 36px !important;
     height: 36px !important;
 }
+
+::ng-deep .mat-toolbar-single-row {
+  padding: 0px !important;
+}

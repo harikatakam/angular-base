@@ -1,110 +1,57 @@
 <div class="page-content">
   <span class='page-title'> User Profile </span>
 
-  <mat-horizontal-stepper labelPosition="bottom" #stepper class="p-2" >
+  <mat-horizontal-stepper labelPosition="bottom" #stepper class="p-2">
     <form [formGroup]="UserForm" class="form">
       <mat-step [completed]="false">
         <ng-template matStepLabel><span class="stepperHeading">Personal details</span></ng-template>
-        <div class="page-content">
-          <div></div>
-          <div>
-            <mat-card>
-              <div class="flexcolumn">
-                <mat-form-field>
-                  <mat-label>Name</mat-label>
-                  <input matInput formControlName="name">
-                  <!-- <mat-error
-              *ngIf="!UserForm.controls['name'].valid && (!UserForm.controls['name'].dirty  || IsFormSubmitted)">
-              Please enter Name
-            </mat-error> -->
-                </mat-form-field>
 
-
-                <mat-form-field>
-                  <mat-label>User Name</mat-label>
-                  <input matInput formControlName="userName">
-                  <!-- <mat-error
-              *ngIf="!UserForm.controls['UserName'].valid && (!UserForm.controls['UserName'].dirty  || IsFormSubmitted)">
-              Please enter User Name
-            </mat-error> -->
-                </mat-form-field>
-
-                <mat-form-field>
-                  <mat-label>Email</mat-label>
-                  <input matInput formControlName="mailId">
-                  <!-- <mat-error
-              *ngIf="!UserForm.controls['Email'].valid && (!UserForm.controls['Email'].dirty  || IsFormSubmitted)">
-              Please enter a valid email address
-            </mat-error> -->
-                </mat-form-field>
-
-                <mat-form-field>
-                  <mat-label>Phone No</mat-label>
-                  <input matInput formControlName="mobile">
-                  <!-- <mat-error
-              *ngIf="!UserForm.controls['PhoneNo'].valid && (!UserForm.controls['PhoneNo'].dirty  || IsFormSubmitted)">
-              Please enter a valid Phone Number
-            </mat-error> -->
-                </mat-form-field>
-
-                <mat-form-field>
-                  <mat-label>Role</mat-label>
-                  <!-- <select matNativeControl formControlName="roles" name="Role">
-              <option value="" selected></option>
-              <option *ngFor="let role of roles" [value]="role.id">
-                {{role.roleName}}
-              </option>
-            </select> -->
-                  <mat-select formControlName="roles">
-                    {{roles.id}}
-                    <mat-option *ngFor="let role of roles" [value]="role.id">{{ role.roleName }}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-            </mat-card>
-          </div>
-          <div></div>
+        <div class="myform-field">
+          <label for="name">Name</label>
+          <input type="text" formControlName="name" placeholder="Enter Name" class="form-control" id="name">
         </div>
+
+        <div class="myform-field">
+          <label for="userName">User Name</label>
+          <input type="text" formControlName="userName" placeholder="Enter User Name" class="form-control"
+            id="userName">
+        </div>
+
+        <div class="myform-field">
+          <label for="mailId">Email</label>
+          <input id="mailId" formControlName="mailId" type="email" placeholder="Enter Email" class="form-control">
+        </div>
+        <div class="myform-field">
+          <label for="mobile">Phone No</label>
+          <input id="mobile" formControlName="mobile" type="email" placeholder="Enter Phone Number"
+            class="form-control">
+        </div>
+
+        <div class="myform-field">
+          <label for="roles">Role</label>
+          <select formControlName="roles" placeholder="-- Select --" id="roles" class="form-control">
+            <option *ngFor="let role of roles" [value]="role.id">{{ role.roleName }}</option>
+          </select>
+        </div>
+
+
       </mat-step>
       <mat-step [completed]="false">
         <ng-template matStepLabel><span class="stepperHeading">Bank account details</span></ng-template>
-        <div class="page-content">
-          <div></div>
-          <div>
-            <mat-card>
-              <div class="flexcolumn">
-                <mat-form-field>
-                  <mat-label>Account Number</mat-label>
-                  <input matInput formControlName="AcNo">
-                  <mat-error
-                    *ngIf="(!UserForm.controls['AcNo'].valid && !UserForm.controls['AcNo'].touched ) || IsFormSubmitted">
-                    Please enter Account Number
-                  </mat-error>
-                </mat-form-field>
 
-                <mat-form-field>
-                  <mat-label>Name (as per Bank details)</mat-label>
-                  <input matInput formControlName="Name">
-                  <mat-error
-                    *ngIf="(!UserForm.controls['Name'].valid && !UserForm.controls['Name'].touched ) || IsFormSubmitted">
-                    Please enter Name
-                  </mat-error>
-                </mat-form-field>
+        <div class="myform-field">
+          <label for="AcNo">Account Number</label>
+          <input type="text" formControlName="AcNo" placeholder="Enter Account Number" class="form-control" id="AcNo">
+        </div>
 
-                <mat-form-field>
-                  <mat-label>IFSC Code</mat-label>
-                  <input matInput formControlName="IFSC">
-                  <mat-error
-                    *ngIf="(!UserForm.controls['IFSC'].valid && !UserForm.controls['IFSC'].touched ) || IsFormSubmitted">
-                    Please enter a valid IFSC Code
-                  </mat-error>
-                </mat-form-field>
+        <div class="myform-field">
+          <label for="Name">Name (as per Bank details)</label>
+          <input type="text" formControlName="Name" placeholder="Enter Name" class="form-control" id="Name">
+        </div>
 
-              </div>
-            </mat-card>
-
-          </div>
-          <div></div>
+        <div class="myform-field">
+          <label for="IFSC">IFSC Code</label>
+          <input type="text" formControlName="IFSC" placeholder="Enter IFSC Code" class="form-control" id="IFSC">
         </div>
       </mat-step>
       <mat-step [completed]="false">
@@ -118,26 +65,21 @@
 
       <mat-step [completed]="false">
         <ng-template matStepLabel><span class="stepperHeading">Documents Upload</span></ng-template>
-        <div class="page-content">
-          <div></div>
-          <div>
-            <mat-card>
+        <!-- <div class="myform-field">
+          <label for="AcNo">Aadhar</label>
+          <input type="file" (change)="UploadFile($event)" class="form-control" id="AcNo">
+        </div> -->
 
-
-              <div class="flexrow padding10">
-                <mat-label class="label-style">Aadhar : &nbsp;</mat-label>
-                <input class="flex07" type="file" (change)="UploadFile($event)">
-              </div>
-
-              <div class="flexrow padding10">
-                <mat-label class="label-style">Pan : &nbsp;</mat-label>
-                <input class="flex07" type="file" (change)="UploadFile($event)">
-              </div>
-            </mat-card>
-
-          </div>
-          <div></div>
+        <div class="flexrow padding10">
+          <label class="label-style">Aadhar : &nbsp;</label>
+          <input class="flex07" type="file" (change)="UploadFile($event)">
         </div>
+
+        <div class="flexrow padding10">
+          <label class="label-style">Pan : &nbsp;</label>
+          <input class="flex07" type="file" (change)="UploadFile($event)">
+        </div>
+
       </mat-step>
     </form>
   </mat-horizontal-stepper>
