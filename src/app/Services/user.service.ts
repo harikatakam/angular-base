@@ -49,4 +49,8 @@ export class UserService {
   changePassword(UserData: any) {
     return this.httpServie.post("/api/User/ChangePassword", UserData);
   }
+
+  uploadDocuments(fileData: any) {
+return this.httpServie.post("/api/User/UploadKYCDocument", fileData);
+  }
 }
