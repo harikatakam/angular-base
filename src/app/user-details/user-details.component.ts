@@ -84,5 +84,23 @@ export class UserDetailsComponent implements OnInit {
     //   avatar: file
     // });
     // this.form.get("avatar").updateValueAndValidity();
+    let formData = new FormData();
+     formData.append('UserId', '1');
+     formData.append('Name', file.name);
+     formData.append('Type', 'KYC');
+
+     // Use FileReader() object to get file to upload
+  // NOTE: FileReader only works with newer browsers
+  let reader = new FileReader();
+      
+  // Setup onload event for reader
+  reader.onload = () => {
+    // Store base64 encoded representation of file
+    formData.append('DataAsBase64', reader.result.toString());
+    this.userService.uploadDocuments(formData).subscribe((res) => {
+      console.log('Uploaded successfully');
+    });
+  }
+    reader.readAsDataURL(file);
   }
 }
