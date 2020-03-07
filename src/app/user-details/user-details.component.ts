@@ -76,31 +76,27 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
-  UploadFile(event) {
-    console.log(event);
-    const file = (event.target as HTMLInputElement).files[0];
-    console.log(event);
-    // this.form.patchValue({
-    //   avatar: file
-    // });
-    // this.form.get("avatar").updateValueAndValidity();
-    let formData = new FormData();
-     formData.append('UserId', '1');
-     formData.append('Name', file.name);
-     formData.append('Type', 'KYC');
+  UploadFile(type, fileElement) {
+    const file = (fileElement as HTMLInputElement).files[0];
 
-     // Use FileReader() object to get file to upload
-  // NOTE: FileReader only works with newer browsers
-  let reader = new FileReader();
-      
-  // Setup onload event for reader
-  reader.onload = () => {
-    // Store base64 encoded representation of file
-    formData.append('DataAsBase64', reader.result.toString());
-    this.userService.uploadDocuments(formData).subscribe((res) => {
-      console.log('Uploaded successfully');
-    });
-  }
+    let formData = new FormData();
+    formData.append("UserId", this.userService.loggedInUser.Id);
+    formData.append("Name", file.name);
+    formData.append("Type", type);
+    formData.append("FileType", file.name.substring(file.name.lastIndexOf(".") + 1, file.name.length));
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      formData.append("DataAsBase64", reader.result.toString());
+      this.userService.uploadDocuments(formData).subscribe(res => {
+        console.log("Uploaded successfully");
+      });
+    };
     reader.readAsDataURL(file);
+  }
+
+  setFileName() {
+
   }
 }

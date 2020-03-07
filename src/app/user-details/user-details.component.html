@@ -65,20 +65,30 @@
 
       <mat-step [completed]="false">
         <ng-template matStepLabel><span class="stepperHeading">Documents Upload</span></ng-template>
-        <!-- <div class="myform-field">
-          <label for="AcNo">Aadhar</label>
-          <input type="file" (change)="UploadFile($event)" class="form-control" id="AcNo">
-        </div> -->
 
-        <div class="flexrow padding10">
-          <label class="label-style">Aadhar : &nbsp;</label>
-          <input class="flex07" type="file" (change)="UploadFile($event)">
+        <div  class = 'padding10'>
+          <div class="d-flex">
+            <input #adhar type="file" class="d-none" (change)='setFileName()'>
+            <button class='btn btn-link' (click)="adhar.click()">Choose Adhar</button>
+            <button class='app-button' *ngIf = 'adhar.files && adhar.files.length > 0' (click)="UploadFile('Adhar', adhar)">Upload</button>
+          </div>
+          <span *ngIf='adhar.files && adhar.files.length > 0'> {{ adhar.files[0].name }}</span>
         </div>
 
+        <div  class = 'padding10'>
+          <div class="d-flex">
+            <input #pan type="file" class="d-none" (change)='setFileName()'>
+            <button class='btn btn-link' (click)="pan.click()">Choose PAN</button>
+            <button *ngIf='pan.files && pan.files.length > 0' class='app-button' (click)="UploadFile('pan', pan)">Upload</button>
+          </div>
+          <span *ngIf='pan.files && pan.files.length > 0'> {{ pan.files[0].name }}</span>
+        </div>
+<!--
         <div class="flexrow padding10">
           <label class="label-style">Pan : &nbsp;</label>
-          <input class="flex07" type="file" (change)="UploadFile($event)">
-        </div>
+          <input #pan type="file">
+          <button class='app-button' (click)="UploadFile('PAN', pan)">Upload</button>
+        </div> -->
 
       </mat-step>
     </form>
