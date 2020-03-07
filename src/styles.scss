@@ -10,7 +10,7 @@
 
 body {
   margin: 0px !important;
-  font-size: 12px;;
+  font-size: 12px;
 }
 
 .bgcolor {
@@ -170,3 +170,21 @@ mat-toolbar {
     padding: 0.375rem 0.75rem;
   }
 }
+.font1 {
+  font-size: 12px;
+}
+
+.span-vertical-center {
+    display: inline-flex;
+    align-items: center;
+    margin-left: .5rem;
+    font-weight: bold;
+    color: $background-color;
+}
+
+.accont-menu {
+  min-width: 180px;
+  cursor: pointer;
+}
+
+

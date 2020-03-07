@@ -1,21 +1,32 @@
-<mat-nav-list *ngFor="let link of MenuLinks;let i=index">
-  <mat-toolbar-row *ngIf="link.SubMenu == null" class="cursor toolbar-rowheight" (click)="NavigateToPage(link.PageUrl)">
-    <mat-icon class="white-color">{{link.Icon}}</mat-icon>
-    <a *ngIf="link.SubMenu == null" mat-list-item><span class="white-color">{{link.title}}</span></a>
-  </mat-toolbar-row>
 
-  <mat-toolbar-row *ngIf="link.SubMenu != null " class="cursor toolbar-rowheight" (click)="OpenPanel(i)">
-    <mat-icon class="white-color">{{link.Icon}}</mat-icon>
-    <a mat-list-item><span class="white-color">{{link.title}}</span></a>
-    <mat-icon class="white-color" *ngIf="!OpenSubMenu[i]">keyboard_arrow_down</mat-icon>
-    <mat-icon class="white-color" *ngIf="OpenSubMenu[i]">keyboard_arrow_up</mat-icon>
-  </mat-toolbar-row>
-  <div *ngIf="OpenSubMenu[i]">
-    <mat-nav-list style="padding-top: 0px !important;" *ngFor="let sub of link.SubMenu;let i=index">
-      <a mat-list-item class="white-color" (click)="NavigateToPage(sub.PageUrl)">
-        <span class="white-color" style="padding-left: 25px;">{{sub.title}}</span>
-      </a>
-    </mat-nav-list>
+<div *ngFor="let menu of MenuLinks;let i = index">
+
+  <!-- Option without Submenu -->
+  <div *ngIf="menu.SubMenu == null" class="options cursor flexrow" (click)="NavigateToPage(menu.PageUrl)">
+    <div class="padding-right10">
+      <mat-icon class="white-color">{{menu.Icon}}</mat-icon>
+    </div>
+    <div class="white-color"> {{menu.title}} </div>
   </div>
 
-</mat-nav-list>
+  <!-- Option with Submenu -->
+  <div *ngIf="menu.SubMenu != null" class="options cursor flexrow" (click)="OpenPanel(i)">
+    <div class="padding-right10">
+      <mat-icon class="white-color">{{menu.Icon}}</mat-icon>
+    </div>
+    <div class="white-color flex1"> {{menu.title}} </div>
+    <div *ngIf="!OpenSubMenu[i]" class="padding-right10">
+      <mat-icon class="white-color">keyboard_arrow_down</mat-icon>
+    </div>
+    <div *ngIf="OpenSubMenu[i]" class="padding-right10">
+      <mat-icon class="white-color" *ngIf="OpenSubMenu[i]">keyboard_arrow_up</mat-icon>
+    </div>
+  </div>
+  <div *ngIf="OpenSubMenu[i]">
+    <div *ngFor="let submenu of menu.SubMenu">
+      <div class="options cursor suboption" (click)="NavigateToPage(submenu.PageUrl)">
+        <span class="white-color">{{submenu.title}}</span>
+      </div>
+    </div>
+  </div>
+</div>

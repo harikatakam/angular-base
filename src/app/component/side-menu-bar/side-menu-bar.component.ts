@@ -36,12 +36,7 @@ export class SideMenuBarComponent implements OnInit {
       {
         Icon: "list",
         title: "Dashboard",
-        SubMenu: [
-          {
-            title: "Dashboard",
-            PageUrl: "Dashboard"
-          }
-        ]
+        PageUrl: "Dashboard"
       },
       {
         Icon: "people",
@@ -50,6 +45,10 @@ export class SideMenuBarComponent implements OnInit {
           {
             title: "New User",
             PageUrl: "User"
+          },
+          {
+            title: "Manage Users",
+            PageUrl: " "
           }
         ]
       }
@@ -61,7 +60,6 @@ export class SideMenuBarComponent implements OnInit {
   }
 
   NavigateToPage(PageURL: any) {
-    // console.log(PageURL);
     this.router.navigateByUrl(PageURL);
     this.closeSplitPane.emit(true);
   }
