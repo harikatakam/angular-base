@@ -28,9 +28,9 @@
         </div>
 
         <div class="myform-field">
-          <label for="roles">Role</label>
-          <select formControlName="roles" placeholder="-- Select --" id="roles" class="form-control">
-            <option *ngFor="let role of roles" [value]="role.id">{{ role.roleName }}</option>
+          <label for="Roles">Role</label>
+          <select disabled formControlName="Roles" placeholder="-- Select --" id="Roles" class="form-control">
+            <option *ngFor="let role of Roles" [value]="role.id">{{ role.roleName }}</option>
           </select>
         </div>
 
@@ -68,28 +68,23 @@
 
         <div  class = 'padding10'>
           <div class="d-flex">
-            <input #adhar type="file" class="d-none" (change)='setFileName()'>
-            <button class='btn btn-link' (click)="adhar.click()">Choose Adhar</button>
-            <button class='app-button' *ngIf = 'adhar.files && adhar.files.length > 0' (click)="UploadFile('Adhar', adhar)">Upload</button>
+            <input #aadhar type="file" class="d-none" (change)='setFileName()'>
+            <button class='btn btn-link' (click)="aadhar.click()">Choose Adhar</button>
+            <button class='app-button' *ngIf = 'aadhar.files && aadhar.files.length > 0' (click)="UploadFile('Aadhar', aadhar)">Upload</button>
           </div>
-          <span *ngIf='adhar.files && adhar.files.length > 0'> {{ adhar.files[0].name }}</span>
+          <span *ngIf='aadhar.files && aadhar.files.length > 0'> {{ aadhar.files[0].name }}</span>
+          <button *ngIf = 'adharDoc' class='btn btn-link' (click)="donwloadDocument(adharDoc)">Download Adhar</button>
         </div>
 
         <div  class = 'padding10'>
           <div class="d-flex">
             <input #pan type="file" class="d-none" (change)='setFileName()'>
             <button class='btn btn-link' (click)="pan.click()">Choose PAN</button>
-            <button *ngIf='pan.files && pan.files.length > 0' class='app-button' (click)="UploadFile('pan', pan)">Upload</button>
+            <button *ngIf='pan.files && pan.files.length > 0' class='app-button' (click)="UploadFile('PAN', pan)">Upload</button>
           </div>
           <span *ngIf='pan.files && pan.files.length > 0'> {{ pan.files[0].name }}</span>
+          <button *ngIf = 'panDoc' class='btn btn-link' (click)="donwloadDocument(panDoc)">Download Pan</button>
         </div>
-<!--
-        <div class="flexrow padding10">
-          <label class="label-style">Pan : &nbsp;</label>
-          <input #pan type="file">
-          <button class='app-button' (click)="UploadFile('PAN', pan)">Upload</button>
-        </div> -->
-
       </mat-step>
     </form>
   </mat-horizontal-stepper>

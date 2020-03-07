@@ -43,7 +43,7 @@ export class UserService {
   }
 
   getUserRoles() {
-    return this.httpServie.get("/api/User/GetRoles");
+    return this.httpServie.get("/api/User/GetMasterData");
   }
 
   changePassword(UserData: any) {
@@ -51,6 +51,15 @@ export class UserService {
   }
 
   uploadDocuments(fileData: any) {
-return this.httpServie.post("/api/User/UploadKYCDocument", fileData);
+    return this.httpServie.post("/api/User/UploadKYCDocument", fileData);
+  }
+
+  getDocument(name) {
+    return this.httpServie.get(
+      "/api/User/GetUserDocuments?userId=" +
+        this.loggedInUser.Id +
+        "&documentName=" +
+        name
+    );
   }
 }

@@ -38,7 +38,7 @@ import { AlertService } from "src/app/Services/alert.service";
 export class UserCreationComponent implements OnInit {
   UserForm: FormGroup;
   IsFormSubmitted = false;
-  roles: any = [];
+  Roles: any = [];
   Users: any = [];
   // matcher = new MyErrorStateMatcher();
 
@@ -54,9 +54,9 @@ export class UserCreationComponent implements OnInit {
     this.userService
       .getUserRoles()
       .subscribe(
-        (roles: any) =>
-          (this.roles = roles.filter(
-            r => r.id > this.userService.loggedInUser.roles.$values[0]
+        (data: any) =>
+          (this.Roles = data.roles.filter(
+            r => r.id > this.userService.loggedInUser.Roles[0]
           ))
       );
   }
@@ -67,10 +67,11 @@ export class UserCreationComponent implements OnInit {
       userName: [""],
       mailId: ["", [Validators.email]],
       mobile: [""],
-      roles: [""],
-      CreatedBy: [""]
+      Roles: [],
+      CreatedBy: [""],
+      status: [1]
     });
-    // this.UserForm.get('roles').setValue([1,2]);
+    // this.UserForm.get('Roles').setValue([1,2]);
     this.UserForm.get("CreatedBy").setValue(this.userService.loggedInUser.Id);
   }
 
@@ -83,7 +84,7 @@ export class UserCreationComponent implements OnInit {
   }
 
   CreateUser() {
-    this.UserForm.get("roles").setValue([this.UserForm.value.roles]);
+    this.UserForm.get("Roles").setValue([+this.UserForm.value.Roles]);
     this.userService.createUser(this.UserForm.value).subscribe((val: any) => {
       this.alert.SuccesMessageAlert("User Created Succesfully", "Close");
       this.UserForm.reset();

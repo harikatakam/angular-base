@@ -13,7 +13,10 @@ export class UserDetailsComponent implements OnInit {
   UserForm: FormGroup;
 
   IsFormSubmitted = false;
-  roles: any = [];
+  Roles: any = [];
+  currentUser;
+  adharDoc;
+  panDoc;
 
   constructor(
     public fb: FormBuilder,
@@ -21,17 +24,19 @@ export class UserDetailsComponent implements OnInit {
     public alert: AlertService
   ) {
     this.CreateBankForm(userService.loggedInUser);
+    this.currentUser = this.userService.loggedInUser;
   }
 
   ngOnInit(): void {
     this.userService
       .getUserRoles()
-      .subscribe(
-        (roles: any) =>
-          (this.roles = roles.filter(
-            r => r.id > this.userService.loggedInUser.roles.$values[0]
-          ))
-      );
+      .subscribe((data: any) => (this.Roles = data.roles));
+    this.adharDoc = this.userService.loggedInUser.Documents.find(
+      d => d.Name === "Aadhar"
+    );
+    this.panDoc = this.userService.loggedInUser.Documents.find(
+      d => d.Name === "PAN"
+    );
   }
 
   CreateBankForm(LoginData: any) {
@@ -40,11 +45,11 @@ export class UserDetailsComponent implements OnInit {
     }
     this.UserForm = this.fb.group({
       Id: [LoginData.Id],
-      name: [LoginData.name],
+      name: [LoginData.Name],
       userName: [LoginData.UserName],
       mailId: [LoginData.MailId],
       mobile: [LoginData.Mobile],
-      roles: [LoginData.roles.$values[0]],
+      Roles: [LoginData.Roles[0]],
       // CreatedBy: [LoginData.CreatedBy],
       AcNo: [""],
       Name: [""],
@@ -64,13 +69,14 @@ export class UserDetailsComponent implements OnInit {
   }
 
   UpdateUser() {
-    let formdata: any = this.UserForm.getRawValue();
+    const formdata: any = this.UserForm.getRawValue();
+    formdata.Status = this.userService.loggedInUser.Status;
     delete formdata.AcNo;
     delete formdata.Name;
     delete formdata.IFSC;
     delete formdata.aadhar;
     delete formdata.Pan;
-    formdata.roles = [formdata.roles];
+    formdata.Roles = [formdata.Roles];
     this.userService.updateUSer(formdata).subscribe((val: any) => {
       this.alert.SuccesMessageAlert("User Updated Succesfully", "Close");
     });
@@ -79,11 +85,14 @@ export class UserDetailsComponent implements OnInit {
   UploadFile(type, fileElement) {
     const file = (fileElement as HTMLInputElement).files[0];
 
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append("UserId", this.userService.loggedInUser.Id);
-    formData.append("Name", file.name);
-    formData.append("Type", type);
-    formData.append("FileType", file.name.substring(file.name.lastIndexOf(".") + 1, file.name.length));
+    formData.append("Name", type);
+    formData.append("Type", "KYC");
+    formData.append(
+      "FileType",
+      file.name.substring(file.name.lastIndexOf(".") + 1, file.name.length)
+    );
 
     const reader = new FileReader();
 
@@ -96,7 +105,38 @@ export class UserDetailsComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  setFileName() {
+  setFileName() {}
 
+  donwloadDocument(doc) {
+    this.userService.getDocument(doc.Name).subscribe((details: any) => {
+      // const data = this.base64ToBlob(details[0].DataAsBase64, "application/" + details[0].fileType);;
+      // TODO :: moove downlod doc from bytes to Unitls Service
+      // const blob = new Blob([data], {type: "application/" + details[0].fileType});
+      const blob = this.base64ToBlob(details[0].dataAsBase64, "application/" + details[0].fileType);
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(blob);
+      const fileName = doc.Name + "." + details[0].fileType;
+      link.download = fileName;
+      link.click();
+      document.removeChild(link);
+    });
   }
+
+
+  public base64ToBlob(b64Data, contentType='', sliceSize=512) {
+    b64Data = b64Data.replace(/\s/g, ''); //IE compatibility...
+    let byteCharacters = atob(b64Data);
+    let byteArrays = [];
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        let slice = byteCharacters.slice(offset, offset + sliceSize);
+
+        let byteNumbers = new Array(slice.length);
+        for (var i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+        }
+        let byteArray = new Uint8Array(byteNumbers);
+        byteArrays.push(byteArray);
+    }
+    return new Blob(byteArrays, {type: contentType});
+}
 }
