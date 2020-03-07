@@ -51,9 +51,10 @@ export class UserDetailsComponent implements OnInit {
       mobile: [LoginData.Mobile],
       Roles: [LoginData.Roles[0]],
       // CreatedBy: [LoginData.CreatedBy],
-      AcNo: [""],
-      Name: [""],
-      IFSC: [""],
+      AccountNumber: [LoginData.BankAccounts[0]?.AccountNumber],
+      NameInBank: [LoginData.BankAccounts[0]?.NameInBank],
+      IFSCCode: [LoginData.BankAccounts[0]?.IFSCCode],
+      BankName: [LoginData.BankAccounts[0]?.BankName],
       aadhar: [""],
       Pan: [""]
     });
@@ -77,6 +78,12 @@ export class UserDetailsComponent implements OnInit {
     delete formdata.aadhar;
     delete formdata.Pan;
     formdata.Roles = [formdata.Roles];
+    formdata.BankAccounts = [ {
+      AccountNumber: this.UserForm.value.AccountNumber,
+      NameInBank: this.UserForm.value.NameInBank,
+      IFSCCode: this.UserForm.value.IFSCCode,
+      BankName: this.UserForm.value.BankName
+    }]
     this.userService.updateUSer(formdata).subscribe((val: any) => {
       this.alert.SuccesMessageAlert("User Updated Succesfully", "Close");
     });
