@@ -1,14 +1,11 @@
-<!-- header -->
 <div class="header1-layout bgcolor">
-  <app-header (toggleMenu)="CloseSplitPane($event)"></app-header>
+  <app-header (toggleMenu)="ToggleSidePane()"></app-header>
 </div>
 
-<!-- SideMenu -->
-<div class="layout-sidemenu header1-layout bgcolor" #active>
-  <app-side-menu-bar></app-side-menu-bar>
+<div class="layout-sidemenu header1-layout bgcolor" [ngClass] = '{"activelayout-sidemenu" : showMenu}'>
+  <app-side-menu-bar (toggleMenu) = 'ToggleSidePane()'></app-side-menu-bar>
 </div>
 
-<!-- Content  -->
 <div class="content">
   <router-outlet></router-outlet>
 </div>

@@ -17,7 +17,7 @@ import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 export class SideMenuBarComponent implements OnInit {
   MenuLinks: any = [];
 
-  @Output() closeSplitPane = new EventEmitter();
+  @Output() toggleMenu = new EventEmitter();
 
   OpenSubMenu: boolean[] = [];
   IsSplitPane = false;
@@ -48,7 +48,7 @@ export class SideMenuBarComponent implements OnInit {
           },
           {
             title: "Manage Users",
-            PageUrl: " "
+            PageUrl: "manageUsers"
           }
         ]
       }
@@ -61,6 +61,6 @@ export class SideMenuBarComponent implements OnInit {
 
   NavigateToPage(PageURL: any) {
     this.router.navigateByUrl(PageURL);
-    this.closeSplitPane.emit(true);
+    this.toggleMenu.emit();
   }
 }

@@ -7,6 +7,7 @@ import { UserCreationComponent } from "./component/user-creation/user-creation.c
 import { AuthGuard } from "./Services/auth.guard";
 import { UserDetailsComponent } from "./user-details/user-details.component";
 import { ChangePasswordComponent } from "./component/change-password/change-password.component";
+import { UserManagementComponent } from "./component/user-management/user-management.component";
 
 const routes: Routes = [
   {
@@ -18,9 +19,9 @@ const routes: Routes = [
       { path: "User", component: UserCreationComponent },
       { path: "UserDetails", component: UserDetailsComponent },
       { path: "changePassword", component: ChangePasswordComponent },
-      { path: "**", redirectTo: "/Dashboard" }
+      { path: "manageUsers", component: UserManagementComponent }
     ]
-  }, // , canActivate: [AuthGuard]
+  },
   { path: "login", component: LoginComponent }
 ];
 

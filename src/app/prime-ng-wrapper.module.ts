@@ -1,12 +1,13 @@
 import { NgModule } from "@angular/core";
-import { FileUploadModule } from "primeng/fileupload";
+import {TreeTableModule} from 'primeng/treetable';
+import {TreeNode} from 'primeng/api';
 
 @NgModule({
   imports: [
-    FileUploadModule
+    TreeTableModule
   ],
   exports: [
-    FileUploadModule
+    TreeTableModule
   ]
 })
 export class PrimeNgWrapperModule {}

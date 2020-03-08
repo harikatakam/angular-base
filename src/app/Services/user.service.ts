@@ -62,4 +62,11 @@ export class UserService {
         name
     );
   }
+
+  setActiveStatus(activeStatus) {
+    return this.httpServie.get("/api/User/ChangeUserActivation?UserId=" +
+    this.loggedInUser.Id +
+        "&IsActive=" +
+        activeStatus);
+  }
 }

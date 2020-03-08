@@ -43,7 +43,7 @@
   .layout-sidemenu {
     top: 100px;
     left: -230px !important;
-    z-index: 9999;
+    transition: left 0.2s;
   }
 }
 
@@ -54,9 +54,12 @@
   }
 }
 
-.layout-sidemenu .active {
+.activelayout-sidemenu {
+  left: 0 !important;
   transition: left 0.2s;
-  z-index: 9999;
+  top: 50px !important;
+  overflow-y: auto;
+  width: 230px;
 }
 
 .layout-sidebar.active {

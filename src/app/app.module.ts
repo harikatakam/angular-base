@@ -19,7 +19,8 @@ import { UserDetailsComponent } from "./user-details/user-details.component";
 import { AgGridModule } from "ag-grid-angular";
 import { TokenInjectorInterceptor } from "./Services/token-injector.interceptor";
 import { ChangePasswordComponent } from "./component/change-password/change-password.component";
-import { PrimeNgWrapperModule } from './prime-ng-wrapper.module';
+import { PrimeNgWrapperModule } from "./prime-ng-wrapper.module";
+import { UserManagementComponent } from './component/user-management/user-management.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PrimeNgWrapperModule } from './prime-ng-wrapper.module';
     HeaderComponent,
     DashboardComponent,
     UserCreationComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    UserManagementComponent
   ],
   imports: [
     BrowserAnimationsModule,
