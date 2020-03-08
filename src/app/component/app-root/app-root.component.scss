@@ -1,3 +1,4 @@
+@import "../../../variables.scss";
 .header1-layout {
   width: 100%;
   position: fixed;
@@ -10,6 +11,14 @@
 .content {
   margin-top: 60px !important;
   margin-left: 230px !important;
+  height: calc(100%) !important;
+}
+
+.footer {
+  background-color: $background-color;
+  height: 100px;
+  color: white;
+  padding: 10px;
 }
 
 @media only screen and (max-width: 900px) {

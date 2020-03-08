@@ -2,10 +2,21 @@
   <app-header (toggleMenu)="ToggleSidePane()"></app-header>
 </div>
 
-<div class="layout-sidemenu header1-layout bgcolor" [ngClass] = '{"activelayout-sidemenu" : showMenu}'>
-  <app-side-menu-bar (toggleMenu) = 'ToggleSidePane()'></app-side-menu-bar>
+<div class="layout-sidemenu header1-layout bgcolor" [ngClass]='{"activelayout-sidemenu" : showMenu}'>
+  <app-side-menu-bar (toggleMenu)='ToggleSidePane()'></app-side-menu-bar>
 </div>
 
 <div class="content">
-  <router-outlet></router-outlet>
+  <div class="page-content">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="footer">
+    <div class="d-flex">
+      <h3 class='footer-conatc-lable'>Contact Details</h3>
+      <div class="d-flex ml-2" style="align-items: center;">
+        <mat-icon style="vertical-align: middle;">contact_phone</mat-icon>
+        <span style="color: white;" class="ml-1 span-vertical-center"> +91 8899776677</span>
+      </div>
+    </div>
+  </div>
 </div>

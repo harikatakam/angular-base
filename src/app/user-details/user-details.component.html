@@ -1,4 +1,4 @@
-<div class="page-content">
+
   <span class='page-title'> User Profile </span>
 
   <mat-horizontal-stepper labelPosition="bottom" #stepper class="p-2">
@@ -41,7 +41,8 @@
 
         <div class="myform-field">
           <label for="AcNo">Account Number</label>
-          <input type="text" formControlName="accountNumber" placeholder="Enter Account Number" class="form-control" id="AcNo">
+          <input type="text" formControlName="accountNumber" placeholder="Enter Account Number" class="form-control"
+            id="AcNo">
         </div>
 
         <div class="myform-field">
@@ -72,24 +73,29 @@
       <mat-step [completed]="false">
         <ng-template matStepLabel><span class="stepperHeading">Documents Upload</span></ng-template>
 
-        <div  class = 'padding10'>
+        <div class='padding10'>
           <div class="d-flex">
             <input #aadhar type="file" class="d-none" (change)='setFileName()'>
-            <button class='btn btn-link' (click)="aadhar.click()">Choose Adhar</button>
-            <button class='app-button' *ngIf = 'aadhar.files && aadhar.files.length > 0' (click)="UploadFile('Aadhar', aadhar)">Upload</button>
+            <button class='btn btn-link' (click)="aadhar.click()">{{ adharDoc ?  'Click here to choose new Adhar' : 'No Aadhar upload, Click here to choose Adhar'}}</button>
+            <button class='app-button' *ngIf='aadhar.files && aadhar.files.length > 0'
+              (click)="UploadFile('Aadhar', aadhar)">Upload</button>
+            <button *ngIf='adharDoc' class='btn btn-link' (click)="donwloadDocument(adharDoc)">View/Download
+              Adhar</button>
           </div>
           <span *ngIf='aadhar.files && aadhar.files.length > 0'> {{ aadhar.files[0].name }}</span>
-          <button *ngIf = 'adharDoc' class='btn btn-link' (click)="donwloadDocument(adharDoc)">Download Adhar</button>
+
         </div>
 
-        <div  class = 'padding10'>
+        <div class='padding10'>
           <div class="d-flex">
             <input #pan type="file" class="d-none" (change)='setFileName()'>
-            <button class='btn btn-link' (click)="pan.click()">Choose PAN</button>
-            <button *ngIf='pan.files && pan.files.length > 0' class='app-button' (click)="UploadFile('PAN', pan)">Upload</button>
+            <button class='btn btn-link' (click)="pan.click()">{{ panDoc ? 'Click here to choose new PAN' :  'No PAN, Click here to choose Pan'}}</button>
+            <button *ngIf='pan.files && pan.files.length > 0' class='app-button'
+              (click)="UploadFile('PAN', pan)">Upload</button>
+            <button *ngIf='panDoc' class='btn btn-link' (click)="donwloadDocument(panDoc)">View/Download Pan</button>
+
           </div>
           <span *ngIf='pan.files && pan.files.length > 0'> {{ pan.files[0].name }}</span>
-          <button *ngIf = 'panDoc' class='btn btn-link' (click)="donwloadDocument(panDoc)">Download Pan</button>
         </div>
       </mat-step>
     </form>
@@ -99,4 +105,3 @@
     <button class='app-button' (click)="save()">Submit</button>
   </div>
 
-</div>
