@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error = "";
+  currentUser: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,18 +23,29 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private userService: UserService
   ) {
+    this.SubscribeCurrentUserData();
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(["/"]);
     }
   }
 
+  SubscribeCurrentUserData() {
+    this.userService.loggedInUserUpdated$.subscribe(
+      user => (this.currentUser = user)
+    );
+  }
+
   ngOnInit() {
+    this.CreateLoginForm();
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || "/";
+  }
+
+  CreateLoginForm() {
     this.loginForm = this.formBuilder.group({
       username: ["", Validators.required],
       password: ["", Validators.required]
     });
-    this.returnUrl = this.route.snapshot.queryParams.returnUrl || "/";
   }
 
   get form() {
@@ -57,8 +69,8 @@ export class LoginComponent implements OnInit {
           this.loading = false;
 
           this.userService.storeUserTokenandDetails(userDetails);
-          console.log(this.userService.loggedInUser);
-          if (this.userService.loggedInUser.IsPasswordChangeRequired) {
+          console.log(this.currentUser);
+          if (this.currentUser.IsPasswordChangeRequired) {
             this.router.navigateByUrl("changePassword");
           } else {
             this.router.navigateByUrl(this.returnUrl);

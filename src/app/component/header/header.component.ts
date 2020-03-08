@@ -25,14 +25,23 @@ export class HeaderComponent implements OnInit {
       map(result => result.matches),
       shareReplay()
     );
+  currentUser: any;
 
   constructor(
     public router: Router,
     private breakpointObserver: BreakpointObserver,
     public userService: UserService
-  ) {}
+  ) {
+    this.SubscribeCurrentUserData();
+  }
 
   ngOnInit() {}
+
+  SubscribeCurrentUserData() {
+    this.userService.loggedInUserUpdated$.subscribe(
+      user => (this.currentUser = user)
+    );
+  }
 
   ToggleSideMenu() {
     this.toggleMenu.emit();

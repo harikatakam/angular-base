@@ -1,10 +1,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import * as jwt_decode from "jwt-decode";
+import { BehaviorSubject } from "rxjs";
+import { tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: "root" })
 export class UserService {
   loggedInUser;
+  loggedInUserUpdated$: BehaviorSubject<any> = new BehaviorSubject(null);
   constructor(private httpServie: HttpClient) {}
 
   createUser(user) {
@@ -12,7 +15,11 @@ export class UserService {
   }
 
   updateUSer(user) {
-    return this.httpServie.post("/api/User/UpdateUser", user);
+    return this.httpServie.post("/api/User/UpdateUser", user).pipe(
+      tap((updatedUser) => {
+        this.loggedInUserUpdated$.next(updatedUser);
+      })
+    );
   }
 
   login(userName, password) {
@@ -34,11 +41,13 @@ export class UserService {
   setLoggedinUser(token) {
     const tokenDecoded = jwt_decode(token);
     this.loggedInUser = JSON.parse(tokenDecoded.user);
+    console.log(this.loggedInUser);
+    this.loggedInUserUpdated$.next(this.loggedInUser);
   }
 
   getAllUsersCreatedByLoggedInUser() {
     return this.httpServie.get(
-      "/api/User/GetAllUsersCreatedBy?userID=" + this.loggedInUser.Id
+      "/api/User/GetAllUsersCreatedBy?userID=" + this.loggedInUser.id
     );
   }
 
@@ -57,16 +66,18 @@ export class UserService {
   getDocument(name) {
     return this.httpServie.get(
       "/api/User/GetUserDocuments?userId=" +
-        this.loggedInUser.Id +
+        this.loggedInUser.id +
         "&documentName=" +
         name
     );
   }
 
   setActiveStatus(activeStatus) {
-    return this.httpServie.get("/api/User/ChangeUserActivation?UserId=" +
-    this.loggedInUser.Id +
+    return this.httpServie.get(
+      "/api/User/ChangeUserActivation?UserId=" +
+        this.loggedInUser.id +
         "&IsActive=" +
-        activeStatus);
+        activeStatus
+    );
   }
 }

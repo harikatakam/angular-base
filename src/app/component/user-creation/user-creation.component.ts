@@ -40,6 +40,7 @@ export class UserCreationComponent implements OnInit {
   IsFormSubmitted = false;
   Roles: any = [];
   Users: any = [];
+  currentUser: any;
   // matcher = new MyErrorStateMatcher();
 
   constructor(
@@ -47,16 +48,27 @@ export class UserCreationComponent implements OnInit {
     private userService: UserService,
     private alert: AlertService
   ) {
-    this.CreateUserGroup();
+    this.SubscribeUserData();
   }
 
-  ngOnInit(): void {
+  SubscribeUserData() {
+    this.userService.loggedInUserUpdated$.subscribe((user: any) => {
+      console.log(user);
+      this.currentUser = user;
+      this.GetUserRoles();
+      this.CreateUserGroup();
+    });
+  }
+
+  ngOnInit(): void {}
+
+  GetUserRoles() {
     this.userService
       .getUserRoles()
       .subscribe(
         (data: any) =>
           (this.Roles = data.roles.filter(
-            r => r.id > this.userService.loggedInUser.Roles[0]
+            r => r.id > this.currentUser.roles[0]
           ))
       );
   }
@@ -72,7 +84,7 @@ export class UserCreationComponent implements OnInit {
       status: [1]
     });
     // this.UserForm.get('Roles').setValue([1,2]);
-    this.UserForm.get("CreatedBy").setValue(this.userService.loggedInUser.Id);
+    this.UserForm.get("CreatedBy").setValue(this.currentUser.id);
   }
 
   SaveUser() {

@@ -23,20 +23,26 @@ export class UserDetailsComponent implements OnInit {
     private userService: UserService,
     public alert: AlertService
   ) {
-    this.CreateBankForm(userService.loggedInUser);
-    this.currentUser = this.userService.loggedInUser;
+    this.SubsribeCurrentUserData();
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  SubsribeCurrentUserData() {
+    this.userService.loggedInUserUpdated$.subscribe((user: any) => {
+      console.log(user);
+      this.currentUser = user;
+      this.GetUserRoles();
+      this.CreateBankForm(user);
+    });
+  }
+
+  GetUserRoles() {
     this.userService
       .getUserRoles()
       .subscribe((data: any) => (this.Roles = data.roles));
-    this.adharDoc = this.userService.loggedInUser.Documents.find(
-      d => d.Name === "Aadhar"
-    );
-    this.panDoc = this.userService.loggedInUser.Documents.find(
-      d => d.Name === "PAN"
-    );
+    this.adharDoc = this.currentUser.documents.find(d => d.name === "Aadhar");
+    this.panDoc = this.currentUser.documents.find(d => d.name === "PAN");
   }
 
   CreateBankForm(LoginData: any) {
@@ -44,17 +50,17 @@ export class UserDetailsComponent implements OnInit {
       LoginData = {};
     }
     this.UserForm = this.fb.group({
-      Id: [LoginData.Id],
-      name: [LoginData.Name],
-      userName: [LoginData.UserName],
-      mailId: [LoginData.MailId],
-      mobile: [LoginData.Mobile],
-      Roles: [LoginData.Roles[0]],
+      id: [LoginData.id],
+      name: [LoginData.name],
+      userName: [LoginData.userName],
+      mailId: [LoginData.mailId],
+      mobile: [LoginData.mobile],
+      Roles: [LoginData.roles[0]],
       // CreatedBy: [LoginData.CreatedBy],
-      AccountNumber: [LoginData.BankAccounts[0]?.AccountNumber],
-      NameInBank: [LoginData.BankAccounts[0]?.NameInBank],
-      IFSCCode: [LoginData.BankAccounts[0]?.IFSCCode],
-      BankName: [LoginData.BankAccounts[0]?.BankName],
+      accountNumber: [LoginData.bankAccounts[0]?.accountNumber],
+      nameInBank: [LoginData.bankAccounts[0]?.nameInBank],
+      ifscCode: [LoginData.bankAccounts[0]?.ifscCode],
+      bankName: [LoginData.bankAccounts[0]?.bankName],
       aadhar: [""],
       Pan: [""]
     });
@@ -71,19 +77,21 @@ export class UserDetailsComponent implements OnInit {
 
   UpdateUser() {
     const formdata: any = this.UserForm.getRawValue();
-    formdata.Status = this.userService.loggedInUser.Status;
+    formdata.Status = this.currentUser.status;
     delete formdata.AcNo;
     delete formdata.Name;
     delete formdata.IFSC;
     delete formdata.aadhar;
     delete formdata.Pan;
     formdata.Roles = [formdata.Roles];
-    formdata.BankAccounts = [ {
-      AccountNumber: this.UserForm.value.AccountNumber,
-      NameInBank: this.UserForm.value.NameInBank,
-      IFSCCode: this.UserForm.value.IFSCCode,
-      BankName: this.UserForm.value.BankName
-    }]
+    formdata.BankAccounts = [
+      {
+        accountNumber: this.UserForm.value.accountNumber,
+        nameInBank: this.UserForm.value.nameInBank,
+        ifscCode: this.UserForm.value.ifscCode,
+        bankName: this.UserForm.value.bankName
+      }
+    ];
     this.userService.updateUSer(formdata).subscribe((val: any) => {
       this.alert.SuccesMessageAlert("User Updated Succesfully", "Close");
     });
@@ -93,7 +101,7 @@ export class UserDetailsComponent implements OnInit {
     const file = (fileElement as HTMLInputElement).files[0];
 
     const formData = new FormData();
-    formData.append("UserId", this.userService.loggedInUser.Id);
+    formData.append("UserId", this.currentUser.id);
     formData.append("Name", type);
     formData.append("Type", "KYC");
     formData.append(
@@ -115,35 +123,37 @@ export class UserDetailsComponent implements OnInit {
   setFileName() {}
 
   donwloadDocument(doc) {
-    this.userService.getDocument(doc.Name).subscribe((details: any) => {
+    this.userService.getDocument(doc.name).subscribe((details: any) => {
       // const data = this.base64ToBlob(details[0].DataAsBase64, "application/" + details[0].fileType);;
       // TODO :: moove downlod doc from bytes to Unitls Service
       // const blob = new Blob([data], {type: "application/" + details[0].fileType});
-      const blob = this.base64ToBlob(details[0].dataAsBase64, "application/" + details[0].fileType);
+      const blob = this.base64ToBlob(
+        details[0].dataAsBase64,
+        "application/" + details[0].fileType
+      );
       const link = document.createElement("a");
       link.href = window.URL.createObjectURL(blob);
-      const fileName = doc.Name + "." + details[0].fileType;
+      const fileName = doc.name + "." + details[0].fileType;
       link.download = fileName;
       link.click();
       document.removeChild(link);
     });
   }
 
-
-  public base64ToBlob(b64Data, contentType='', sliceSize=512) {
-    b64Data = b64Data.replace(/\s/g, ''); //IE compatibility...
+  public base64ToBlob(b64Data, contentType = "", sliceSize = 512) {
+    b64Data = b64Data.replace(/\s/g, ""); //IE compatibility...
     let byteCharacters = atob(b64Data);
     let byteArrays = [];
     for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-        let slice = byteCharacters.slice(offset, offset + sliceSize);
+      let slice = byteCharacters.slice(offset, offset + sliceSize);
 
-        let byteNumbers = new Array(slice.length);
-        for (var i = 0; i < slice.length; i++) {
-            byteNumbers[i] = slice.charCodeAt(i);
-        }
-        let byteArray = new Uint8Array(byteNumbers);
-        byteArrays.push(byteArray);
+      let byteNumbers = new Array(slice.length);
+      for (var i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+      let byteArray = new Uint8Array(byteNumbers);
+      byteArrays.push(byteArray);
     }
-    return new Blob(byteArrays, {type: contentType});
-}
+    return new Blob(byteArrays, { type: contentType });
+  }
 }

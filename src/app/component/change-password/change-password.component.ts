@@ -12,16 +12,25 @@ import { Router } from "@angular/router";
 export class ChangePasswordComponent implements OnInit {
   PasswordForm: FormGroup;
   submitted = false;
+  currentUser: any;
 
   constructor(
     public fb: FormBuilder,
     public alert: AlertService,
     public userSrvc: UserService,
     public router: Router
-  ) {}
+  ) {
+    this.SubscribeCurrentUserData();
+  }
 
   ngOnInit() {
     this.CreatePasswordFormGroup();
+  }
+
+  SubscribeCurrentUserData() {
+    this.userSrvc.loggedInUserUpdated$.subscribe(
+      user => (this.currentUser = user)
+    );
   }
 
   CreatePasswordFormGroup() {
@@ -34,6 +43,7 @@ export class ChangePasswordComponent implements OnInit {
       { validator: this.MatchPassword }
     );
   }
+
   MatchPassword(control: FormGroup) {
     const password = control.get("newPassword").value;
     const confirmPassword = control.get("confirmPassword").value;
@@ -51,15 +61,13 @@ export class ChangePasswordComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    // stop here if form is invalid
     if (this.PasswordForm.invalid) {
       return;
     }
     const UserData: any = this.PasswordForm.value;
     delete UserData.confirmPassword;
-    console.log(this.userSrvc.loggedInUser);
-    UserData.Id = this.userSrvc.loggedInUser.Id;
-    console.log(this.userSrvc.loggedInUser);
+    UserData.Id = this.currentUser.Id;
+    console.log(this.currentUser);
     this.userSrvc.changePassword(UserData).subscribe((val: any) => {
       this.alert.SuccesMessageAlert("Password Changed Sucessfully", "Close");
       this.router.navigateByUrl("login");
