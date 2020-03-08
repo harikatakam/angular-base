@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import * as jwt_decode from "jwt-decode";
 import { BehaviorSubject } from "rxjs";
-import { tap } from 'rxjs/operators';
+import { tap } from "rxjs/operators";
 
 @Injectable({ providedIn: "root" })
 export class UserService {
@@ -16,7 +16,7 @@ export class UserService {
 
   updateUSer(user) {
     return this.httpServie.post("/api/User/UpdateUser", user).pipe(
-      tap((updatedUser) => {
+      tap(updatedUser => {
         this.loggedInUserUpdated$.next(updatedUser);
       })
     );
@@ -27,6 +27,10 @@ export class UserService {
       userName,
       password
     });
+  }
+
+  GetUserDetailsById(userId) {
+    return this.httpServie.get("/api/User/GetUserDetailsById" + userId);
   }
 
   logout() {
