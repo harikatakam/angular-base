@@ -21,6 +21,7 @@ import { TokenInjectorInterceptor } from "./Services/token-injector.interceptor"
 import { ChangePasswordComponent } from "./component/change-password/change-password.component";
 import { PrimeNgWrapperModule } from "./prime-ng-wrapper.module";
 import { UserManagementComponent } from './component/user-management/user-management.component';
+import { KYCApprovalComponent } from './component/kyc-approval/kyc-approval.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UserManagementComponent } from './component/user-management/user-manage
     DashboardComponent,
     UserCreationComponent,
     UserDetailsComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    KYCApprovalComponent
   ],
   imports: [
     BrowserAnimationsModule,

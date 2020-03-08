@@ -7,6 +7,7 @@ import {
 } from "@angular/core";
 import { Router } from "@angular/router";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
+import { UserService } from "src/app/Services/user.service";
 
 @Component({
   selector: "app-side-menu-bar",
@@ -21,15 +22,24 @@ export class SideMenuBarComponent implements OnInit {
 
   OpenSubMenu: boolean[] = [];
   IsSplitPane = false;
+  currentUser: any;
 
   constructor(
     public router: Router,
-    private breakpointObserver: BreakpointObserver
+    public userSrvc: UserService
   ) {
+    this.SubscribeCurrentUserData();
+  }
+
+  ngOnInit() {
     this.PrepareMenuLinks();
   }
 
-  ngOnInit(): void {}
+  SubscribeCurrentUserData() {
+    this.userSrvc.loggedInUserUpdated$.subscribe((user: any) => {
+      this.currentUser = user;
+    });
+  }
 
   PrepareMenuLinks() {
     this.MenuLinks = [
@@ -53,6 +63,14 @@ export class SideMenuBarComponent implements OnInit {
         ]
       }
     ];
+    const IsAdmin: any = this.currentUser.roles[0] === 1 ? true : false;
+    if (IsAdmin) {
+      this.MenuLinks.push({
+        Icon: "description",
+        title: "KYC Approval",
+        PageUrl: "kycApproval"
+      });
+    }
   }
 
   OpenPanel(index: number) {

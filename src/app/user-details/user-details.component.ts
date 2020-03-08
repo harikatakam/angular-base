@@ -17,6 +17,7 @@ export class UserDetailsComponent implements OnInit {
   currentUser;
   adharDoc;
   panDoc;
+  ChequeLeaf;
 
   constructor(
     public fb: FormBuilder,
@@ -43,6 +44,9 @@ export class UserDetailsComponent implements OnInit {
       .subscribe((data: any) => (this.Roles = data.roles));
     this.adharDoc = this.currentUser.documents.find(d => d.name === "Aadhar");
     this.panDoc = this.currentUser.documents.find(d => d.name === "PAN");
+    this.ChequeLeaf = this.currentUser.documents.find(
+      d => d.name === "ChequeLeaf"
+    );
   }
 
   CreateBankForm(LoginData: any) {

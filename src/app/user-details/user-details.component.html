@@ -1,107 +1,119 @@
+<span class='page-title'> User Profile </span>
 
-  <span class='page-title'> User Profile </span>
+<mat-horizontal-stepper labelPosition="bottom" #stepper class="p-2">
+  <form [formGroup]="UserForm" class="form">
+    <mat-step [completed]="false">
+      <ng-template matStepLabel><span class="stepperHeading">Personal details</span></ng-template>
 
-  <mat-horizontal-stepper labelPosition="bottom" #stepper class="p-2">
-    <form [formGroup]="UserForm" class="form">
-      <mat-step [completed]="false">
-        <ng-template matStepLabel><span class="stepperHeading">Personal details</span></ng-template>
+      <div class="myform-field">
+        <label for="name">Name</label>
+        <input type="text" formControlName="name" placeholder="Enter Name" class="form-control" id="name">
+      </div>
 
-        <div class="myform-field">
-          <label for="name">Name</label>
-          <input type="text" formControlName="name" placeholder="Enter Name" class="form-control" id="name">
-        </div>
+      <div class="myform-field">
+        <label for="userName">User Name</label>
+        <input type="text" formControlName="userName" placeholder="Enter User Name" class="form-control" id="userName">
+      </div>
 
-        <div class="myform-field">
-          <label for="userName">User Name</label>
-          <input type="text" formControlName="userName" placeholder="Enter User Name" class="form-control"
-            id="userName">
-        </div>
+      <div class="myform-field">
+        <label for="mailId">Email</label>
+        <input id="mailId" formControlName="mailId" type="email" placeholder="Enter Email" class="form-control">
+      </div>
+      <div class="myform-field">
+        <label for="mobile">Phone No</label>
+        <input id="mobile" formControlName="mobile" type="email" placeholder="Enter Phone Number" class="form-control">
+      </div>
 
-        <div class="myform-field">
-          <label for="mailId">Email</label>
-          <input id="mailId" formControlName="mailId" type="email" placeholder="Enter Email" class="form-control">
-        </div>
-        <div class="myform-field">
-          <label for="mobile">Phone No</label>
-          <input id="mobile" formControlName="mobile" type="email" placeholder="Enter Phone Number"
-            class="form-control">
-        </div>
-
-        <div class="myform-field">
-          <label for="Roles">Role</label>
-          <select disabled formControlName="Roles" placeholder="-- Select --" id="Roles" class="form-control">
-            <option *ngFor="let role of Roles" [value]="role.id">{{ role.roleName }}</option>
-          </select>
-        </div>
+      <div class="myform-field">
+        <label for="Roles">Role</label>
+        <select disabled formControlName="Roles" placeholder="-- Select --" id="Roles" class="form-control">
+          <option *ngFor="let role of Roles" [value]="role.id">{{ role.roleName }}</option>
+        </select>
+      </div>
 
 
-      </mat-step>
-      <mat-step [completed]="false">
-        <ng-template matStepLabel><span class="stepperHeading">Bank account details</span></ng-template>
+    </mat-step>
+    <mat-step [completed]="false">
+      <ng-template matStepLabel><span class="stepperHeading">Bank account details</span></ng-template>
 
-        <div class="myform-field">
-          <label for="AcNo">Account Number</label>
-          <input type="text" formControlName="accountNumber" placeholder="Enter Account Number" class="form-control"
-            id="AcNo">
-        </div>
+      <div class="myform-field">
+        <label for="AcNo">Account Number</label>
+        <input type="text" formControlName="accountNumber" placeholder="Enter Account Number" class="form-control"
+          id="AcNo">
+      </div>
 
-        <div class="myform-field">
-          <label for="Name">Name (as per Bank details)</label>
-          <input type="text" formControlName="nameInBank" placeholder="Enter Name" class="form-control" id="Name">
-        </div>
+      <div class="myform-field">
+        <label for="Name">Name (as per Bank details)</label>
+        <input type="text" formControlName="nameInBank" placeholder="Enter Name" class="form-control" id="Name">
+      </div>
 
-        <div class="myform-field">
-          <label for="IFSC">IFSC Code</label>
-          <input type="text" formControlName="ifscCode" placeholder="Enter IFSC Code" class="form-control" id="IFSC">
-        </div>
+      <div class="myform-field">
+        <label for="IFSC">IFSC Code</label>
+        <input type="text" formControlName="ifscCode" placeholder="Enter IFSC Code" class="form-control" id="IFSC">
+      </div>
 
-        <div class="myform-field">
-          <label for="BankName">Bank Name</label>
-          <input type="text" formControlName="bankName" placeholder="BankName" class="form-control" id="BankName">
-        </div>
+      <div class="myform-field">
+        <label for="BankName">Bank Name</label>
+        <input type="text" formControlName="bankName" placeholder="BankName" class="form-control" id="BankName">
+      </div>
 
-      </mat-step>
-      <mat-step [completed]="false">
-        <ng-template matStepLabel><span class="stepperHeading">Payout split ratio</span></ng-template>
-        <p>Payout split ratio.</p>
-        <!-- <div>
+    </mat-step>
+    <mat-step [completed]="false">
+      <ng-template matStepLabel><span class="stepperHeading">Payout split ratio</span></ng-template>
+      <p>Payout split ratio.</p>
+      <!-- <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
       </div> -->
-      </mat-step>
+    </mat-step>
 
-      <mat-step [completed]="false">
-        <ng-template matStepLabel><span class="stepperHeading">Documents Upload</span></ng-template>
+    <mat-step [completed]="false">
+      <ng-template matStepLabel><span class="stepperHeading">Documents Upload</span></ng-template>
 
-        <div class='padding10'>
-          <div class="d-flex">
-            <input #aadhar type="file" class="d-none" (change)='setFileName()'>
-            <button class='btn btn-link' (click)="aadhar.click()">{{ adharDoc ?  'Click here to choose new Adhar' : 'No Aadhar upload, Click here to choose Adhar'}}</button>
-            <button class='app-button' *ngIf='aadhar.files && aadhar.files.length > 0'
-              (click)="UploadFile('Aadhar', aadhar)">Upload</button>
-            <button *ngIf='adharDoc' class='btn btn-link' (click)="donwloadDocument(adharDoc)">View/Download
-              Adhar</button>
-          </div>
-          <span *ngIf='aadhar.files && aadhar.files.length > 0'> {{ aadhar.files[0].name }}</span>
+      <div class='padding10'>
+        <div class="d-flex">
+          <input #aadhar type="file" class="d-none" (change)='setFileName()'>
+          <button class='btn btn-link'
+            (click)="aadhar.click()">{{ adharDoc ?  'Click here to choose new Adhar' : 'No Aadhar upload, Click here to choose Adhar'}}</button>
+          <button class='app-button' *ngIf='aadhar.files && aadhar.files.length > 0'
+            (click)="UploadFile('Aadhar', aadhar)">Upload</button>
+          <button *ngIf='adharDoc' class='btn btn-link' (click)="donwloadDocument(adharDoc)">View/Download
+            Aadhar</button>
+        </div>
+        <span *ngIf='aadhar.files && aadhar.files.length > 0'> {{ aadhar.files[0].name }}</span>
+
+      </div>
+
+      <div class='padding10'>
+        <div class="d-flex">
+          <input #pan type="file" class="d-none" (change)='setFileName()'>
+          <button class='btn btn-link'
+            (click)="pan.click()">{{ panDoc ? 'Click here to choose new PAN' :  'No PAN, Click here to choose Pan'}}</button>
+          <button *ngIf='pan.files && pan.files.length > 0' class='app-button'
+            (click)="UploadFile('PAN', pan)">Upload</button>
+          <button *ngIf='panDoc' class='btn btn-link' (click)="donwloadDocument(panDoc)">View/Download Pan</button>
 
         </div>
+        <span *ngIf='pan.files && pan.files.length > 0'> {{ pan.files[0].name }}</span>
+      </div>
 
-        <div class='padding10'>
-          <div class="d-flex">
-            <input #pan type="file" class="d-none" (change)='setFileName()'>
-            <button class='btn btn-link' (click)="pan.click()">{{ panDoc ? 'Click here to choose new PAN' :  'No PAN, Click here to choose Pan'}}</button>
-            <button *ngIf='pan.files && pan.files.length > 0' class='app-button'
-              (click)="UploadFile('PAN', pan)">Upload</button>
-            <button *ngIf='panDoc' class='btn btn-link' (click)="donwloadDocument(panDoc)">View/Download Pan</button>
+      <div class='padding10'>
+        <div class="d-flex">
+          <input #chequeleaf type="file" class="d-none" (change)='setFileName()'>
+          <button class='btn btn-link'
+            (click)="chequeleaf.click()">{{ ChequeLeaf ? 'Click here to choose new Cheque Leaf' :  'No Cheque, Click here to choose Cheque Leaf'}}</button>
+          <button *ngIf='chequeleaf.files && chequeleaf.files.length > 0' class='app-button'
+            (click)="UploadFile('ChequeLeaf', chequeleaf)">Upload</button>
+          <button *ngIf='ChequeLeaf' class='btn btn-link' (click)="donwloadDocument(ChequeLeaf)">View/Download Cheque
+            Leaf</button>
 
-          </div>
-          <span *ngIf='pan.files && pan.files.length > 0'> {{ pan.files[0].name }}</span>
         </div>
-      </mat-step>
-    </form>
-  </mat-horizontal-stepper>
+        <span *ngIf='chequeleaf.files && chequeleaf.files.length > 0'> {{ chequeleaf.files[0].name }}</span>
+      </div>
+    </mat-step>
+  </form>
+</mat-horizontal-stepper>
 
-  <div class="justify-content-end pr-2">
-    <button class='app-button' (click)="save()">Submit</button>
-  </div>
-
+<div class="justify-content-end pr-2">
+  <button class='app-button' (click)="save()">Submit</button>
+</div>
