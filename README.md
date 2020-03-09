@@ -81,7 +81,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 1. New user :: Role default option to --Select a role-- --done
 2. User profile :: Add save button call the same submit method --done
-3. Client Side validations :: All forms
+3. Client Side validations :: All forms --done
 4. Footer :: Parent--- Phone and email --done
 5. Tree table :: material and primeNG
 6. KYC Approve :: textbox --> id --> make GetUserDetailsById call--> naviagte to new route "verifyUserKyc" pass this object --> dispaly all user details in new route
