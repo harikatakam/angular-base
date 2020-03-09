@@ -13,9 +13,19 @@
   <div class="footer">
     <div class="d-flex">
       <h3 class='footer-conatc-lable'>Contact Details</h3>
-      <div class="d-flex ml-2" style="align-items: center;">
+      <!-- <div class="d-flex ml-2" style="align-items: center;">
         <mat-icon style="vertical-align: middle;">contact_phone</mat-icon>
         <span style="color: white;" class="ml-1 span-vertical-center"> +91 8899776677</span>
+      </div> -->
+      <div *ngIf="currentUser?.parent != null">
+        <div class="d-flex ml-2">
+          <mat-icon style="vertical-align: middle;">contact_phone</mat-icon>
+          <span class="span-vertical-center white-color">{{currentUser?.mobile}}</span>
+        </div>
+        <div class="d-flex ml-2">
+          <mat-icon style="vertical-align: middle;">email</mat-icon>
+          <span class="span-vertical-center white-color">{{currentUser?.mailId}}</span>
+        </div>
       </div>
     </div>
   </div>

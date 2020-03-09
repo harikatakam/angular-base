@@ -15,13 +15,14 @@ import { SideMenuBarComponent } from "./component/side-menu-bar/side-menu-bar.co
 import { HeaderComponent } from "./component/header/header.component";
 import { DashboardComponent } from "./component/dashboard/dashboard.component";
 import { UserCreationComponent } from "./component/user-creation/user-creation.component";
-import { UserDetailsComponent } from "./user-details/user-details.component";
 import { AgGridModule } from "ag-grid-angular";
 import { TokenInjectorInterceptor } from "./Services/token-injector.interceptor";
 import { ChangePasswordComponent } from "./component/change-password/change-password.component";
 import { PrimeNgWrapperModule } from "./prime-ng-wrapper.module";
-import { UserManagementComponent } from './component/user-management/user-management.component';
-import { KYCApprovalComponent } from './component/kyc-approval/kyc-approval.component';
+import { UserManagementComponent } from "./component/user-management/user-management.component";
+import { KYCApprovalComponent } from "./component/kyc-approval/kyc-approval.component";
+import { UserDetailsComponent } from './component/user-details/user-details.component';
+import { ApproveKYCComponent } from './component/approve-kyc/approve-kyc.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { KYCApprovalComponent } from './component/kyc-approval/kyc-approval.comp
     UserCreationComponent,
     UserDetailsComponent,
     UserManagementComponent,
-    KYCApprovalComponent
+    KYCApprovalComponent,
+    ApproveKYCComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -60,4 +62,4 @@ import { KYCApprovalComponent } from './component/kyc-approval/kyc-approval.comp
   exports: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

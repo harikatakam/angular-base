@@ -1,34 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  FormControl,
-  FormGroupDirective,
-  NgForm
-} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "src/app/Services/user.service";
-import { ErrorStateMatcher } from "@angular/material/core";
-import { MatSnackBar } from "@angular/material/snack-bar";
 import { AlertService } from "src/app/Services/alert.service";
-
-// export class MyErrorStateMatcher implements ErrorStateMatcher {
-//   isErrorState(
-//     control: FormControl | null,
-//     form: FormGroupDirective | NgForm | null
-//   ): boolean {
-//     const isSubmitted = form && form.submitted;
-//     return !!(control && control.invalid && isSubmitted);
-//   }
-
-//   // isErrorState(
-//   //   control: FormControl | null,
-//   //   form: FormGroupDirective | NgForm | null
-//   // ): boolean {
-//   //   const isSubmitted = form && form.submitted;
-//   //   return !!(control && control.invalid && (control.dirty || isSubmitted));
-//   // }
-// }
 
 @Component({
   selector: "app-user-creation",
@@ -37,11 +10,10 @@ import { AlertService } from "src/app/Services/alert.service";
 })
 export class UserCreationComponent implements OnInit {
   UserForm: FormGroup;
-  IsFormSubmitted = false;
   Roles: any = [];
   Users: any = [];
   currentUser: any;
-  // matcher = new MyErrorStateMatcher();
+  submitted = false;
 
   constructor(
     public fb: FormBuilder,
@@ -75,11 +47,11 @@ export class UserCreationComponent implements OnInit {
 
   CreateUserGroup() {
     this.UserForm = this.fb.group({
-      name: [""],
-      userName: [""],
-      mailId: ["", [Validators.email]],
-      mobile: [""],
-      Roles: [],
+      name: ["", Validators.required],
+      userName: ["", Validators.required],
+      mailId: ["", [Validators.email, Validators.required]],
+      mobile: ["", Validators.required],
+      Roles: ["-1", Validators.required],
       CreatedBy: [""],
       status: [1]
     });
@@ -87,12 +59,17 @@ export class UserCreationComponent implements OnInit {
     this.UserForm.get("CreatedBy").setValue(this.currentUser.id);
   }
 
+  get form() {
+    return this.UserForm.controls;
+  }
+
   SaveUser() {
-    if (this.UserForm.valid) {
-      this.CreateUser();
-    } else {
-      this.IsFormSubmitted = true;
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.UserForm.invalid) {
+      return;
     }
+    this.CreateUser();
   }
 
   CreateUser() {

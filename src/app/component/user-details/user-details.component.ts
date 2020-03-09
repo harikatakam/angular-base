@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { UserService } from "../Services/user.service";
-import { AlertService } from "../Services/alert.service";
+import { UserService } from 'src/app/Services/user.service';
+import { AlertService } from 'src/app/Services/alert.service';
 
 @Component({
   selector: "app-user-details",
@@ -12,7 +12,7 @@ import { AlertService } from "../Services/alert.service";
 export class UserDetailsComponent implements OnInit {
   UserForm: FormGroup;
 
-  IsFormSubmitted = false;
+  submitted = false;
   Roles: any = [];
   currentUser;
   adharDoc;
@@ -54,27 +54,34 @@ export class UserDetailsComponent implements OnInit {
       LoginData = {};
     }
     this.UserForm = this.fb.group({
-      id: [LoginData.id],
-      name: [LoginData.name],
-      userName: [LoginData.userName],
-      mailId: [LoginData.mailId],
-      mobile: [LoginData.mobile],
-      Roles: [LoginData.roles[0]],
+      id: [LoginData.id, Validators.required],
+      name: [LoginData.name, Validators.required],
+      userName: [LoginData.userName, Validators.required],
+      mailId: [LoginData.mailId, Validators.required],
+      mobile: [LoginData.mobile, Validators.required],
+      Roles: [LoginData.roles[0], Validators.required],
       // CreatedBy: [LoginData.CreatedBy],
-      accountNumber: [LoginData.bankAccounts[0]?.accountNumber],
+      accountNumber: [
+        LoginData.bankAccounts[0]?.accountNumber,
+        Validators.required
+      ],
       nameInBank: [LoginData.bankAccounts[0]?.nameInBank],
-      ifscCode: [LoginData.bankAccounts[0]?.ifscCode],
+      ifscCode: [LoginData.bankAccounts[0]?.ifscCode, Validators.required],
       bankName: [LoginData.bankAccounts[0]?.bankName],
-      aadhar: [""],
-      Pan: [""]
+      aadhar: ["", Validators.required],
+      Pan: ["", Validators.required]
     });
+  }
+
+  get form() {
+    return this.UserForm.controls;
   }
 
   save() {
     if (this.UserForm.valid) {
       this.UpdateUser();
     } else {
-      this.IsFormSubmitted = true;
+      this.submitted = true;
     }
     console.log(this.UserForm.value);
   }
@@ -127,7 +134,7 @@ export class UserDetailsComponent implements OnInit {
   setFileName() {}
 
   donwloadDocument(doc) {
-    this.userService.getDocument(doc.name).subscribe((details: any) => {
+    this.userService.getDocument(doc.name, this.currentUser.id).subscribe((details: any) => {
       // const data = this.base64ToBlob(details[0].DataAsBase64, "application/" + details[0].fileType);;
       // TODO :: moove downlod doc from bytes to Unitls Service
       // const blob = new Blob([data], {type: "application/" + details[0].fileType});

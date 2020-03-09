@@ -7,28 +7,48 @@
 
       <div class="myform-field">
         <label for="name">Name</label>
-        <input type="text" formControlName="name" placeholder="Enter Name" class="form-control" id="name">
+        <input type="text" formControlName="name" placeholder="Enter Name" class="form-control" id="name"
+          [ngClass]="{ 'is-invalid': submitted && form.name.errors }">
+        <div *ngIf="submitted && form.name.errors" class="invalid-feedback">
+          <div *ngIf="form.name.errors.required">Name is required</div>
+        </div>
       </div>
 
       <div class="myform-field">
         <label for="userName">User Name</label>
-        <input type="text" formControlName="userName" placeholder="Enter User Name" class="form-control" id="userName">
+        <input type="text" formControlName="userName" placeholder="Enter User Name" class="form-control" id="userName"
+          [ngClass]="{ 'is-invalid': submitted && form.userName.errors }">
+        <div *ngIf="submitted && form.userName.errors" class="invalid-feedback">
+          <div *ngIf="form.userName.errors.required">User Name is required</div>
+        </div>
       </div>
 
       <div class="myform-field">
         <label for="mailId">Email</label>
-        <input id="mailId" formControlName="mailId" type="email" placeholder="Enter Email" class="form-control">
+        <input id="mailId" formControlName="mailId" type="email" placeholder="Enter Email" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && form.mailId.errors }">
+        <div *ngIf="submitted && form.mailId.errors" class="invalid-feedback">
+          <div *ngIf="form.mailId.errors.required">Email is required</div>
+        </div>
       </div>
       <div class="myform-field">
         <label for="mobile">Phone No</label>
-        <input id="mobile" formControlName="mobile" type="email" placeholder="Enter Phone Number" class="form-control">
+        <input id="mobile" formControlName="mobile" type="email" placeholder="Enter Phone Number" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && form.mobile.errors }">
+        <div *ngIf="submitted && form.mobile.errors" class="invalid-feedback">
+          <div *ngIf="form.mobile.errors.required">Phone Number is required</div>
+        </div>
       </div>
 
       <div class="myform-field">
         <label for="Roles">Role</label>
-        <select disabled formControlName="Roles" placeholder="-- Select --" id="Roles" class="form-control">
+        <select disabled formControlName="Roles" placeholder="-- Select --" id="Roles" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && form.Roles.errors }">
           <option *ngFor="let role of Roles" [value]="role.id">{{ role.roleName }}</option>
         </select>
+        <div *ngIf="submitted && form.Roles.errors" class="invalid-feedback">
+          <div *ngIf="form.Roles.errors.required">Role is required</div>
+        </div>
       </div>
 
 
@@ -39,7 +59,10 @@
       <div class="myform-field">
         <label for="AcNo">Account Number</label>
         <input type="text" formControlName="accountNumber" placeholder="Enter Account Number" class="form-control"
-          id="AcNo">
+          id="AcNo" [ngClass]="{ 'is-invalid': submitted && form.accountNumber.errors }">
+        <div *ngIf="submitted && form.accountNumber.errors" class="invalid-feedback">
+          <div *ngIf="form.accountNumber.errors.required">Account Number is required</div>
+        </div>
       </div>
 
       <div class="myform-field">
@@ -49,12 +72,20 @@
 
       <div class="myform-field">
         <label for="IFSC">IFSC Code</label>
-        <input type="text" formControlName="ifscCode" placeholder="Enter IFSC Code" class="form-control" id="IFSC">
+        <input type="text" formControlName="ifscCode" placeholder="Enter IFSC Code" class="form-control" id="IFSC"
+          [ngClass]="{ 'is-invalid': submitted && form.ifscCode.errors }">
+        <div *ngIf="submitted && form.ifscCode.errors" class="invalid-feedback">
+          <div *ngIf="form.ifscCode.errors.required">IFSC Code is required</div>
+        </div>
       </div>
 
       <div class="myform-field">
         <label for="BankName">Bank Name</label>
-        <input type="text" formControlName="bankName" placeholder="BankName" class="form-control" id="BankName">
+        <input type="text" formControlName="bankName" placeholder="BankName" class="form-control" id="BankName"
+          [ngClass]="{ 'is-invalid': submitted && form.bankName.errors }">
+        <div *ngIf="submitted && form.bankName.errors" class="invalid-feedback">
+          <div *ngIf="form.bankName.errors.required">Bank Name is required</div>
+        </div>
       </div>
 
     </mat-step>
@@ -114,6 +145,7 @@
   </form>
 </mat-horizontal-stepper>
 
-<div class="justify-content-end pr-2">
+<div class="d-flex justify-content-center pr-2">
+  <button class='app-button' (click)="save()">Save</button>
   <button class='app-button' (click)="save()">Submit</button>
 </div>

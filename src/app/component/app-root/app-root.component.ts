@@ -1,4 +1,5 @@
 import { Component, ViewChild, Renderer2, ElementRef } from "@angular/core";
+import { UserService } from "src/app/Services/user.service";
 
 @Component({
   selector: "app-app-root",
@@ -7,9 +8,18 @@ import { Component, ViewChild, Renderer2, ElementRef } from "@angular/core";
 })
 export class AppRootComponent {
   showMenu = false;
-  constructor(private renderer: Renderer2) {}
+  currentUser;
+  constructor(private renderer: Renderer2, public userService: UserService) {
+    this.SubscribeCurrentUserData();
+  }
 
   ToggleSidePane() {
     this.showMenu = !this.showMenu;
+  }
+
+  SubscribeCurrentUserData() {
+    this.userService.loggedInUserUpdated$.subscribe(
+      user => (this.currentUser = user)
+    );
   }
 }

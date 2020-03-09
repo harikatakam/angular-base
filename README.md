@@ -58,33 +58,30 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 5. after succesfull change password redirecto login --done
 
+1) Add name prop to user db/api and UI --Done
+2) When get all users - all hirarchy with roles -- pending
+3) Change password complete implementation -- Done At API -- done`
+4) doc upload and download full functional -- Done at API -- done
+5) UI - tree table -- Pending
+6) Change user manager mapping
+7) User status -- created, registered and KYC Submitted and KYC approved -- DONE AT API
+8) User active/de active -- API Done
+9) login api pass parent user details along with token -- Done
+10) API to get all master data Roles, Status,..... -Done
+11) Refactor stylings for doc/upload --Done
+12) User active and manager change
+13) When user object changes update it fromm all the pages --Done
+14) Doc upload:: add upload button for cheque leaf image --Done
+15) client side validation for all the forms
+16) Once KYC approved by admin user profile should be readonly. Handle changes via admin intervention.
+17) Admin role :: user kyc verification
+18) App footer:: immediate manager details along with admin contacts
+19) Fix :: when clicking on user icon on top right additional pop over is coming up --Done
+20) Fix:: Update user not working when there are no back details --api
 
-1. Add name prop to user db/api and UI --Done 
-2. When get all users - all hirarchy with roles -- pending
-3. Change password complete implementation -- Done At API -- done`
-4. doc upload and download full functional -- Done at API -- done
-5. UI - tree table -- Pending
-6. Change user manager mapping 
-7. User status -- created, registered and KYC Submitted and KYC approved -- DONE AT API
-8. User active/de active -- API Done
-9. login  api pass parent user details along with token  -- Done
-10. API to get all master data Roles, Status,.....  -Done	
-11. Refactor stylings for doc/upload --Done
-12. User active and manager change 
-13. When user object changes update it fromm all the pages --Done
-14. Doc upload:: add upload button for cheque leaf image --Done
-15. client side validation for all the forms 
-16. Once KYC approved by admin user profile should be readonly. Handle changes via admin intervention.
-17. Admin role :: user kyc verification 
-18. App footer:: immediate manager details along with admin contacts 
-19. Fix :: when clicking on user icon on top right additional pop over is coming up --Done
-20. Fix:: Update user not working when there are no back details --api
-
-
-
-1. New user :: Role default option to --Select a role--
-2. User profile :: Add save button call the same submit method
+1. New user :: Role default option to --Select a role-- --done
+2. User profile :: Add save button call the same submit method --done
 3. Client Side validations :: All forms
-4. Footer :: Parent--- Phone and email
-5. Tree table :: material and primeNG 
-6. KYC Approve :: textbox --> id -->  make GetUserDetailsById call--> naviagte to new route "verifyUserKyc" pass this object --> dispaly all user details in new route
+4. Footer :: Parent--- Phone and email --done
+5. Tree table :: material and primeNG
+6. KYC Approve :: textbox --> id --> make GetUserDetailsById call--> naviagte to new route "verifyUserKyc" pass this object --> dispaly all user details in new route

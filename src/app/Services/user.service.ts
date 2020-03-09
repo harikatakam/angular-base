@@ -30,7 +30,7 @@ export class UserService {
   }
 
   GetUserDetailsById(userId) {
-    return this.httpServie.get("/api/User/GetUserDetailsById" + userId);
+    return this.httpServie.get("/api/User/GetUserDetailsById?userId=" + userId);
   }
 
   logout() {
@@ -67,10 +67,10 @@ export class UserService {
     return this.httpServie.post("/api/User/UploadKYCDocument", fileData);
   }
 
-  getDocument(name) {
+  getDocument(name, userId) {
     return this.httpServie.get(
       "/api/User/GetUserDocuments?userId=" +
-        this.loggedInUser.id +
+        userId +
         "&documentName=" +
         name
     );

@@ -1,1 +1,4 @@
-<h3>KYC Approvals</h3>
+<input *ngIf = 'true' type="text" class="form-control" [(ngModel)]="UserId" />
+
+<br>
+<button class="app-button" (click)="GetUserData()"> Get User Data & Approve</button>

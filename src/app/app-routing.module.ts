@@ -5,10 +5,11 @@ import { LoginComponent } from "./component/login/login.component";
 import { DashboardComponent } from "./component/dashboard/dashboard.component";
 import { UserCreationComponent } from "./component/user-creation/user-creation.component";
 import { AuthGuard } from "./Services/auth.guard";
-import { UserDetailsComponent } from "./user-details/user-details.component";
+import { UserDetailsComponent } from "./component/user-details/user-details.component";
 import { ChangePasswordComponent } from "./component/change-password/change-password.component";
 import { UserManagementComponent } from "./component/user-management/user-management.component";
 import { KYCApprovalComponent } from "./component/kyc-approval/kyc-approval.component";
+import { ApproveKYCComponent } from "./component/approve-kyc/approve-kyc.component";
 
 const routes: Routes = [
   {
@@ -21,14 +22,15 @@ const routes: Routes = [
       { path: "UserDetails", component: UserDetailsComponent },
       { path: "changePassword", component: ChangePasswordComponent },
       { path: "manageUsers", component: UserManagementComponent },
-      { path: "kycApproval", component: KYCApprovalComponent }
+      { path: "kycApproval", component: KYCApprovalComponent },
+      { path: "approveKyc", component: ApproveKYCComponent }
     ]
   },
   { path: "login", component: LoginComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot(routes)],
+  exports: [ RouterModule]
 })
 export class AppRoutingModule {}
