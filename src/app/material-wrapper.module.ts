@@ -17,40 +17,28 @@ import { MatInputModule } from "@angular/material/input";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatMenuModule } from "@angular/material/menu";
+import { MatDialogModule } from "@angular/material/dialog";
+
+const modules = [
+  MdePopoverModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  LayoutModule,
+  MatFormFieldModule,
+  MatButtonModule,
+  MatIconModule,
+  MatListModule,
+  MatCardModule,
+  MatStepperModule,
+  MatInputModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSnackBarModule,
+  MatMenuModule,
+  MatDialogModule
+]
 @NgModule({
-  imports: [
-    MdePopoverModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    LayoutModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
-    MatStepperModule,
-    MatInputModule,
-    MatRadioModule,
-    MatSelectModule,
-    MatSnackBarModule,
-    MatMenuModule
-  ],
-  exports: [
-    MdePopoverModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    LayoutModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
-    MatStepperModule,
-    MatInputModule,
-    MatRadioModule,
-    MatSelectModule,
-    MatSnackBarModule,
-    MatMenuModule
-  ]
+  imports: modules,
+  exports: modules
 })
 export class MatWrapperModule {}

@@ -11,4 +11,26 @@
       Change Manager
       </button>
   </div>
+
+  <ng-template #managerAssignDialog>
+   <div class="d-flex flex-column h-100" style="justify-content: space-between;">
+    <span class='page-title'> Choose new manager </span>
+
+    <div class="d-flex">
+      <label style = 'flex-basis: 30%;'
+      for="Roles">Manager</label>
+      <select style = 'flex-basis: 70%;' #manager id="Roles" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && form.Roles.errors }">
+        <option value="-1">-- Select a Manager --</option>
+        <option *ngFor="let manager of managers" [value]="manager.id">{{manager.name}}</option>
+      </select>
+    </div>
+
+    <!-- <mat-select class="pt-2 pb-2" #manager>
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let manager of managers" [value]="manager.id">{{manager.name}}</mat-option>
+    </mat-select> -->
+    <button class="app-button" (click) = "dialogRef.close(manager.value)">Update</button>
+   </div>
+  </ng-template>
 </div>
