@@ -16,16 +16,13 @@ const routes: Routes = [
     children: [
       { path: "Dashboard", component: DashboardComponent },
       { path: "User", component: UserCreationComponent },
-      { path: "UserDetails", component: UserDetailsComponent }
+      { path: "UserDetails", component: UserDetailsComponent },
+      { path: "changePassword", component: ChangePasswordComponent },
+      { path: '**', redirectTo: "/Dashboard" }
     ]
   }, // , canActivate: [AuthGuard]
   { path: "login", component: LoginComponent },
-  { path: "changePassword", component: ChangePasswordComponent }
-  // { path: 'Dashboard', component: DashboardComponent },
-  // { path: 'User', component: UserCreationComponent },
-  // { path: 'UserDetails', component: UserDetailsComponent },
-  // // otherwise redirect to home
-  // { path: '**', redirectTo: '' }
+
 ];
 
 @NgModule({

@@ -1,0 +1,55 @@
+.header1-layout {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 70px;
+}
+
+.layout-container {
+  height: 100%;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.layout-top {
+  top: 70px !important;
+}
+
+.layout-sidemenu {
+  top: 70px !important;
+  height: calc(100% - 70px) !important;
+  overflow-y: auto;
+  width: 300px;
+  border-right: 1px solid #0000002e;
+}
+
+@media only screen and (min-width: 0px) {
+  // @import "xsmall";
+}
+
+@media only screen and (max-width: 599px) {
+  .layout-sidemenu {
+    top: 100px;
+    left: -300px !important;
+    z-index: 9999;
+  }
+}
+.layout-sidemenu .active {
+  transition: left 0.2s;
+  z-index: 9999;
+}
+
+.content {
+  margin-top: 70px !important;
+  margin-left: 300px !important;
+}
+
+@media only screen and (max-width: 599px) {
+  .content {
+    margin-top: 70px !important;
+    margin-left: 0px !important;
+  }
+}

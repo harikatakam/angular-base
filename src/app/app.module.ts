@@ -19,6 +19,7 @@ import { UserDetailsComponent } from "./user-details/user-details.component";
 import { AgGridModule } from "ag-grid-angular";
 import { TokenInjectorInterceptor } from "./Services/token-injector.interceptor";
 import { ChangePasswordComponent } from "./component/change-password/change-password.component";
+import { PrimeNgWrapperModule } from './prime-ng-wrapper.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ChangePasswordComponent } from "./component/change-password/change-pass
     BrowserModule,
     CommonModule,
     MatWrapperModule,
+    PrimeNgWrapperModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,

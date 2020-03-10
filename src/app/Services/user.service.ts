@@ -43,10 +43,23 @@ export class UserService {
   }
 
   getUserRoles() {
-    return this.httpServie.get("/api/User/GetRoles");
+    return this.httpServie.get("/api/User/GetMasterData");
   }
 
   changePassword(UserData: any) {
     return this.httpServie.post("/api/User/ChangePassword", UserData);
+  }
+
+  uploadDocuments(fileData: any) {
+    return this.httpServie.post("/api/User/UploadKYCDocument", fileData);
+  }
+
+  getDocument(name) {
+    return this.httpServie.get(
+      "/api/User/GetUserDocuments?userId=" +
+        this.loggedInUser.Id +
+        "&documentName=" +
+        name
+    );
   }
 }

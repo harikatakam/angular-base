@@ -10,6 +10,7 @@
 
 body {
   margin: 0px !important;
+  font-size: 12px;;
 }
 
 .bgcolor {
@@ -48,7 +49,7 @@ mat-toolbar {
   flex: 0.3 !important;
 }
 
-.flex07{
+.flex07 {
   flex: 0.7 !important;
 }
 
@@ -83,7 +84,7 @@ mat-toolbar {
   padding-top: 10px !important;
 }
 
-.padding10{
+.padding10 {
   padding: 10px !important;
 }
 
@@ -91,7 +92,7 @@ mat-toolbar {
   background: $background-color;
   color: white;
   padding: 0.5rem;
-  border-radius: .2rem;;
+  border-radius: 0.2rem;
   &:hover {
     // opacity: 0.8;
     // font-weight: bold;
@@ -108,49 +109,26 @@ mat-toolbar {
   font-weight: bold;
 }
 
+.page-title::after {
+  content: "";
+  display: block;
+  margin-bottom: 20px;
+  height: 3px;
+  background: #ffab00;
+  margin-top: 4px !important;
+}
+
 .margin-top5 {
   margin-top: 5px !important;
 }
 
-@media only screen and (min-width: 0px) {
-  .grid-style {
-    display: grid;
-    grid-template-columns: 0% 100% 0%;
-  }
+.page-content {
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  background: #fff;
 }
-
-@media only screen and (min-width: 576px) {
-  .grid-style {
-    display: grid;
-    grid-template-columns: 1% 98% 1%;
-  }
-}
-
-//64em is also 1028px (if basefont is 16px)
-@media only screen and (min-width: 768px) {
-  .grid-style {
-    display: grid;
-    grid-template-columns: 10% 80% 10%;
-  }
-}
-
-//35em is also 560px (if basefont is 16px)
-@media only screen and (min-width: 992px) {
-  .grid-style {
-    display: grid;
-    grid-template-columns: 25% 50% 25%;
-  }
-}
-
-//64em is also 1028px (if basefont is 16px)
-@media only screen and (min-width: 1200px) {
-  .grid-style {
-    display: grid;
-    grid-template-columns: 25% 50% 25%;
-  }
-}
-
-
 
 .header {
   background-color: $background-color;
@@ -160,4 +138,36 @@ mat-toolbar {
   font-weight: bold;
   border-radius: 8px 8px 0px 0px;
   font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 510px) {
+  .myform-field {
+    flex-direction: column;
+    max-width: none !important;
+    label {
+      width: 100% !important;
+  }
+
+    input,
+    select {
+      width: 100% !important;
+  }
+  }
+}
+
+.myform-field {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  margin: 0.5rem;
+  label {
+    width: 40%;
+    margin-bottom: 2px;
+  }
+
+  input,
+  select {
+    width: 60%;
+    padding: 0.375rem 0.75rem;
+  }
 }
