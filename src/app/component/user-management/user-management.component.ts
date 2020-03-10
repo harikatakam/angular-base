@@ -7,6 +7,8 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA
 } from "@angular/material/dialog";
+import { NodeService } from './node.service';
+import { TreeNode } from 'primeng/api/treenode';
 
 @Component({
   selector: "app-user-management",
@@ -21,13 +23,28 @@ export class UserManagementComponent implements OnInit {
   activeUsersCount;
   inActiveUsersCount;
 
+
+  data: TreeNode[];
+
+  cols: any[];
+
   constructor(
     private userService: UserService,
     public masterData: MasterData,
-    public dialog: MatDialog
-  ) {}
+    public dialog: MatDialog,
+    private nodeService: NodeService
+  ) { }
   ngOnInit() {
     this.getUsers();
+
+    this.nodeService.getFilesystem().then(files => this.data = files);
+
+    this.cols = [
+      { field: 'name', header: 'Name' },
+      { field: 'size', header: 'Size' },
+      { field: 'type', header: 'Type' }
+    ];
+
   }
 
   getUsers() {
@@ -67,9 +84,13 @@ export class UserManagementComponent implements OnInit {
         return;
       }
 
-      this.userService.changeUserManager(user.id, result).subscribe(()=> {
+      this.userService.changeUserManager(user.id, result).subscribe(() => {
         this.getUsers();
       });
     });
   }
+
+
+
+
 }

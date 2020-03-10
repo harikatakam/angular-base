@@ -33,6 +33,28 @@
     </button>
   </div>
 
+  <div class="mt-5">
+    <p-treeTable [value]="data">
+      <ng-template pTemplate="header">
+        <tr class="bgColor">
+          <th>Name</th>
+          <th>Size</th>
+          <th>Type</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+        <tr [ttRow]="rowNode">
+          <td>
+            <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+            {{rowData.name}}
+          </td>
+          <td>{{rowData.size}}</td>
+          <td>{{rowData.type}}</td>
+        </tr>
+      </ng-template>
+    </p-treeTable>
+  </div>
+
   <ng-template #managerAssignDialog>
     <div class="d-flex flex-column h-100" style="justify-content: space-between;">
       <span class='page-title'> Choose new manager </span>
