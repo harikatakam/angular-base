@@ -86,10 +86,10 @@ export class UserService {
     );
   }
 
-  setActiveStatus(activeStatus) {
+  setActiveStatus(userId, activeStatus) {
     return this.httpServie.get(
       "/api/User/ChangeUserActivation?UserId=" +
-        this.loggedInUser.id +
+      userId +
         "&IsActive=" +
         activeStatus
     );
@@ -101,6 +101,15 @@ export class UserService {
         userId +
         "&Status=" +
         status
+    );
+  }
+
+  changeUserManager(UserId, managerId) {
+    return this.httpServie.get(
+      "/api/User/ChangeUserManager?UserId=" +
+      UserId +
+        "&managerId=" +
+        managerId
     );
   }
 }
