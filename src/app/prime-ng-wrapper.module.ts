@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
-import {TreeTableModule} from 'primeng/treetable';
-import {TreeNode} from 'primeng/api';
+import {TreeTableModule} from "primeng/treetable";
 
 @NgModule({
   imports: [
