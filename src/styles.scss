@@ -21,19 +21,19 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
+  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: gray; 
+  background: gray;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: gray; 
+  background: gray;
 }
 
 .bgcolor {
@@ -247,6 +247,12 @@ mat-toolbar {
     font-size: 30px;
     font-weight: bolder;
   }
+}
+
+.mat-snack-bar-container {
+  color: rgba(255,255,255,.7);
+  // background: #0f2862;
+  background: $secondary-background-color;
 }
 
 

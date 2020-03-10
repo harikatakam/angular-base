@@ -1,4 +1,6 @@
+@import "./variables.scss";
+
 .ag-header {
-  background-color: $background-color !important;
+  background-color: $secondary-background-color !important;
   color: white !important;
 }
