@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "src/app/Services/user.service";
+import { MasterData } from "src/app/Services/masterdata.service";
 
 @Component({
   selector: "app-dashboard",
@@ -21,11 +22,21 @@ export class DashboardComponent implements OnInit {
 
   rowData;
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    public masterData: MasterData
+  ) {}
 
   ngOnInit(): void {
-    this.userService.getAllUsersCreatedByLoggedInUser().subscribe(users => {
-      this.rowData = users;
-    });
+    this.userService
+      .getAllUsersCreatedByLoggedInUser()
+      .subscribe((users: any) => {
+        this.rowData = users.map(u => {
+          u.role = this.masterData.data.roles.find(
+            s => s.id === u.roles[0]
+          ).roleName;
+          return u;
+        });
+      });
   }
 }

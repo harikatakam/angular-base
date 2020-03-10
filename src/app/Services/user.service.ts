@@ -59,6 +59,10 @@ export class UserService {
     return this.httpServie.get("/api/User/GetMasterData");
   }
 
+  getMasterData() {
+    return this.httpServie.get("/api/User/GetMasterData");
+  }
+
   changePassword(UserData: any) {
     return this.httpServie.post("/api/User/ChangePassword", UserData);
   }

@@ -1,4 +1,4 @@
-<div *ngIf="UserInfo">
+<fieldset disabled *ngIf="UserInfo">
   <h4>User Details</h4>
   <div class="myform-field">
     <label for="name">Name</label>
@@ -22,7 +22,7 @@
 
   <div class="myform-field">
     <label for="name">Role</label>
-    <input type="text" value="{{UserInfo?.roles[0]}}" class="form-control" />
+    <input type="text" value="{{UserInfo?.role}}" class="form-control" />
   </div>
 
   <h4>Bank Details</h4>
@@ -40,22 +40,21 @@
     <label for="name">IFSC Code</label>
     <input type="text" value="{{UserInfo?.bankAccounts[0]?.ifscCode}}" class="form-control" />
   </div>
+</fieldset>
+<h4>Documents</h4>
 
-  <h4>Documents</h4>
-
-  <div *ngFor="let doc of UserInfo?.documents">
-    <button class='btn btn-link' (click)="donwloadDocument(doc)">View/Download {{doc?.name}}
-    </button>
-  </div>
+<div *ngFor="let doc of UserInfo?.documents">
+  <button class='btn btn-link' (click)="donwloadDocument(doc)">View/Download {{doc?.name}}
+  </button>
+</div>
 
 
-  <div class="d-flex justify-content-end">
-    <button class="app-button" (click)='updateUserStatus(5)'>
-      Reject
-    </button>
-    <button class="ml-2 app-button" (click)='updateUserStatus(4)'>
-      Approve
-    </button>
-  </div>
 
+<div class="d-flex justify-content-end">
+  <button class="app-button" (click)='updateUserStatus(5)'>
+    Reject
+  </button>
+  <button class="ml-2 app-button" (click)='updateUserStatus(4)'>
+    Approve
+  </button>
 </div>

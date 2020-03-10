@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UserService } from "src/app/Services/user.service";
 import { AlertService } from 'src/app/Services/alert.service';
 import { Router } from '@angular/router';
+import { MasterData } from 'src/app/Services/masterdata.service';
 
 @Component({
   selector: "app-approve-kyc",
@@ -11,7 +12,8 @@ import { Router } from '@angular/router';
 export class ApproveKYCComponent implements OnInit {
   UserInfo: any;
 
-  constructor(public userService: UserService, public router: Router, public alert: AlertService) {}
+  constructor(public userService: UserService, public router: Router, public alert: AlertService
+    ,public masterData: MasterData) {}
 
   ngOnInit(): void {
     this.GetUserData();
@@ -20,6 +22,9 @@ export class ApproveKYCComponent implements OnInit {
   GetUserData() {
     this.userService.GetUserDetailsById(1002).subscribe((val: any) => {
       this.UserInfo = val;
+      this.UserInfo.role = this.masterData.data.roles.find(
+        s => s.id === this.UserInfo.roles[0]
+      ).roleName;
     });
   }
 
