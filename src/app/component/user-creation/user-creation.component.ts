@@ -25,7 +25,6 @@ export class UserCreationComponent implements OnInit {
 
   SubscribeUserData() {
     this.userService.loggedInUserUpdated$.subscribe((user: any) => {
-      console.log(user);
       this.currentUser = user;
       this.GetUserRoles();
       this.CreateUserGroup();

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { UserService } from 'src/app/Services/user.service';
-import { AlertService } from 'src/app/Services/alert.service';
+import { UserService } from "src/app/Services/user.service";
+import { AlertService } from "src/app/Services/alert.service";
 
 @Component({
   selector: "app-user-details",
@@ -31,7 +31,6 @@ export class UserDetailsComponent implements OnInit {
 
   SubsribeCurrentUserData() {
     this.userService.loggedInUserUpdated$.subscribe((user: any) => {
-      console.log(user);
       this.currentUser = user;
       this.GetUserRoles();
       this.CreateBankForm(user);
@@ -83,7 +82,6 @@ export class UserDetailsComponent implements OnInit {
     } else {
       this.submitted = true;
     }
-    console.log(this.UserForm.value);
   }
 
   UpdateUser() {
@@ -125,7 +123,6 @@ export class UserDetailsComponent implements OnInit {
     reader.onload = () => {
       formData.append("DataAsBase64", reader.result.toString());
       this.userService.uploadDocuments(formData).subscribe(res => {
-        console.log("Uploaded successfully");
       });
     };
     reader.readAsDataURL(file);
@@ -152,17 +149,17 @@ export class UserDetailsComponent implements OnInit {
   }
 
   public base64ToBlob(b64Data, contentType = "", sliceSize = 512) {
-    b64Data = b64Data.replace(/\s/g, ""); //IE compatibility...
-    let byteCharacters = atob(b64Data);
-    let byteArrays = [];
+    b64Data = b64Data.replace(/\s/g, ""); // IE compatibility...
+    const byteCharacters = atob(b64Data);
+    const byteArrays = [];
     for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-      let slice = byteCharacters.slice(offset, offset + sliceSize);
+      const slice = byteCharacters.slice(offset, offset + sliceSize);
 
-      let byteNumbers = new Array(slice.length);
-      for (var i = 0; i < slice.length; i++) {
+      const byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
         byteNumbers[i] = slice.charCodeAt(i);
       }
-      let byteArray = new Uint8Array(byteNumbers);
+      const byteArray = new Uint8Array(byteNumbers);
       byteArrays.push(byteArray);
     }
     return new Blob(byteArrays, { type: contentType });

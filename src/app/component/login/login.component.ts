@@ -69,7 +69,6 @@ export class LoginComponent implements OnInit {
           this.loading = false;
 
           this.userService.storeUserTokenandDetails(userDetails);
-          console.log(this.currentUser);
           if (this.currentUser.IsPasswordChangeRequired) {
             this.router.navigateByUrl("changePassword");
           } else {

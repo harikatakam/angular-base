@@ -67,7 +67,6 @@ export class ChangePasswordComponent implements OnInit {
     const UserData: any = this.PasswordForm.value;
     delete UserData.confirmPassword;
     UserData.Id = this.currentUser.Id;
-    console.log(this.currentUser);
     this.userSrvc.changePassword(UserData).subscribe((val: any) => {
       this.alert.SuccesMessageAlert("Password Changed Sucessfully", "Close");
       this.router.navigateByUrl("login");

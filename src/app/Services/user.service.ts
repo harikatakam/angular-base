@@ -45,7 +45,6 @@ export class UserService {
   setLoggedinUser(token) {
     const tokenDecoded = jwt_decode(token);
     this.loggedInUser = JSON.parse(tokenDecoded.user);
-    console.log(this.loggedInUser);
     this.loggedInUserUpdated$.next(this.loggedInUser);
   }
 
