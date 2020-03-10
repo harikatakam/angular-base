@@ -68,8 +68,8 @@ export class UserDetailsComponent implements OnInit {
       nameInBank: [LoginData.bankAccounts[0]?.nameInBank],
       ifscCode: [LoginData.bankAccounts[0]?.ifscCode, Validators.required],
       bankName: [LoginData.bankAccounts[0]?.bankName],
-      aadhar: ["", Validators.required],
-      Pan: ["", Validators.required]
+      aadhar: [""],
+      Pan: [""]
     });
   }
 
@@ -77,7 +77,7 @@ export class UserDetailsComponent implements OnInit {
     return this.UserForm.controls;
   }
 
-  save() {
+  submit() {
     if (this.UserForm.valid) {
       this.UpdateUser();
     } else {

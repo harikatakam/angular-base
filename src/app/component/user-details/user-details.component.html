@@ -146,6 +146,6 @@
 </mat-horizontal-stepper>
 
 <div class="d-flex justify-content-center pr-2">
-  <button class='app-button' (click)="save()">Save</button>
-  <button class='app-button' (click)="save()">Submit</button>
+  <button class='app-button' (click)="UpdateUser()">Save</button>
+  <button class='app-button' [disabled] = '!UserForm?.valid' (click)="submit()">Submit</button>
 </div>
