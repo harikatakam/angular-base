@@ -18,6 +18,8 @@ export class UserManagementComponent implements OnInit {
   managers;
   dialogRef;
   @ViewChild("managerAssignDialog") managerAssignDialog;
+  activeUsersCount;
+  inActiveUsersCount;
 
   constructor(
     private userService: UserService,
@@ -34,7 +36,8 @@ export class UserManagementComponent implements OnInit {
           ).roleName;
           return u;
         });
-
+        this.activeUsersCount = users.filter(u => u.isActive).length;
+        this.inActiveUsersCount = users.length - this.activeUsersCount;
       });
   }
 
@@ -45,7 +48,9 @@ export class UserManagementComponent implements OnInit {
   }
 
   changeManager(user) {
-    this.managers = this.users.filter(u => u.roles[0] !== 5 && u.id !== user.id);
+    this.managers = this.users.filter(
+      u => u.roles[0] !== 5 && u.id !== user.id
+    );
     this.dialogRef = this.dialog.open(this.managerAssignDialog, {
       height: "250px",
       width: "350px"
