@@ -13,16 +13,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { SideMenuBarComponent } from "./component/side-menu-bar/side-menu-bar.component";
 import { HeaderComponent } from "./component/header/header.component";
-import { DashboardComponent } from "./component/dashboard/dashboard.component";
-import { UserCreationComponent } from "./component/user-creation/user-creation.component";
 import { AgGridModule } from "ag-grid-angular";
 import { TokenInjectorInterceptor } from "./Services/token-injector.interceptor";
 import { ChangePasswordComponent } from "./component/change-password/change-password.component";
 import { PrimeNgWrapperModule } from "./prime-ng-wrapper.module";
-import { UserManagementComponent } from "./component/user-management/user-management.component";
-import { KYCApprovalComponent } from "./component/kyc-approval/kyc-approval.component";
-import { UserDetailsComponent } from './component/user-details/user-details.component';
-import { ApproveKYCComponent } from './component/approve-kyc/approve-kyc.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +26,6 @@ import { ApproveKYCComponent } from './component/approve-kyc/approve-kyc.compone
     LoginComponent,
     SideMenuBarComponent,
     HeaderComponent,
-    DashboardComponent,
-    UserCreationComponent,
-    UserDetailsComponent,
-    UserManagementComponent,
-    KYCApprovalComponent,
-    ApproveKYCComponent
   ],
   imports: [
     BrowserAnimationsModule,

@@ -1,4 +1,4 @@
-import { Component, ViewChild, Renderer2, ElementRef } from "@angular/core";
+import { Component, Renderer2 } from "@angular/core";
 import { UserService } from "src/app/Services/user.service";
 
 @Component({
