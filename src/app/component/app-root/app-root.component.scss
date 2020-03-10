@@ -9,21 +9,21 @@
 }
 
 .content {
-  margin-top: 60px !important;
+ //  margin-top: 60px !important;
   margin-left: 230px !important;
   height: calc(100%) !important;
 }
 
 .footer {
   background-color: $background-color;
-  height: 100px;
+  height: 90px;
   color: white;
   padding: 10px;
 }
 
 @media only screen and (max-width: 900px) {
   .content {
-    margin-top: 60px !important;
+    // margin-top: 60px !important;
     margin-left: 0px !important;
   }
 }
