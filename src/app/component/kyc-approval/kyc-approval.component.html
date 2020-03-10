@@ -1,4 +1,14 @@
-<input *ngIf = 'true' type="text" class="form-control" [(ngModel)]="UserId" />
+<!-- <input *ngIf = 'true' type="text" class="form-control" [(ngModel)]="UserId" />
 
 <br>
-<button class="app-button" (click)="GetUserData()"> Get User Data & Approve</button>
+<button class="app-button" (click)="GetUserData()"> Get User Data & Approve</button> -->
+
+<div >
+  <div class="d-flex" style="justify-content: space-between;" *ngFor ='let user of users'>
+    <span style="flex-basis: 20%;"> {{ user.name}}</span>
+    <span style="flex-basis: 20%;"> {{ user.mailId}}</span>
+    <span style="flex-basis: 20%;"> {{ user.userName}}</span>
+    <span style="flex-basis: 20%;"> {{ user.mobile}}</span>
+    <button style="flex-basis: 20%;" class="app-button" (click) = 'viewUserDetails(user)'>View details</button>
+  </div>
+</div>

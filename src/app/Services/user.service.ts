@@ -55,6 +55,12 @@ export class UserService {
     );
   }
 
+  getAllKycPendingUsers() {
+    return this.httpServie.get(
+      "/api/User/GetAllKycPendingUsers"
+    );
+  }
+
   getUserRoles() {
     return this.httpServie.get("/api/User/GetMasterData");
   }

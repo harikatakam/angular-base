@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "src/app/Services/user.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-kyc-approval",
@@ -8,19 +9,21 @@ import { UserService } from "src/app/Services/user.service";
 })
 export class KYCApprovalComponent implements OnInit {
   UserInfo: any;
-  constructor(public userSrvc: UserService) {
+  constructor(public userSrvc: UserService, public router: Router) {}
 
-  }
-
-  UserId: any;
+  users: any;
 
   ngOnInit(): void {
-    this.GetUserData();
+    this.GetUsersData();
   }
 
-  GetUserData() {
-    this.userSrvc.GetUserDetailsById(this.UserId).subscribe((val: any) => {
-      this.UserInfo = val;
+  GetUsersData() {
+    this.userSrvc.getAllKycPendingUsers().subscribe(users => {
+      this.users = users;
     });
+  }
+
+  viewUserDetails(user) {
+    this.router.navigate(["approveKyc", user.id]);
   }
 }

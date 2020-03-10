@@ -23,7 +23,7 @@ const routes: Routes = [
       { path: "changePassword", component: ChangePasswordComponent },
       { path: "manageUsers", component: UserManagementComponent },
       { path: "kycApproval", component: KYCApprovalComponent },
-      { path: "approveKyc", component: ApproveKYCComponent }
+      { path: "approveKyc/:id", component: ApproveKYCComponent }
     ]
   },
   { path: "login", component: LoginComponent }
