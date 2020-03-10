@@ -27,6 +27,10 @@ export class UserManagementComponent implements OnInit {
     public dialog: MatDialog
   ) {}
   ngOnInit() {
+    this.getUsers();
+  }
+
+  getUsers() {
     this.userService
       .getAllUsersCreatedByLoggedInUser()
       .subscribe((users: any) => {
@@ -44,7 +48,9 @@ export class UserManagementComponent implements OnInit {
   changeActivation(user) {
     this.userService
       .setActiveStatus(user.id, !user.isActive)
-      .subscribe(() => {});
+      .subscribe(() => {
+        this.getUsers();
+      });
   }
 
   changeManager(user) {
@@ -61,7 +67,9 @@ export class UserManagementComponent implements OnInit {
         return;
       }
 
-      this.userService.changeUserManager(user.id, result).subscribe();
+      this.userService.changeUserManager(user.id, result).subscribe(()=> {
+        this.getUsers();
+      });
     });
   }
 }
