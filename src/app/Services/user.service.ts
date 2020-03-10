@@ -84,4 +84,13 @@ export class UserService {
         activeStatus
     );
   }
+
+  changeUserStatus(userId, status) {
+    return this.httpServie.get(
+      "/api/User/ChangeUserStatus?UserId=" +
+        userId +
+        "&Status=" +
+        status
+    );
+  }
 }

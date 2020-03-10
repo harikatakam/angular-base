@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "src/app/Services/user.service";
+import { AlertService } from 'src/app/Services/alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-approve-kyc",
@@ -9,7 +11,7 @@ import { UserService } from "src/app/Services/user.service";
 export class ApproveKYCComponent implements OnInit {
   UserInfo: any;
 
-  constructor(public userService: UserService) {}
+  constructor(public userService: UserService, public router: Router, public alert: AlertService) {}
 
   ngOnInit(): void {
     this.GetUserData();
@@ -51,5 +53,12 @@ export class ApproveKYCComponent implements OnInit {
       byteArrays.push(byteArray);
     }
     return new Blob(byteArrays, { type: contentType });
+  }
+
+  public updateUserStatus(status) {
+    this.userService.changeUserStatus(this.UserInfo.id, status).subscribe(result => {
+      this.alert.SuccesMessageAlert("User Updated Succesfully", "Close");
+      this.router.navigateByUrl("/kycApproval");
+    });
   }
 }

@@ -1,4 +1,4 @@
- <div *ngIf="UserInfo">
+<div *ngIf="UserInfo">
   <h4>User Details</h4>
   <div class="myform-field">
     <label for="name">Name</label>
@@ -49,11 +49,13 @@
   </div>
 
 
-  <div class="justify-content-end">
-    <button class="app-button">
+  <div class="d-flex justify-content-end">
+    <button class="app-button" (click)='updateUserStatus(5)'>
+      Reject
+    </button>
+    <button class="ml-2 app-button" (click)='updateUserStatus(4)'>
       Approve
     </button>
   </div>
 
 </div>
-
