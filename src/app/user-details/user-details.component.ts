@@ -31,11 +31,11 @@ export class UserDetailsComponent implements OnInit {
     this.userService
       .getUserRoles()
       .subscribe((data: any) => (this.Roles = data.roles));
-    this.adharDoc = this.userService.loggedInUser.Documents.find(
-      d => d.Name === "Aadhar"
+    this.adharDoc = this.userService.loggedInUser.documents.find(
+      d => d.name === "Aadhar"
     );
-    this.panDoc = this.userService.loggedInUser.Documents.find(
-      d => d.Name === "PAN"
+    this.panDoc = this.userService.loggedInUser.documents.find(
+      d => d.name === "PAN"
     );
   }
 
@@ -44,17 +44,17 @@ export class UserDetailsComponent implements OnInit {
       LoginData = {};
     }
     this.UserForm = this.fb.group({
-      Id: [LoginData.Id],
-      name: [LoginData.Name],
-      userName: [LoginData.UserName],
-      mailId: [LoginData.MailId],
-      mobile: [LoginData.Mobile],
-      Roles: [LoginData.Roles[0]],
+      Id: [LoginData.id],
+      name: [LoginData.name],
+      userName: [LoginData.userName],
+      mailId: [LoginData.mailId],
+      mobile: [LoginData.mobile],
+      Roles: [LoginData.roles[0]],
       // CreatedBy: [LoginData.CreatedBy],
-      AccountNumber: [LoginData.BankAccounts[0]?.AccountNumber],
-      NameInBank: [LoginData.BankAccounts[0]?.NameInBank],
-      IFSCCode: [LoginData.BankAccounts[0]?.IFSCCode],
-      BankName: [LoginData.BankAccounts[0]?.BankName],
+      AccountNumber: [LoginData.bankAccounts[0]?.accountNumber],
+      NameInBank: [LoginData.bankAccounts[0]?.nameInBank],
+      IFSCCode: [LoginData.bankAccounts[0]?.ifscCode],
+      BankName: [LoginData.bankAccounts[0]?.bankName],
       aadhar: [""],
       Pan: [""]
     });
@@ -71,7 +71,7 @@ export class UserDetailsComponent implements OnInit {
 
   UpdateUser() {
     const formdata: any = this.UserForm.getRawValue();
-    formdata.Status = this.userService.loggedInUser.Status;
+    formdata.Status = this.userService.loggedInUser.status;
     delete formdata.AcNo;
     delete formdata.Name;
     delete formdata.IFSC;
@@ -93,7 +93,7 @@ export class UserDetailsComponent implements OnInit {
     const file = (fileElement as HTMLInputElement).files[0];
 
     const formData = new FormData();
-    formData.append("UserId", this.userService.loggedInUser.Id);
+    formData.append("UserId", this.userService.loggedInUser.id);
     formData.append("Name", type);
     formData.append("Type", "KYC");
     formData.append(
@@ -115,14 +115,14 @@ export class UserDetailsComponent implements OnInit {
   setFileName() {}
 
   donwloadDocument(doc) {
-    this.userService.getDocument(doc.Name).subscribe((details: any) => {
+    this.userService.getDocument(doc.name).subscribe((details: any) => {
       // const data = this.base64ToBlob(details[0].DataAsBase64, "application/" + details[0].fileType);;
       // TODO :: moove downlod doc from bytes to Unitls Service
       // const blob = new Blob([data], {type: "application/" + details[0].fileType});
       const blob = this.base64ToBlob(details[0].dataAsBase64, "application/" + details[0].fileType);
       const link = document.createElement("a");
       link.href = window.URL.createObjectURL(blob);
-      const fileName = doc.Name + "." + details[0].fileType;
+      const fileName = doc.name + "." + details[0].fileType;
       link.download = fileName;
       link.click();
       document.removeChild(link);

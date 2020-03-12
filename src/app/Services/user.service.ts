@@ -38,7 +38,7 @@ export class UserService {
 
   getAllUsersCreatedByLoggedInUser() {
     return this.httpServie.get(
-      "/api/User/GetAllUsersCreatedBy?userID=" + this.loggedInUser.Id
+      "/api/User/GetAllUsersCreatedBy?userID=" + this.loggedInUser.id
     );
   }
 
@@ -57,7 +57,7 @@ export class UserService {
   getDocument(name) {
     return this.httpServie.get(
       "/api/User/GetUserDocuments?userId=" +
-        this.loggedInUser.Id +
+        this.loggedInUser.id +
         "&documentName=" +
         name
     );

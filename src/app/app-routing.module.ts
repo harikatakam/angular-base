@@ -18,7 +18,7 @@ const routes: Routes = [
       { path: "User", component: UserCreationComponent },
       { path: "UserDetails", component: UserDetailsComponent },
       { path: "changePassword", component: ChangePasswordComponent },
-      { path: '**', redirectTo: "/Dashboard" }
+      //{ path: '**', redirectTo: "/Dashboard" }
     ]
   }, // , canActivate: [AuthGuard]
   { path: "login", component: LoginComponent },
