@@ -12,7 +12,7 @@ export class NodeService {
     getFilesystem() {
         return this.http.get<any>('assets/tree.json')
             .toPromise()
-            .then(res => <TreeNode[]>res.data);
+            .then(res => res.data);
     }
 
 }

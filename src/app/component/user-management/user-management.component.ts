@@ -7,8 +7,9 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA
 } from "@angular/material/dialog";
-import { NodeService } from './node.service';
-import { TreeNode } from 'primeng/api/treenode';
+import { NodeService } from "./node.service";
+import { TreeNode } from "primeng/api/treenode";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: "app-user-management",
@@ -23,55 +24,77 @@ export class UserManagementComponent implements OnInit {
   activeUsersCount;
   inActiveUsersCount;
 
-
-  data: TreeNode[];
+  // data: TreeNode[];
 
   cols: any[];
+
+  selectedNode;
+  items;
+
+
 
   constructor(
     private userService: UserService,
     public masterData: MasterData,
     public dialog: MatDialog,
     private nodeService: NodeService
-  ) { }
+  ) {}
   ngOnInit() {
     this.getUsers();
 
-    this.nodeService.getFilesystem().then(files => this.data = files);
-
     this.cols = [
-      { field: 'name', header: 'Name' },
-      { field: 'size', header: 'Size' },
-      { field: 'type', header: 'Type' }
+      { field: "userName", header: "User Name" },
+      { field: "name", header: "Name" },
+      { field: "mailId", header: "Email" },
+      { field: "mobile", header: "Mobile" }
     ];
 
+    this.items = [
+      { label: "Change Manager", icon: "pi pi-user-edit", command: (event) => this.changeManager(this.selectedNode.data) }
+  ];
   }
 
   getUsers() {
     this.userService
       .getAllUsersCreatedByLoggedInUser()
-      .subscribe((users: any) => {
-        this.users = users.map(u => {
-          u.role = this.masterData.data.roles.find(
-            s => s.id === u.roles[0]
-          ).roleName;
-          return u;
-        });
-        this.activeUsersCount = users.filter(u => u.isActive).length;
-        this.inActiveUsersCount = users.length - this.activeUsersCount;
+      .pipe(
+        map((user: any) => {
+          user = user.map(u => {
+            u.role = this.masterData.data.roles.find(
+              s => s.id === u.roles[0]
+            ).roleName;
+            return { data: u, children : [{data : {
+              userName: "hari",
+              name: "hari",
+              mailId: "hari",
+              mobile: "hari",
+            }}] };
+          });
+
+          return user;
+        })
+      )
+      .toPromise()
+      .then((users: any) => {
+        this.users = users;
+        this.activeUsersCount = users.map(u => u.data).filter(u => u.isActive).length;
+        this.inActiveUsersCount = users.map(u => u.data).length - this.activeUsersCount;
       });
+    // .subscribe((users: any) => {
+    //   this.users = users;
+    //   this.activeUsersCount = users.filter(u => u.isActive).length;
+    //   this.inActiveUsersCount = users.length - this.activeUsersCount;
+    // });
   }
 
   changeActivation(user) {
-    this.userService
-      .setActiveStatus(user.id, !user.isActive)
-      .subscribe(() => {
-        this.getUsers();
-      });
+    this.userService.setActiveStatus(user.id, !user.isActive).subscribe(() => {
+      this.getUsers();
+    });
   }
 
   changeManager(user) {
-    this.managers = this.users.filter(
+    this.managers = this.users.map(u => u.data).filter(
       u => u.roles[0] !== 5 && u.id !== user.id
     );
     this.dialogRef = this.dialog.open(this.managerAssignDialog, {
@@ -89,8 +112,4 @@ export class UserManagementComponent implements OnInit {
       });
     });
   }
-
-
-
-
 }

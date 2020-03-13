@@ -117,12 +117,17 @@ mat-toolbar {
   color: white;
   padding: 0.5rem;
   border-radius: 0.2rem;
+  min-width: 150px;
   &:hover {
     // opacity: 0.8;
     // font-weight: bold;
     color: rgb(209, 209, 151);
   }
-  min-width: 150px;
+
+  &.in-grid {
+    width: auto;
+    min-width: auto;
+  }
 }
 
 .app-button[disabled] {
