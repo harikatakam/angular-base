@@ -24,10 +24,7 @@ export class SideMenuBarComponent implements OnInit {
   IsSplitPane = false;
   currentUser: any;
 
-  constructor(
-    public router: Router,
-    public userSrvc: UserService
-  ) {
+  constructor(public router: Router, public userSrvc: UserService) {
     this.SubscribeCurrentUserData();
   }
 
@@ -59,6 +56,16 @@ export class SideMenuBarComponent implements OnInit {
           {
             title: "Manage Users",
             PageUrl: "manageUsers"
+          }
+        ]
+      },
+      {
+        Icon: "people",
+        title: "Requests",
+        SubMenu: [
+          {
+            title: "New Request",
+            PageUrl: "request"
           }
         ]
       }

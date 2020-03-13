@@ -10,6 +10,7 @@ import { ChangePasswordComponent } from "./component/change-password/change-pass
 import { UserManagementComponent } from "./component/user-management/user-management.component";
 import { KYCApprovalComponent } from "./component/kyc-approval/kyc-approval.component";
 import { ApproveKYCComponent } from "./component/approve-kyc/approve-kyc.component";
+import { CreatRequestComponent } from "./component/create-request/create-request.component";
 
 const routes: Routes = [
   {
@@ -23,14 +24,15 @@ const routes: Routes = [
       { path: "changePassword", component: ChangePasswordComponent },
       { path: "manageUsers", component: UserManagementComponent },
       { path: "kycApproval", component: KYCApprovalComponent },
-      { path: "approveKyc/:id", component: ApproveKYCComponent }
+      { path: "approveKyc/:id", component: ApproveKYCComponent },
+      { path: "request", component: CreatRequestComponent }
     ]
   },
   { path: "login", component: LoginComponent }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes)],
-  exports: [ RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

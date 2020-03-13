@@ -21,8 +21,11 @@ import { ChangePasswordComponent } from "./component/change-password/change-pass
 import { PrimeNgWrapperModule } from "./prime-ng-wrapper.module";
 import { UserManagementComponent } from "./component/user-management/user-management.component";
 import { KYCApprovalComponent } from "./component/kyc-approval/kyc-approval.component";
-import { UserDetailsComponent } from './component/user-details/user-details.component';
-import { ApproveKYCComponent } from './component/approve-kyc/approve-kyc.component';
+import { UserDetailsComponent } from "./component/user-details/user-details.component";
+import { ApproveKYCComponent } from "./component/approve-kyc/approve-kyc.component";
+import { CreatRequestComponent } from "./component/create-request/create-request.component";
+
+import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { ApproveKYCComponent } from './component/approve-kyc/approve-kyc.compone
     UserDetailsComponent,
     UserManagementComponent,
     KYCApprovalComponent,
-    ApproveKYCComponent
+    ApproveKYCComponent,
+    CreatRequestComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -50,7 +54,8 @@ import { ApproveKYCComponent } from './component/approve-kyc/approve-kyc.compone
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    BsDatepickerModule.forRoot(),
   ],
   providers: [
     {

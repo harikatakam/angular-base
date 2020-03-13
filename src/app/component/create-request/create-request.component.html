@@ -1,0 +1,213 @@
+<mat-horizontal-stepper labelPosition="bottom" #stepper class="p-2">
+
+  <form [formGroup]="RequestForm" class="form">
+    <mat-step [completed]="false">
+      <div class="mt-2 mb-2"><span class='page-title'> Create Request </span></div>
+      <fieldset class="form-group">
+        <div class="d-flex">
+          <div class="form-check margin">
+            <input class="form-check-input" type="radio" id="gridRadios1" value="request" formControlName="requestTpye"
+              checked>
+            <label class="form-check-label radiofont" for="gridRadios1">
+              Request Offline Quote
+            </label>
+          </div>
+          <div class="form-check margin">
+            <input class="form-check-input" type="radio" id="gridRadios2" formControlName="requestTpye" value="direct">
+            <label class="form-check-label radiofont" for="gridRadios2">
+              Direct Policy Issuance
+            </label>
+          </div>
+
+        </div>
+      </fieldset>
+      <div class="flex-container">
+        <div class="form-group inputflex">
+          <label for="vehicletype">Vehicle Type</label>
+          <select class="form-control" id="vehicletype" formControlName="vehicleType">
+            <option value="-1"> -- Select --</option>
+            <option *ngFor="let vehicle of Vehicles" [value]="vehicle.Id">{{vehicle.Type}}</option>
+          </select>
+        </div>
+
+        <div class="form-group inputflex">
+          <label for="casetype">Case Type</label>
+          <select class="form-control" id="casetype" formControlName="caseType">
+            <option value="-1"> -- Select --</option>
+            <option *ngFor="let case of CaseTypes" [value]="case.Id">{{case.Type}}</option>
+          </select>
+        </div>
+
+        <div class="form-group inputflex">
+          <label for="policytype">Policy Type</label>
+          <select class="form-control" id="policytype" formControlName="policyType">
+            <option value="-1"> -- Select --</option>
+            <option *ngFor="let policy of PolicyTypes" [value]="policy.Id">{{policy.Type}}</option>
+          </select>
+        </div>
+
+
+
+        <div class="form-group inputflex">
+          <label for="registratn">Registration Number</label>
+          <input type="text" class="form-control" id="registratn" placeholder="Enter Registration Number"
+            formControlName="regNo">
+        </div>
+
+
+
+        <div class="form-group inputflex">
+          <label for="make">Make/Model</label>
+          <select class="form-control" id="make" placeholder="Select Make/Model" formControlName="make">
+            <option value="-1"> -- Select --</option>
+            <option *ngFor="let make of MakesNModels" [value]="make.Id">{{make.Type}}</option>
+          </select>
+        </div>
+
+        <div class="form-group inputflex">
+          <label for="fuel">Fuel Type</label>
+          <select class="form-control" id="fuel" placeholder="Select Fuel Type" formControlName="fuelType">
+            <option value="-1"> -- Select --</option>
+            <option *ngFor="let fuel of FuelTypes" [value]="fuel.Id">{{fuel.Type}}</option>
+          </select>
+        </div>
+
+        <div class="form-group inputflex">
+          <label for="variant">Variant</label>
+          <select class="form-control" id="variant" placeholder="-- Select Variant --" formControlName="variant">
+            <option value="-1"> -- Select --</option>
+            <option *ngFor="let variant of Variants" [value]="variant.Id">{{variant.Type}}</option>
+          </select>
+        </div>
+
+
+        <div class="form-group inputflex">
+          <label for="rdate">Registration Date</label>
+          <input id="rdate" type="text" placeholder="Enter Registration Date" class="form-control"
+            formControlName="regDate" bsDatepicker>
+        </div>
+
+
+        <div class="form-group inputflex">
+          <label for="mdate">Manufacturing Date</label>
+          <input id="mdate" type="text" formControlName="mDate" placeholder="Enter Manufacturing Date"
+            class="form-control" bsDatepicker>
+        </div>
+
+        <div class="form-group inputflex">
+          <label for="fuel">RTO</label>
+          <select class="form-control" id="fuel" formControlName="rto">
+            <option value="-1"> -- Select --</option>
+            <option *ngFor="let city of RTOCities" [value]="city.Id">{{city.Type}}</option>
+          </select>
+        </div>
+      </div>
+    </mat-step>
+
+    <mat-step [completed]="false">
+      <div class="mt-2 mb-2"><span class='page-title'> Policy Details </span></div>
+
+
+      <h5>Previous Policy Details</h5>
+      <div class="flex-container">
+        <div class="form-group inputflex">
+          <label for="PInsurer">Previous Insurer</label>
+          <select class="form-control" id="PInsurer" formControlName="PrevInsurer">
+            <option value="-1"> -- Select --</option>
+            <option *ngFor="let ins of PreviousInsurer" [value]="ins.Id">{{ins.Name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group inputflex">
+          <label for="Edate">Previous Policy Expiry</label>
+          <input id="Edate" type="text" formControlName="EDate" placeholder="Enter Expiry Date" class="form-control"
+            bsDatepicker>
+        </div>
+
+
+
+        <div class="form-group inputflex">
+          <label for="discount">Previous Year NCB Discount</label>
+          <select class="form-control" id="discount" formControlName="NCBDiscount">
+            <option value="-1"> -- Select --</option>
+            <option *ngFor="let discount of Discounts" [value]="discount.Id">{{discount.Type}}</option>
+          </select>
+        </div>
+
+        <fieldset class="form-group inputflex">
+          <label>Claim Taken</label>
+          <div class="d-flex">
+            <div class="form-check margin">
+              <input class="form-check-input" type="radio" formControlName="clainTaken" id="gridRadios1" value="yes"
+                checked>
+              <label class="form-check-label radiofont" for="gridRadios1">
+                Yes
+              </label>
+            </div>
+            <div class="form-check margin">
+              <input class="form-check-input" type="radio" formControlName="clainTaken" id="gridRadios2"
+                value="no">
+              <label class="form-check-label radiofont" for="gridRadios2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <h5>Previous Policy Details</h5>
+      <div class="flex-container">
+        <div class="form-group inputflex">
+          <label for="insurer">Preffered Insurer</label>
+          <select class="form-control" id="insurer" formControlName="PreffInsurer">
+            <option value="-1"> -- Select --</option>
+            <option *ngFor="let ins of PrefferedInsurers" [value]="ins.Id">{{ins.Name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group inputflex">
+          <label for="IDV">Preffered IDV</label>
+          <input id="IDV" type="text" formControlName="IDV" placeholder="Enter Preffered IDV" class="form-control">
+        </div>
+
+        <div class="form-group inputflex">
+          <label for="add">Required Add-Ons</label>
+          <select class="form-control" id="add" formControlName="addOns">
+            <option value="-1"> -- Select --</option>
+            <option *ngFor="let add of RequiredAdds" [value]="add.Id">{{add.Type}}</option>
+          </select>
+        </div>
+
+        <div class="form-group inputflex">
+          <label for="rdate">Remarks/Comments</label>
+          <textarea id="rdate" type="text" placeholder="Comment Here" class="form-control"
+            formControlName="comments"></textarea>
+        </div>
+      </div>
+
+
+
+    </mat-step>
+
+    <mat-step [completed]="false">
+      <div class="mt-2 mb-2"><span class='page-title'> Upload Documents </span></div>
+      <div class="flex-container">
+        <div class="boxstyles">
+          <input #doc type="file" class="d-none">
+          <i (click)="doc.click()" class="material-icons maticonsize cursor">add</i>
+        </div>
+        <div class="boxstyles">
+          <input #doc1 type="file" class="d-none">
+          <i (click)="doc1.click()" class="material-icons maticonsize cursor">add</i>
+        </div>
+        <div class="boxstyles">
+          <input #doc2 type="file" class="d-none">
+          <i (click)="doc2.click()" class="material-icons maticonsize cursor">add</i>
+        </div>
+      </div>
+    </mat-step>
+  </form>
+</mat-horizontal-stepper>
+<div class="justify-content-end">
+  <button type="submit" class="app-button" (click)="SaveData()">Submit</button>
+</div>
