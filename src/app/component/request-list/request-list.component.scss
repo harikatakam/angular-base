@@ -1,0 +1,13 @@
+app-request-list {
+  @import "../../../variables.scss";
+   th {
+    background: $secondary-background-color !important;
+    color: white !important;
+  }
+
+ tr:nth-child(even) {
+    background-color: #fff !important;
+}
+}
+
+

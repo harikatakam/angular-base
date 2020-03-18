@@ -1,0 +1,18 @@
+<p-table [columns]="columnDefs" [value]="rowData">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns">
+        {{col.headerName}}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-car let-columns="columns">
+    <tr>
+      <td *ngFor="let col of columns">
+        <span>{{car[col.field]}}</span>
+        <span *ngIf="car[col.field] == ''">
+          <button class="app-button" (click)="NavigateToRequestPage(car.id)">View</button>
+        </span> </td>
+    </tr>
+  </ng-template>
+</p-table>

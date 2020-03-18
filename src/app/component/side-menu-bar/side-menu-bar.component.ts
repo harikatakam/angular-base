@@ -60,12 +60,17 @@ export class SideMenuBarComponent implements OnInit {
         ]
       },
       {
+        // User Management
         Icon: "people",
         title: "Requests",
         SubMenu: [
           {
             title: "New Request",
-            PageUrl: "request"
+            PageUrl: "request/new"
+          },
+          {
+            title: "Request List",
+            PageUrl: "requestList"
           }
         ]
       }

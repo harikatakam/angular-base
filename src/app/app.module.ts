@@ -26,6 +26,7 @@ import { ApproveKYCComponent } from "./component/approve-kyc/approve-kyc.compone
 import { CreatRequestComponent } from "./component/create-request/create-request.component";
 
 import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+import { RequestListComponent } from "./component/request-list/request-list.component";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
     UserManagementComponent,
     KYCApprovalComponent,
     ApproveKYCComponent,
-    CreatRequestComponent
+    CreatRequestComponent,
+    RequestListComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -55,7 +57,7 @@ import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
     AppRoutingModule,
     HttpClientModule,
     AgGridModule.withComponents([]),
-    BsDatepickerModule.forRoot(),
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     {
@@ -63,7 +65,7 @@ import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
       useClass: TokenInjectorInterceptor,
       multi: true
     }
-  ],
+    ],
   exports: [],
   bootstrap: [AppComponent]
 })

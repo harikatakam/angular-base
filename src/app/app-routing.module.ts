@@ -11,6 +11,7 @@ import { UserManagementComponent } from "./component/user-management/user-manage
 import { KYCApprovalComponent } from "./component/kyc-approval/kyc-approval.component";
 import { ApproveKYCComponent } from "./component/approve-kyc/approve-kyc.component";
 import { CreatRequestComponent } from "./component/create-request/create-request.component";
+import { RequestListComponent } from "./component/request-list/request-list.component";
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
       { path: "manageUsers", component: UserManagementComponent },
       { path: "kycApproval", component: KYCApprovalComponent },
       { path: "approveKyc/:id", component: ApproveKYCComponent },
-      { path: "request", component: CreatRequestComponent }
+      { path: "request/:id", component: CreatRequestComponent },
+      { path: "requestList", component: RequestListComponent }
     ]
   },
   { path: "login", component: LoginComponent }

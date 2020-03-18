@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "src/app/Services/user.service";
 import { AlertService } from "src/app/Services/alert.service";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-user-creation",
@@ -15,8 +15,9 @@ export class UserCreationComponent implements OnInit {
   Users: any = [];
   currentUser: any;
   submitted = false;
-
-  constructor(public router: Router,
+  error;
+  constructor(
+    public router: Router,
     public fb: FormBuilder,
     private userService: UserService,
     private alert: AlertService
@@ -74,9 +75,16 @@ export class UserCreationComponent implements OnInit {
 
   CreateUser() {
     this.UserForm.get("Roles").setValue([+this.UserForm.value.Roles]);
-    this.userService.createUser(this.UserForm.value).subscribe((val: any) => {
-      this.alert.SuccesMessageAlert("User Created Succesfully", "Close");
-      this.router.navigateByUrl("/manageUsers");
-    });
+    this.userService.createUser(this.UserForm.value).subscribe(
+      (val: any) => {
+        this.alert.SuccesMessageAlert("User Created Succesfully", "Close");
+        this.router.navigateByUrl("/manageUsers");
+      },
+      error => {
+        if (error.status === 400) {
+          this.error = error.error.message;
+        }
+      }
+    );
   }
 }

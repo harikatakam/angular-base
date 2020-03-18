@@ -50,7 +50,7 @@
     </div>
 
   </form>
-
+  <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
   <br />
   <div class="justify-content-center">
     <button class="app-button margin-top5" (click)="SaveUser()">Create User</button>
