@@ -27,6 +27,7 @@ import { CreatRequestComponent } from "./component/create-request/create-request
 
 import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 import { RequestListComponent } from "./component/request-list/request-list.component";
+import { ReLoginComponent } from "./component/re-login/re-login.component";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { RequestListComponent } from "./component/request-list/request-list.comp
     KYCApprovalComponent,
     ApproveKYCComponent,
     CreatRequestComponent,
-    RequestListComponent
+    RequestListComponent,
+    ReLoginComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -65,7 +67,7 @@ import { RequestListComponent } from "./component/request-list/request-list.comp
       useClass: TokenInjectorInterceptor,
       multi: true
     }
-    ],
+  ],
   exports: [],
   bootstrap: [AppComponent]
 })

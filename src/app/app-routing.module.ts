@@ -30,7 +30,8 @@ const routes: Routes = [
       { path: "requestList", component: RequestListComponent }
     ]
   },
-  { path: "login", component: LoginComponent }
+  { path: "login", component: LoginComponent },
+  // { path: "**", redirectTo: "/Dashboard" }
 ];
 
 @NgModule({

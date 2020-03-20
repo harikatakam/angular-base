@@ -55,9 +55,7 @@ export class UserService {
   }
 
   getAllKycPendingUsers() {
-    return this.httpServie.get(
-      "/api/User/GetAllKycPendingUsers"
-    );
+    return this.httpServie.get("/api/User/GetAllKycPendingUsers");
   }
 
   getUserRoles() {
@@ -78,17 +76,14 @@ export class UserService {
 
   getDocument(name, userId) {
     return this.httpServie.get(
-      "/api/User/GetUserDocuments?userId=" +
-        userId +
-        "&documentName=" +
-        name
+      "/api/User/GetUserDocuments?userId=" + userId + "&documentName=" + name
     );
   }
 
   setActiveStatus(userId, activeStatus) {
     return this.httpServie.get(
       "/api/User/ChangeUserActivation?UserId=" +
-      userId +
+        userId +
         "&IsActive=" +
         activeStatus
     );
@@ -96,19 +91,13 @@ export class UserService {
 
   changeUserStatus(userId, status) {
     return this.httpServie.get(
-      "/api/User/ChangeUserStatus?UserId=" +
-        userId +
-        "&Status=" +
-        status
+      "/api/User/ChangeUserStatus?UserId=" + userId + "&Status=" + status
     );
   }
 
   changeUserManager(UserId, managerId) {
     return this.httpServie.get(
-      "/api/User/ChangeUserManager?UserId=" +
-      UserId +
-        "&managerId=" +
-        managerId
+      "/api/User/ChangeUserManager?UserId=" + UserId + "&managerId=" + managerId
     );
   }
 }
