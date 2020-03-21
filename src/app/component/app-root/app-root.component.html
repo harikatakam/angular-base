@@ -6,6 +6,7 @@
   <div class="layout-sidemenu header1-layout bgcolor" [ngClass]='{"activelayout-sidemenu" : showMenu}'>
     <app-side-menu-bar (toggleMenu)='ToggleSidePane()'></app-side-menu-bar>
   </div>
+  <div *ngIf = 'showMenu' class = 'fullpage-overlay' (click)='ToggleSidePane()'></div>
 
   <div class="content">
     <div class="page-content">
