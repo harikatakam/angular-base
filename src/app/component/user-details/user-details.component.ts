@@ -39,7 +39,7 @@ export class UserDetailsComponent implements OnInit {
 
   GetUserRoles() {
     this.userService
-      .getUserRoles()
+      .getMasterData()
       .subscribe((data: any) => (this.Roles = data.roles));
     this.adharDoc = this.currentUser.documents.find(d => d.name === "Aadhar");
     this.panDoc = this.currentUser.documents.find(d => d.name === "PAN");
@@ -84,9 +84,9 @@ export class UserDetailsComponent implements OnInit {
     }
   }
 
-  UpdateUser() {
+  UpdateUser(submit?) {
     const formdata: any = this.UserForm.getRawValue();
-    formdata.Status = this.currentUser.status;
+    submit ? formdata.Status = 3 : formdata.Status = this.currentUser.status;
     delete formdata.AcNo;
     delete formdata.Name;
     delete formdata.IFSC;

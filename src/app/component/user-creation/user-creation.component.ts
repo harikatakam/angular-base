@@ -37,7 +37,7 @@ export class UserCreationComponent implements OnInit {
 
   GetUserRoles() {
     this.userService
-      .getUserRoles()
+      .getMasterData()
       .subscribe(
         (data: any) =>
           (this.Roles = data.roles.filter(

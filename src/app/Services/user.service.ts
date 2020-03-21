@@ -2,12 +2,15 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import * as jwt_decode from "jwt-decode";
 import { BehaviorSubject } from "rxjs";
-import { tap } from "rxjs/operators";
+import { tap, shareReplay } from "rxjs/operators";
 
 @Injectable({ providedIn: "root" })
 export class UserService {
   loggedInUser;
   loggedInUserUpdated$: BehaviorSubject<any> = new BehaviorSubject(null);
+
+  private masterData$;
+
   constructor(private httpServie: HttpClient) {}
 
   createUser(user) {
@@ -58,12 +61,12 @@ export class UserService {
     return this.httpServie.get("/api/User/GetAllKycPendingUsers");
   }
 
-  getUserRoles() {
-    return this.httpServie.get("/api/User/GetMasterData");
-  }
-
   getMasterData() {
-    return this.httpServie.get("/api/User/GetMasterData");
+    if (!this.masterData$) {
+      this.masterData$ = this.httpServie.get("/api/User/GetMasterData").pipe(shareReplay(1));
+    }
+
+    return this.masterData$;
   }
 
   changePassword(UserData: any) {
